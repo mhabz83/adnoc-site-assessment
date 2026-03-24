@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Site Assessment — Aftermarket Site Assessment</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #06080f;
+    --bg-secondary: #0c1021;
+    --bg-card: #111631;
+    --bg-hover: #161d3e;
+    --border: #1e2a4a;
+    --text-primary: #edf2f7;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --green: #22c55e;
+    --green-bg: rgba(34, 197, 94, 0.10);
+    --yellow: #eab308;
+    --yellow-bg: rgba(234, 179, 8, 0.10);
+    --red: #ef4444;
+    --red-bg: rgba(239, 68, 68, 0.10);
+    --accent: #3b82f6;
+    --accent-dim: rgba(59, 130, 246, 0.12);
+    --y1-highlight: #a855f7;
+    --y1-bg: rgba(168, 85, 247, 0.10);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(6, 8, 15, 0.9);
+    backdrop-filter: blur(16px);
+    flex-shrink: 0;
+    z-index: 1001;
+    gap: 16px;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .nav-title {
+    font-size: 14px;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .nav-flag { font-size: 18px; }
+
+  /* Caveat banner */
+  .caveat-banner {
+    background: #dc2626;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    flex-shrink: 0;
+    border-bottom: 2px solid #991b1b;
+  }
+
+  .caveat-banner strong {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 360px;
+    min-width: 360px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+  }
+
+  .sidebar-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .sidebar-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+  }
+
+  .sidebar-header p {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 6px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .stat-badge {
+    flex: 1;
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .stat-badge.green { background: var(--green-bg); color: var(--green); }
+  .stat-badge.yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .stat-badge.red { background: var(--red-bg); color: var(--red); }
+  .stat-badge.y1 { background: var(--y1-bg); color: var(--y1-highlight); }
+
+  .stat-badge .num { font-size: 18px; font-weight: 800; display: block; }
+
+  .filter-bar {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active.green-f { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+  .filter-btn.active.yellow-f { background: var(--yellow-bg); border-color: var(--yellow); color: var(--yellow); }
+  .filter-btn.active.red-f { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+
+  .search-bar {
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 7px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar input::placeholder { color: var(--text-muted); }
+
+  .site-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 0;
+  }
+
+  .site-list::-webkit-scrollbar { width: 4px; }
+  .site-list::-webkit-scrollbar-track { background: transparent; }
+  .site-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .site-item {
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background 0.12s;
+    border-bottom: 1px solid rgba(30, 42, 74, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .site-item:hover { background: var(--bg-hover); }
+  .site-item.selected { background: var(--accent-dim); }
+
+  .site-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .site-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,0.4); }
+  .site-dot.yellow { background: var(--yellow); box-shadow: 0 0 6px rgba(234,179,8,0.4); }
+  .site-dot.red { background: var(--red); box-shadow: 0 0 6px rgba(239,68,68,0.4); }
+
+  .site-info { flex: 1; min-width: 0; }
+
+  .site-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-meta {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .site-score {
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .site-score.green { color: var(--green); }
+  .site-score.yellow { color: var(--yellow); }
+  .site-score.red { color: var(--red); }
+
+  .y1-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    background: var(--y1-bg);
+    color: var(--y1-highlight);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  /* Map */
+  .map-container { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; }
+
+  .leaflet-popup-content-wrapper {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
+    padding: 0 !important;
+  }
+
+  .leaflet-popup-tip { background: var(--bg-card) !important; border: 1px solid var(--border) !important; }
+  .leaflet-popup-content { margin: 0 !important; width: 320px !important; }
+  .leaflet-popup-close-button { color: var(--text-muted) !important; font-size: 18px !important; right: 8px !important; top: 6px !important; }
+
+  .popup-inner { padding: 14px; }
+
+  .popup-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .popup-grade-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .popup-grade-dot.green { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,0.5); }
+  .popup-grade-dot.yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(234,179,8,0.5); }
+  .popup-grade-dot.red { background: var(--red); box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+
+  .popup-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+  .popup-subtitle { font-size: 10px; color: var(--text-muted); }
+
+  .popup-score-big {
+    font-size: 26px;
+    font-weight: 800;
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .popup-score-big.green { color: var(--green); }
+  .popup-score-big.yellow { color: var(--yellow); }
+  .popup-score-big.red { color: var(--red); }
+
+  .popup-criteria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .criteria-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .criteria-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .criteria-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .criteria-bar-bg {
+    width: 36px;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .criteria-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  .criteria-val {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    width: 14px;
+    text-align: right;
+  }
+
+  .popup-notes {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 7px 8px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .legend-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    z-index: 800;
+    font-size: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .legend-title { font-weight: 700; color: var(--text-primary); margin-bottom: 6px; font-size: 11px; }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 3px;
+    color: var(--text-secondary);
+  }
+
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .legend-dot.green { background: var(--green); }
+  .legend-dot.yellow { background: var(--yellow); }
+  .legend-dot.red { background: var(--red); }
+  .legend-dot.y1 { background: var(--y1-highlight); }
+
+  .attribution {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 800;
+    font-size: 9px;
+    color: var(--text-muted);
+  }
+
+  .attribution a { color: var(--text-muted); text-decoration: none; }
+  .attribution a:hover { color: var(--text-secondary); }
+
+  @media (max-width: 768px) {
+    .main-content { flex-direction: column; }
+    .sidebar { width: 100%; min-width: unset; height: 45vh; }
+    .map-container { height: 55vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7L9 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Dashboard
+  </a>
+  <span class="nav-flag">🇦🇪</span>
+  <span class="nav-title">UAE — ADNOC Site Assessment</span>
+</div>
+
+<div class="caveat-banner">
+  <strong>Important:</strong> ADNOC has only identified to us 5 confirmed sites. Post-NDA (March 24th), we have immediately asked them for the specific remaining sites — this site heat map is subject to change.
+</div>
+
+<div class="main-content">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>ADNOC Quick-Service Bay Assessment</h2>
+    <p>Abu Dhabi · Dubai · Sharjah — 6-Criteria Scoring</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-badge y1"><span class="num" id="stat-y1">5</span>Y1 Priority</div>
+    <div class="stat-badge green"><span class="num" id="stat-green">0</span>Green</div>
+    <div class="stat-badge yellow"><span class="num" id="stat-yellow">0</span>Yellow</div>
+    <div class="stat-badge red"><span class="num" id="stat-red">0</span>Red</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn green-f" data-filter="green">Green</button>
+    <button class="filter-btn yellow-f" data-filter="yellow">Yellow</button>
+    <button class="filter-btn red-f" data-filter="red">Red</button>
+    <button class="filter-btn" data-filter="y1">Y1 Priority</button>
+    <button class="filter-btn" data-filter="Abu Dhabi">Abu Dhabi</button>
+    <button class="filter-btn" data-filter="Dubai">Dubai</button>
+    <button class="filter-btn" data-filter="Sharjah">Sharjah</button>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search by station name or SS number...">
+  </div>
+
+  <div class="site-list" id="site-list"></div>
+</div>
+
+<div class="map-container">
+  <div id="map"></div>
+
+  <div class="legend-overlay">
+    <div class="legend-title">Site Grades</div>
+    <div class="legend-item"><span class="legend-dot y1"></span>Y1 2026 Priority (ring)</div>
+    <div class="legend-item"><span class="legend-dot green"></span>Green — Prime (≥ 6.8)</div>
+    <div class="legend-item"><span class="legend-dot yellow"></span>Yellow — Viable (5.0–6.7)</div>
+    <div class="legend-item"><span class="legend-dot red"></span>Red — Weak (&lt; 5.0)</div>
+  </div>
+
+  <div class="attribution">
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+  </div>
+</div>
+</div>
+
+<script src="uae-data.js"></script>
+<script>
+const map = L.map('map', {
+  center: [24.8, 55.0],
+  zoom: 9,
+  zoomControl: false,
+  attributionControl: false
+});
+
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.control.attribution({ position: 'bottomleft', prefix: false }).addTo(map);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OSM &copy; CARTO',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+const COLORS = { green: '#22c55e', yellow: '#eab308', red: '#ef4444' };
+const Y1_COLOR = '#a855f7';
+
+function criteriaColor(val) {
+  if (val >= 7) return COLORS.green;
+  if (val >= 5) return COLORS.yellow;
+  return COLORS.red;
+}
+
+const CRITERIA_LABELS = {
+  traffic: 'Traffic',
+  fuel_retailers: 'Fuel Nearby',
+  car_wash: 'Car Wash',
+  affluent: 'Affluence',
+  ev_signals: 'EV Signals',
+  competitor: 'Low Compet.'
+};
+
+const markers = [];
+const markerMap = {};
+
+SITES_DATA.forEach(site => {
+  if (!site.lat || !site.lng) return;
+
+  const isY1 = site.priority === 'Y1-2026';
+  const color = COLORS[site.grade] || COLORS.red;
+  const radius = isY1 ? 9 : 6;
+
+  const marker = L.circleMarker([site.lat, site.lng], {
+    radius: radius,
+    fillColor: color,
+    color: isY1 ? Y1_COLOR : color,
+    weight: isY1 ? 3 : 1.5,
+    opacity: 1,
+    fillOpacity: 0.8
+  });
+
+  const popupHTML = buildPopup(site);
+  marker.bindPopup(popupHTML, { maxWidth: 340, className: 'dark-popup' });
+
+  marker.siteData = site;
+  marker.addTo(map);
+  markers.push(marker);
+  markerMap[site.ss || site.name] = marker;
+});
+
+function buildPopup(site) {
+  const isY1 = site.priority === 'Y1-2026';
+  const y1Tag = isY1 ? '<span class="y1-badge">Y1 2026</span>' : '';
+  
+  let criteriaHTML = '';
+  if (site.scores) {
+    for (const [key, label] of Object.entries(CRITERIA_LABELS)) {
+      const val = site.scores[key] || 0;
+      const pct = val * 10;
+      const barColor = criteriaColor(val);
+      criteriaHTML += `
+        <div class="criteria-item">
+          <span class="criteria-label">${label}</span>
+          <div class="criteria-bar-container">
+            <div class="criteria-bar-bg">
+              <div class="criteria-bar-fill" style="width:${pct}%;background:${barColor}"></div>
+            </div>
+            <span class="criteria-val">${val}</span>
+          </div>
+        </div>`;
+    }
+  }
+
+  return `
+    <div class="popup-inner">
+      <div class="popup-header">
+        <div class="popup-grade-dot ${site.grade}"></div>
+        <div>
+          <div class="popup-title">${site.ss || ''} ${site.name}${y1Tag}</div>
+          <div class="popup-subtitle">${site.emirate || site.category || ''} · ${site.area || ''}</div>
+        </div>
+        <div class="popup-score-big ${site.grade}">${site.weighted_score}</div>
+      </div>
+      <div class="popup-criteria">${criteriaHTML}</div>
+      ${site.notes ? `<div class="popup-notes">${site.notes}</div>` : ''}
+    </div>`;
+}
+
+function updateStats(filteredSites) {
+  const g = filteredSites.filter(s => s.grade === 'green').length;
+  const y = filteredSites.filter(s => s.grade === 'yellow').length;
+  const r = filteredSites.filter(s => s.grade === 'red').length;
+  const p = filteredSites.filter(s => s.priority === 'Y1-2026').length;
+  document.getElementById('stat-green').textContent = g;
+  document.getElementById('stat-yellow').textContent = y;
+  document.getElementById('stat-red').textContent = r;
+  document.getElementById('stat-y1').textContent = p;
+}
+
+function renderList(sites) {
+  const list = document.getElementById('site-list');
+  list.innerHTML = '';
+  
+  sites.sort((a, b) => {
+    if (a.priority === 'Y1-2026' && b.priority !== 'Y1-2026') return -1;
+    if (b.priority === 'Y1-2026' && a.priority !== 'Y1-2026') return 1;
+    return b.weighted_score - a.weighted_score;
+  });
+
+  sites.forEach(site => {
+    const isY1 = site.priority === 'Y1-2026';
+    const el = document.createElement('div');
+    el.className = 'site-item';
+    el.innerHTML = `
+      <div class="site-dot ${site.grade}"></div>
+      <div class="site-info">
+        <div class="site-name">${site.ss || ''} ${site.name}${isY1 ? '<span class="y1-badge">Y1</span>' : ''}</div>
+        <div class="site-meta">${site.emirate || site.category || ''} · ${site.area || ''}</div>
+      </div>
+      <div class="site-score ${site.grade}">${site.weighted_score}</div>
+    `;
+    el.addEventListener('click', () => {
+      if (site.lat && site.lng) {
+        map.flyTo([site.lat, site.lng], 14, { duration: 0.8 });
+        const key = site.ss || site.name;
+        if (markerMap[key]) markerMap[key].openPopup();
+      }
+      document.querySelectorAll('.site-item').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+    });
+    list.appendChild(el);
+  });
+
+  updateStats(sites);
+}
+
+let activeFilter = 'all';
+let searchTerm = '';
+
+function getVisibleSites() {
+  return SITES_DATA.filter(site => {
+    let passFilter = true;
+    if (activeFilter === 'green' || activeFilter === 'yellow' || activeFilter === 'red') {
+      passFilter = site.grade === activeFilter;
+    } else if (activeFilter === 'y1') {
+      passFilter = site.priority === 'Y1-2026';
+    } else if (['Abu Dhabi', 'Dubai', 'Sharjah'].includes(activeFilter)) {
+      passFilter = site.emirate === activeFilter;
+    }
+
+    let passSearch = true;
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      passSearch = (site.name || '').toLowerCase().includes(term) ||
+                   (site.ss || '').toLowerCase().includes(term) ||
+                   (site.area || '').toLowerCase().includes(term) ||
+                   (site.emirate || '').toLowerCase().includes(term);
+    }
+
+    return passFilter && passSearch;
+  });
+}
+
+function applyFilters() {
+  const visible = getVisibleSites();
+  renderList(visible);
+
+  const visibleKeys = new Set(visible.map(s => s.ss || s.name));
+  markers.forEach(m => {
+    const key = m.siteData.ss || m.siteData.name;
+    if (visibleKeys.has(key)) {
+      m.setStyle({ fillOpacity: 0.8, opacity: 1 });
+      m.setRadius(m.siteData.priority === 'Y1-2026' ? 9 : 6);
+    } else {
+      m.setStyle({ fillOpacity: 0.08, opacity: 0.08 });
+      m.setRadius(3);
+    }
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+document.getElementById('search-input').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  applyFilters();
+});
+
+applyFilters();
+
+const allLatLngs = markers.map(m => m.getLatLng());
+if (allLatLngs.length) {
+  map.fitBounds(L.latLngBounds(allLatLngs).pad(0.1));
+}
+</script>
+</body>
+</html>

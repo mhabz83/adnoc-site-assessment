@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morocco Site Assessment — Aftermarket Site Assessment</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #06080f;
+    --bg-secondary: #0c1021;
+    --bg-card: #111631;
+    --bg-hover: #161d3e;
+    --border: #1e2a4a;
+    --text-primary: #edf2f7;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --green: #22c55e;
+    --green-bg: rgba(34, 197, 94, 0.10);
+    --yellow: #eab308;
+    --yellow-bg: rgba(234, 179, 8, 0.10);
+    --red: #ef4444;
+    --red-bg: rgba(239, 68, 68, 0.10);
+    --accent: #3b82f6;
+    --accent-dim: rgba(59, 130, 246, 0.12);
+    --petrom-color: #f97316;
+    --petrom-bg: rgba(249, 115, 22, 0.10);
+    --petromin-color: #06b6d4;
+    --petromin-bg: rgba(6, 182, 212, 0.10);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(6, 8, 15, 0.9);
+    backdrop-filter: blur(16px);
+    flex-shrink: 0;
+    z-index: 1001;
+    gap: 16px;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .nav-title { font-size: 14px; font-weight: 700; flex: 1; }
+  .nav-flag { font-size: 18px; }
+
+  .main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 380px;
+    min-width: 380px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+  }
+
+  .sidebar-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .sidebar-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+  }
+
+  .sidebar-header p {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* Partner toggle */
+  .partner-toggle {
+    display: flex;
+    padding: 10px 20px;
+    gap: 6px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .partner-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    text-align: center;
+  }
+
+  .partner-btn:hover { border-color: var(--accent); }
+
+  .partner-btn.active.all-p { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .partner-btn.active.petrom-p { background: var(--petrom-bg); border-color: var(--petrom-color); color: var(--petrom-color); }
+  .partner-btn.active.petromin-p { background: var(--petromin-bg); border-color: var(--petromin-color); color: var(--petromin-color); }
+
+  .partner-btn .btn-count {
+    font-size: 10px;
+    font-weight: 700;
+    opacity: 0.7;
+    margin-left: 4px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    gap: 6px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .stat-badge {
+    flex: 1;
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .stat-badge.green { background: var(--green-bg); color: var(--green); }
+  .stat-badge.yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .stat-badge.red { background: var(--red-bg); color: var(--red); }
+  .stat-badge.blue { background: var(--accent-dim); color: var(--accent); }
+
+  .stat-badge .num { font-size: 18px; font-weight: 800; display: block; }
+
+  /* Filter bar */
+  .filter-bar {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active.green-f { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+  .filter-btn.active.yellow-f { background: var(--yellow-bg); border-color: var(--yellow); color: var(--yellow); }
+  .filter-btn.active.red-f { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+
+  /* Search */
+  .search-bar {
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 7px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar input::placeholder { color: var(--text-muted); }
+
+  /* Site list */
+  .site-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 0;
+  }
+
+  .site-list::-webkit-scrollbar { width: 4px; }
+  .site-list::-webkit-scrollbar-track { background: transparent; }
+  .site-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .site-item {
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: background 0.12s;
+    border-bottom: 1px solid rgba(30, 42, 74, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .site-item:hover { background: var(--bg-hover); }
+  .site-item.selected { background: var(--accent-dim); }
+
+  .site-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .site-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,0.4); }
+  .site-dot.yellow { background: var(--yellow); box-shadow: 0 0 6px rgba(234,179,8,0.4); }
+  .site-dot.red { background: var(--red); box-shadow: 0 0 6px rgba(239,68,68,0.4); }
+
+  .site-info { flex: 1; min-width: 0; }
+
+  .site-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-meta {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .partner-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    margin-left: 5px;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+
+  .partner-tag.petrom { background: var(--petrom-bg); color: var(--petrom-color); border: 1px solid rgba(249,115,22,0.25); }
+  .partner-tag.petromin { background: var(--petromin-bg); color: var(--petromin-color); border: 1px solid rgba(6,182,212,0.25); }
+
+  .site-rating {
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .site-rating.green { color: var(--green); }
+  .site-rating.yellow { color: var(--yellow); }
+  .site-rating.red { color: var(--red); }
+
+  .rec-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  .rec-badge.shortlist { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.25); }
+  .rec-badge.assessed { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.25); }
+
+  /* Map */
+  .map-container { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; }
+
+  .leaflet-popup-content-wrapper {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
+    padding: 0 !important;
+  }
+
+  .leaflet-popup-tip { background: var(--bg-card) !important; border: 1px solid var(--border) !important; }
+  .leaflet-popup-content { margin: 0 !important; width: 340px !important; }
+  .leaflet-popup-close-button { color: var(--text-muted) !important; font-size: 18px !important; right: 8px !important; top: 6px !important; }
+
+  .popup-inner { padding: 14px; }
+
+  .popup-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .popup-grade-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .popup-grade-dot.green { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,0.5); }
+  .popup-grade-dot.yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(234,179,8,0.5); }
+  .popup-grade-dot.red { background: var(--red); box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+
+  .popup-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+  .popup-subtitle { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+  .popup-rating-big {
+    font-size: 26px;
+    font-weight: 800;
+    text-align: right;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .popup-rating-big.green { color: var(--green); }
+  .popup-rating-big.yellow { color: var(--yellow); }
+  .popup-rating-big.red { color: var(--red); }
+
+  .popup-rec {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .popup-rec.shortlist { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .popup-rec.maybe { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(234,179,8,0.2); }
+  .popup-rec.nogo { background: var(--red-bg); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+  .popup-rec.visit { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(59,130,246,0.2); }
+  .popup-rec.priority { background: rgba(168,85,247,0.1); color: #a855f7; border: 1px solid rgba(168,85,247,0.2); }
+
+  /* Rating bars for assessed Petrom sites */
+  .popup-ratings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .rating-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .rating-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .rating-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .rating-bar-bg {
+    width: 36px;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .rating-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  .rating-val {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    width: 18px;
+    text-align: right;
+  }
+
+  .popup-section {
+    margin-bottom: 8px;
+  }
+
+  .popup-section-title {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .popup-text {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.04);
+    max-height: 80px;
+    overflow-y: auto;
+  }
+
+  .popup-text::-webkit-scrollbar { width: 3px; }
+  .popup-text::-webkit-scrollbar-track { background: transparent; }
+  .popup-text::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Legend */
+  .legend-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    z-index: 800;
+    font-size: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .legend-title { font-weight: 700; color: var(--text-primary); margin-bottom: 6px; font-size: 11px; }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 3px;
+    color: var(--text-secondary);
+  }
+
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .legend-dot.green { background: var(--green); }
+  .legend-dot.yellow { background: var(--yellow); }
+  .legend-dot.red { background: var(--red); }
+  .legend-dot.petrom { background: var(--petrom-color); }
+  .legend-dot.petromin { background: var(--petromin-color); }
+
+  .legend-sep {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 0;
+  }
+
+  .attribution {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 800;
+    font-size: 9px;
+    color: var(--text-muted);
+  }
+
+  .attribution a { color: var(--text-muted); text-decoration: none; }
+  .attribution a:hover { color: var(--text-secondary); }
+
+  @media (max-width: 768px) {
+    .main-content { flex-direction: column; }
+    .sidebar { width: 100%; min-width: unset; height: 45vh; }
+    .map-container { height: 55vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7L9 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Dashboard
+  </a>
+  <span class="nav-flag">🇲🇦</span>
+  <span class="nav-title">Morocco — Site Assessment</span>
+</div>
+
+<div class="main-content">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>Morocco Site Assessment</h2>
+    <p>Petrom + Petromin — Dual-Partner Strategy</p>
+  </div>
+
+  <div class="partner-toggle">
+    <button class="partner-btn active all-p" data-partner="all">All Sites <span class="btn-count" id="count-all">34</span></button>
+    <button class="partner-btn petrom-p" data-partner="petrom">Petrom <span class="btn-count" id="count-petrom">19</span></button>
+    <button class="partner-btn petromin-p" data-partner="petromin">Petromin <span class="btn-count" id="count-petromin">15</span></button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-badge green"><span class="num" id="stat-green">0</span>Shortlist</div>
+    <div class="stat-badge yellow"><span class="num" id="stat-yellow">0</span>Under Review</div>
+    <div class="stat-badge red"><span class="num" id="stat-red">0</span>No Go</div>
+    <div class="stat-badge blue"><span class="num" id="stat-assessed">0</span>Assessed</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn green-f" data-filter="green">Shortlist</button>
+    <button class="filter-btn yellow-f" data-filter="yellow">Review</button>
+    <button class="filter-btn red-f" data-filter="red">No Go</button>
+    <button class="filter-btn" data-filter="assessed">Assessed</button>
+    <button class="filter-btn" data-filter="desktop">Desktop Only</button>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search by site name, code, or city...">
+  </div>
+
+  <div class="site-list" id="site-list"></div>
+</div>
+
+<div class="map-container">
+  <div id="map"></div>
+
+  <div class="legend-overlay">
+    <div class="legend-title">Recommendations</div>
+    <div class="legend-item"><span class="legend-dot green"></span>Shortlist / Priority</div>
+    <div class="legend-item"><span class="legend-dot yellow"></span>Under Review / Maybe</div>
+    <div class="legend-item"><span class="legend-dot red"></span>No Go / Data Concern</div>
+    <div class="legend-sep"></div>
+    <div class="legend-title">Partners</div>
+    <div class="legend-item"><span class="legend-dot petrom"></span>Petrom (350+ stations)</div>
+    <div class="legend-item"><span class="legend-dot petromin"></span>Petromin</div>
+  </div>
+
+  <div class="attribution">
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+  </div>
+</div>
+</div>
+
+<script src="morocco-data.js"></script>
+<script>
+// ===== INITIALIZE MAP =====
+const map = L.map('map', {
+  center: [33.5, -7.5],
+  zoom: 10,
+  zoomControl: false,
+  attributionControl: false
+});
+
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.control.attribution({ position: 'bottomleft', prefix: false }).addTo(map);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OSM &copy; CARTO',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// ===== MERGE DATA =====
+const ALL_SITES = [
+  ...MOROCCO_DATA.petrom.map(s => ({ ...s, _partner: 'petrom' })),
+  ...MOROCCO_DATA.petromin.map(s => ({ ...s, _partner: 'petromin' }))
+];
+
+// ===== COLORS =====
+const COLORS = { green: '#22c55e', yellow: '#eab308', red: '#ef4444' };
+const PARTNER_COLORS = { petrom: '#f97316', petromin: '#06b6d4' };
+
+function ratingColor(val) {
+  if (val >= 4) return COLORS.green;
+  if (val >= 3) return COLORS.yellow;
+  return COLORS.red;
+}
+
+// ===== CREATE MARKERS =====
+const markers = [];
+const markerMap = {};
+
+ALL_SITES.forEach(site => {
+  if (!site.lat || !site.lng) return;
+
+  const color = COLORS[site.grade] || COLORS.yellow;
+  const partnerColor = PARTNER_COLORS[site._partner];
+  const isAssessed = site.status === 'Assessed';
+  const radius = isAssessed ? 8 : 6;
+
+  const marker = L.circleMarker([site.lat, site.lng], {
+    radius: radius,
+    fillColor: color,
+    color: partnerColor,
+    weight: 2.5,
+    opacity: 1,
+    fillOpacity: 0.75
+  });
+
+  const popupHTML = buildPopup(site);
+  marker.bindPopup(popupHTML, { maxWidth: 360, className: 'dark-popup' });
+
+  marker.siteData = site;
+  marker.addTo(map);
+  markers.push(marker);
+  markerMap[site.code] = marker;
+});
+
+function buildPopup(site) {
+  const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner.toUpperCase()}</span>`;
+  
+  // Recommendation badge
+  let recClass = 'visit';
+  const rec = (site.recommendation || '').toUpperCase();
+  if (rec === 'SHORTLIST') recClass = 'shortlist';
+  else if (rec === 'MAYBE') recClass = 'maybe';
+  else if (rec === 'NO GO') recClass = 'nogo';
+  else if (rec.includes('PRIORITY')) recClass = 'priority';
+  
+  const recBadge = `<span class="popup-rec ${recClass}">${site.recommendation || 'Requires Visit'}</span>`;
+
+  // Rating display
+  let ratingDisplay = '';
+  if (site.rating) {
+    ratingDisplay = `<div class="popup-rating-big ${site.grade}">${site.rating}/5</div>`;
+  }
+
+  // Sub-ratings for assessed sites
+  let ratingsHTML = '';
+  if (site.location_rating || site.access_rating || site.space_rating || site.traffic_rating) {
+    const ratings = [
+      { label: 'Location', val: site.location_rating },
+      { label: 'Access', val: site.access_rating },
+      { label: 'Space', val: site.space_rating },
+      { label: 'Traffic', val: site.traffic_rating }
+    ].filter(r => r.val !== null && r.val !== undefined);
+
+    if (ratings.length > 0) {
+      ratingsHTML = '<div class="popup-ratings">';
+      ratings.forEach(r => {
+        const pct = (r.val / 5) * 100;
+        const barColor = ratingColor(r.val);
+        ratingsHTML += `
+          <div class="rating-item">
+            <span class="rating-label">${r.label}</span>
+            <div class="rating-bar-container">
+              <div class="rating-bar-bg">
+                <div class="rating-bar-fill" style="width:${pct}%;background:${barColor}"></div>
+              </div>
+              <span class="rating-val">${r.val}/5</span>
+            </div>
+          </div>`;
+      });
+      ratingsHTML += '</div>';
+    }
+  }
+
+  // Info sections
+  let sectionsHTML = '';
+  
+  if (site.observations) {
+    const obs = typeof site.observations === 'string' ? site.observations : '';
+    if (obs.length > 0) {
+      sectionsHTML += `
+        <div class="popup-section">
+          <div class="popup-section-title">Key Observations</div>
+          <div class="popup-text">${obs.substring(0, 300)}${obs.length > 300 ? '...' : ''}</div>
+        </div>`;
+    }
+  }
+
+  if (site.concerns) {
+    const con = typeof site.concerns === 'string' ? site.concerns : '';
+    if (con.length > 0) {
+      sectionsHTML += `
+        <div class="popup-section">
+          <div class="popup-section-title">Concerns</div>
+          <div class="popup-text">${con.substring(0, 250)}${con.length > 250 ? '...' : ''}</div>
+        </div>`;
+    }
+  }
+
+  if (site.strategic_potential) {
+    const sp = typeof site.strategic_potential === 'string' ? site.strategic_potential : '';
+    if (sp.length > 0) {
+      sectionsHTML += `
+        <div class="popup-section">
+          <div class="popup-section-title">Strategic Potential</div>
+          <div class="popup-text">${sp.substring(0, 250)}${sp.length > 250 ? '...' : ''}</div>
+        </div>`;
+    }
+  }
+
+  return `
+    <div class="popup-inner">
+      <div class="popup-header">
+        <div class="popup-grade-dot ${site.grade}"></div>
+        <div>
+          <div class="popup-title">${site.code} ${site.name}${partnerTag}</div>
+          <div class="popup-subtitle">${site.city || ''} ${site.area ? '· ' + site.area : ''} · ${site.status || 'Desktop Research'}</div>
+        </div>
+        ${ratingDisplay}
+      </div>
+      ${recBadge}
+      ${ratingsHTML}
+      ${sectionsHTML}
+    </div>`;
+}
+
+// ===== STATS =====
+function updateStats(filteredSites) {
+  document.getElementById('stat-green').textContent = filteredSites.filter(s => s.grade === 'green').length;
+  document.getElementById('stat-yellow').textContent = filteredSites.filter(s => s.grade === 'yellow').length;
+  document.getElementById('stat-red').textContent = filteredSites.filter(s => s.grade === 'red').length;
+  document.getElementById('stat-assessed').textContent = filteredSites.filter(s => s.status === 'Assessed').length;
+}
+
+// ===== SIDEBAR LIST =====
+function renderList(sites) {
+  const list = document.getElementById('site-list');
+  list.innerHTML = '';
+  
+  sites.sort((a, b) => {
+    // Assessed first, then by grade priority (green > yellow > red), then alphabetical
+    const gradeOrder = { green: 0, yellow: 1, red: 2 };
+    const statusOrder = (a.status === 'Assessed' ? 0 : 1) - (b.status === 'Assessed' ? 0 : 1);
+    if (statusOrder !== 0) return statusOrder;
+    const go = (gradeOrder[a.grade] || 1) - (gradeOrder[b.grade] || 1);
+    if (go !== 0) return go;
+    if (a.rating && b.rating) return b.rating - a.rating;
+    return (a.name || '').localeCompare(b.name || '');
+  });
+
+  sites.forEach(site => {
+    const el = document.createElement('div');
+    el.className = 'site-item';
+    
+    const ratingStr = site.rating ? `${site.rating}/5` : '—';
+    const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner === 'petrom' ? 'PTR' : 'PTM'}</span>`;
+    const assessedTag = site.status === 'Assessed' ? '<span class="rec-badge assessed">Assessed</span>' : '';
+    
+    el.innerHTML = `
+      <div class="site-dot ${site.grade}"></div>
+      <div class="site-info">
+        <div class="site-name">${site.code} ${site.name}${partnerTag}${assessedTag}</div>
+        <div class="site-meta">${site.city || ''} ${site.area ? '· ' + site.area : ''}</div>
+      </div>
+      <div class="site-rating ${site.grade}">${ratingStr}</div>
+    `;
+    el.addEventListener('click', () => {
+      if (site.lat && site.lng) {
+        map.flyTo([site.lat, site.lng], 14, { duration: 0.8 });
+        if (markerMap[site.code]) markerMap[site.code].openPopup();
+      }
+      document.querySelectorAll('.site-item').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+    });
+    list.appendChild(el);
+  });
+
+  updateStats(sites);
+}
+
+// ===== FILTERING =====
+let activePartner = 'all';
+let activeFilter = 'all';
+let searchTerm = '';
+
+function getVisibleSites() {
+  return ALL_SITES.filter(site => {
+    // Partner filter
+    if (activePartner !== 'all' && site._partner !== activePartner) return false;
+
+    // Status/grade filter
+    let passFilter = true;
+    if (activeFilter === 'green') passFilter = site.grade === 'green';
+    else if (activeFilter === 'yellow') passFilter = site.grade === 'yellow';
+    else if (activeFilter === 'red') passFilter = site.grade === 'red';
+    else if (activeFilter === 'assessed') passFilter = site.status === 'Assessed';
+    else if (activeFilter === 'desktop') passFilter = site.status !== 'Assessed';
+
+    // Search
+    let passSearch = true;
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      passSearch = (site.name || '').toLowerCase().includes(term) ||
+                   (site.code || '').toLowerCase().includes(term) ||
+                   (site.city || '').toLowerCase().includes(term) ||
+                   (site.area || '').toLowerCase().includes(term);
+    }
+
+    return passFilter && passSearch;
+  });
+}
+
+function applyFilters() {
+  const visible = getVisibleSites();
+  renderList(visible);
+
+  // Update partner counts
+  const partnerFiltered = ALL_SITES.filter(s => {
+    if (activePartner !== 'all' && s._partner !== activePartner) return false;
+    return true;
+  });
+  document.getElementById('count-all').textContent = ALL_SITES.length;
+  document.getElementById('count-petrom').textContent = ALL_SITES.filter(s => s._partner === 'petrom').length;
+  document.getElementById('count-petromin').textContent = ALL_SITES.filter(s => s._partner === 'petromin').length;
+
+  // Show/hide markers
+  const visibleCodes = new Set(visible.map(s => s.code));
+  markers.forEach(m => {
+    const code = m.siteData.code;
+    if (visibleCodes.has(code)) {
+      const partnerColor = PARTNER_COLORS[m.siteData._partner];
+      m.setStyle({ fillOpacity: 0.75, opacity: 1, color: partnerColor });
+      m.setRadius(m.siteData.status === 'Assessed' ? 8 : 6);
+    } else {
+      m.setStyle({ fillOpacity: 0.06, opacity: 0.06 });
+      m.setRadius(3);
+    }
+  });
+}
+
+// Partner toggle
+document.querySelectorAll('.partner-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.partner-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activePartner = btn.dataset.partner;
+    applyFilters();
+  });
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    applyFilters();
+  });
+});
+
+// Search
+document.getElementById('search-input').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  applyFilters();
+});
+
+// Initial render
+applyFilters();
+
+// Fit bounds
+const allLatLngs = markers.filter(m => m.siteData.lat).map(m => m.getLatLng());
+if (allLatLngs.length) {
+  map.fitBounds(L.latLngBounds(allLatLngs).pad(0.1));
+}
+</script>
+</body>
+</html>
