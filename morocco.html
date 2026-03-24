@@ -724,42 +724,42 @@
   .popup-rec.visit { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
   .popup-rec.priority { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
 
-  /* Rating bars */
-  .popup-ratings {
+  /* Criteria grid (UAE-style 6-bar overview) */
+  .popup-criteria {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-bottom: 14px;
+    gap: 5px;
+    margin-bottom: 12px;
   }
 
-  .rating-item {
+  .criteria-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 10px;
+    padding: 6px 9px;
     background: rgba(255, 255, 255, 0.025);
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.04);
     transition: background 0.15s ease;
   }
 
-  .rating-item:hover { background: rgba(255, 255, 255, 0.04); }
+  .criteria-item:hover { background: rgba(255, 255, 255, 0.04); }
 
-  .rating-label {
-    font-size: 9px;
+  .criteria-label {
+    font-size: 8.5px;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 600;
   }
 
-  .rating-bar-container {
+  .criteria-bar-container {
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .rating-bar-bg {
+  .criteria-bar-bg {
     width: 40px;
     height: 3px;
     background: rgba(255, 255, 255, 0.06);
@@ -767,19 +767,32 @@
     overflow: hidden;
   }
 
-  .rating-bar-fill {
+  .criteria-bar-fill {
     height: 100%;
     border-radius: 3px;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .rating-val {
-    font-size: 10px;
+  .criteria-val {
+    font-size: 10.5px;
     font-weight: 700;
     color: var(--text-secondary);
-    width: 22px;
+    width: 16px;
     text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Notes overview */
+  .popup-notes {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    border-left: 2px solid var(--accent);
+    margin-bottom: 10px;
   }
 
   /* Detail sections */
@@ -1055,11 +1068,21 @@ const ALL_SITES = [
 const COLORS = { green: '#22c55e', yellow: '#eab308', red: '#ef4444' };
 const PARTNER_COLORS = { petrom: '#f97316', petromin: '#06b6d4' };
 
-function ratingColor(val) {
-  if (val >= 4) return COLORS.green;
-  if (val >= 3) return COLORS.yellow;
+// ===== HELPERS =====
+function criteriaColor(val) {
+  if (val >= 7) return COLORS.green;
+  if (val >= 5) return COLORS.yellow;
   return COLORS.red;
 }
+
+const CRITERIA_LABELS = {
+  traffic: 'Traffic',
+  location: 'Location',
+  access: 'Access',
+  space: 'Space',
+  competition: 'Low Compet.',
+  demand: 'Demand'
+};
 
 // ===== CREATE MARKERS =====
 const markers = [];
@@ -1104,112 +1127,70 @@ function buildPopup(site) {
 
   const recBadge = `<span class="popup-rec ${recClass}">${site.recommendation || 'Requires Visit'}</span>`;
 
-  // Rating display
-  let ratingDisplay = '';
-  if (site.rating) {
-    ratingDisplay = `<div class="popup-rating-big ${site.grade}">${site.rating}<small>/5</small></div>`;
-  }
+  // Weighted score display (always shown)
+  const ws = site.weighted_score || site.derived_scores?.weighted_score || '—';
+  const scoreGrade = ws >= 6.5 ? 'green' : ws >= 5 ? 'yellow' : 'red';
+  const scoreDisplay = `<div class="popup-rating-big ${scoreGrade}">${ws}</div>`;
 
-  // Sub-ratings for assessed sites
-  let ratingsHTML = '';
-  if (site.location_rating || site.access_rating || site.space_rating || site.traffic_rating) {
-    const ratings = [
-      { label: 'Location', val: site.location_rating },
-      { label: 'Access', val: site.access_rating },
-      { label: 'Space', val: site.space_rating },
-      { label: 'Traffic', val: site.traffic_rating }
-    ].filter(r => r.val !== null && r.val !== undefined);
-
-    if (ratings.length > 0) {
-      ratingsHTML = '<div class="popup-ratings">';
-      ratings.forEach(r => {
-        const pct = (r.val / 5) * 100;
-        const barColor = ratingColor(r.val);
-        ratingsHTML += `
-          <div class="rating-item">
-            <span class="rating-label">${r.label}</span>
-            <div class="rating-bar-container">
-              <div class="rating-bar-bg">
-                <div class="rating-bar-fill" style="width:${pct}%;background:${barColor}"></div>
-              </div>
-              <span class="rating-val">${r.val}/5</span>
+  // 6-criteria grid (UAE-style)
+  let criteriaHTML = '';
+  const scores = site.derived_scores || {};
+  if (Object.keys(scores).length > 0) {
+    criteriaHTML = '<div class="popup-criteria">';
+    for (const [key, label] of Object.entries(CRITERIA_LABELS)) {
+      const val = scores[key] || 0;
+      const pct = val * 10;
+      const barColor = criteriaColor(val);
+      criteriaHTML += `
+        <div class="criteria-item">
+          <span class="criteria-label">${label}</span>
+          <div class="criteria-bar-container">
+            <div class="criteria-bar-bg">
+              <div class="criteria-bar-fill" style="width:${pct}%;background:${barColor}"></div>
             </div>
-          </div>`;
-      });
-      ratingsHTML += '</div>';
-    }
-  }
-
-  // Info sections with collapsible detail sections
-  let sectionsHTML = '';
-
-  // Primary sections (always visible)
-  if (site.observations) {
-    const obs = typeof site.observations === 'string' ? site.observations : '';
-    if (obs.length > 0) {
-      sectionsHTML += `
-        <div class="popup-section">
-          <div class="popup-section-title">Key Observations</div>
-          <div class="popup-text">${obs.substring(0, 300)}${obs.length > 300 ? '...' : ''}</div>
+            <span class="criteria-val">${val}</span>
+          </div>
         </div>`;
     }
+    criteriaHTML += '</div>';
   }
 
-  if (site.concerns) {
-    const con = typeof site.concerns === 'string' ? site.concerns : '';
-    if (con.length > 0) {
-      sectionsHTML += `
-        <div class="popup-section">
-          <div class="popup-section-title">Concerns</div>
-          <div class="popup-text">${con.substring(0, 250)}${con.length > 250 ? '...' : ''}</div>
-        </div>`;
-    }
-  }
-
-  if (site.strategic_potential) {
-    const sp = typeof site.strategic_potential === 'string' ? site.strategic_potential : '';
-    if (sp.length > 0) {
-      sectionsHTML += `
-        <div class="popup-section">
-          <div class="popup-section-title">Strategic Potential</div>
-          <div class="popup-text">${sp.substring(0, 250)}${sp.length > 250 ? '...' : ''}</div>
-        </div>`;
-    }
-  }
+  // Overview note
+  const overview = site.clean_overview || '';
+  const notesHTML = overview ? `<div class="popup-notes">${overview}</div>` : '';
 
   // Collapsible detail sections
   const detailSections = [
-    { key: 'population_data', label: 'Population Data' },
-    { key: 'traffic_data', label: 'Traffic Data' },
-    { key: 'competitors', label: 'Competitors' },
-    { key: 'infrastructure', label: 'Infrastructure' },
-    { key: 'commercial', label: 'Commercial' },
-    { key: 'transport', label: 'Transport' }
+    { key: 'clean_observations', label: 'Key Observations' },
+    { key: 'clean_concerns', label: 'Concerns' },
+    { key: 'clean_strategic', label: 'Strategic Potential' },
+    { key: 'clean_population', label: 'Population Data' },
+    { key: 'clean_traffic', label: 'Traffic Data' },
+    { key: 'clean_competitors', label: 'Competitors' },
+    { key: 'clean_infrastructure', label: 'Infrastructure' },
+    { key: 'clean_commercial', label: 'Commercial Context' },
+    { key: 'clean_transport', label: 'Transport Links' }
   ];
 
   let detailsHTML = '';
   detailSections.forEach(ds => {
-    if (site[ds.key]) {
-      const val = typeof site[ds.key] === 'string' ? site[ds.key] : '';
-      if (val.length > 0) {
-        const uid = site.code + '-' + ds.key;
-        detailsHTML += `
-          <div class="popup-section" id="section-${uid}">
-            <div class="popup-section-toggle" onclick="(function(e){var s=document.getElementById('section-${uid}');s.classList.toggle('expanded');})(event)">
-              <span class="popup-section-title">${ds.label}</span>
-              <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
-            <div class="popup-section-content">
-              <div class="popup-text">${val.substring(0, 400)}${val.length > 400 ? '...' : ''}</div>
-            </div>
-          </div>`;
-      }
+    const val = typeof site[ds.key] === 'string' ? site[ds.key] : '';
+    if (val.length > 5) {
+      const uid = site.code + '-' + ds.key;
+      detailsHTML += `
+        <div class="popup-section" id="section-${uid}">
+          <div class="popup-section-toggle" onclick="(function(e){var s=document.getElementById('section-${uid}');s.classList.toggle('expanded');})(event)">
+            <span class="popup-section-title">${ds.label}</span>
+            <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="popup-section-content">
+            <div class="popup-text">${val.substring(0, 500)}${val.length > 500 ? '…' : ''}</div>
+          </div>
+        </div>`;
     }
   });
 
-  if (detailsHTML) {
-    sectionsHTML += '<div class="popup-divider"></div><div class="popup-details">' + detailsHTML + '</div>';
-  }
+  const expandableSection = detailsHTML ? '<div class="popup-divider"></div><div class="popup-details">' + detailsHTML + '</div>' : '';
 
   return `
     <div class="popup-inner">
@@ -1219,11 +1200,12 @@ function buildPopup(site) {
           <div class="popup-title">${site.code} ${site.name}${partnerTag}</div>
           <div class="popup-subtitle">${site.city || ''} ${site.area ? '&middot; ' + site.area : ''} &middot; ${site.status || 'Desktop Research'}</div>
         </div>
-        ${ratingDisplay}
+        ${scoreDisplay}
       </div>
       ${recBadge}
-      ${ratingsHTML}
-      ${sectionsHTML}
+      ${criteriaHTML}
+      ${notesHTML}
+      ${expandableSection}
     </div>`;
 }
 

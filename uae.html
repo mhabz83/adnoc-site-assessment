@@ -792,6 +792,80 @@
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.035);
     border-left: 2px solid var(--accent);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable detail sections */
+  .popup-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 8px 0;
+  }
+
+  .popup-details { margin-top: 2px; }
+
+  .popup-section { margin-bottom: 6px; }
+
+  .popup-section-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 4px 0;
+    user-select: none;
+  }
+
+  .popup-section-toggle:hover .popup-section-title { color: var(--text-secondary); }
+
+  .popup-section-title {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s ease;
+  }
+
+  .popup-section-chevron {
+    width: 12px;
+    height: 12px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .popup-section.expanded .popup-section-chevron { transform: rotate(180deg); }
+
+  .popup-section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .popup-section.expanded .popup-section-content { max-height: 200px; }
+
+  .popup-detail-text {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 7px 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    max-height: 90px;
+    overflow-y: auto;
+    font-weight: 400;
+  }
+
+  .popup-detail-text::-webkit-scrollbar { width: 3px; }
+  .popup-detail-text::-webkit-scrollbar-track { background: transparent; }
+  .popup-detail-text::-webkit-scrollbar-thumb { background: rgba(94, 106, 128, 0.25); border-radius: 3px; }
+
+  .popup-detail-placeholder {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 6px 10px;
   }
 
   /* ===== LEGEND ===== */
@@ -1089,18 +1163,48 @@ function buildPopup(site) {
     }
   }
 
+  // Expandable detail sections (placeholder for future data)
+  const uid = (site.ss || site.name).replace(/\s+/g, '_');
+  let detailsHTML = '';
+
+  // Notes go into an expandable section if long, otherwise inline
+  const notesHTML = site.notes ? `<div class="popup-notes">${site.notes}</div>` : '';
+
+  // Future expandable sections
+  const expandSections = [
+    { label: 'Market Intelligence', placeholder: 'Data will be added post-NDA confirmation.' },
+    { label: 'Competitor Analysis', placeholder: 'Competitive landscape data pending.' },
+    { label: 'Infrastructure & Access', placeholder: 'Infrastructure details pending.' }
+  ];
+
+  expandSections.forEach((sec, i) => {
+    const secId = uid + '_' + i;
+    detailsHTML += `
+      <div class="popup-section" id="section-${secId}">
+        <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${secId}');s.classList.toggle('expanded');})(event)">
+          <span class="popup-section-title">${sec.label}</span>
+          <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="popup-section-content">
+          <div class="popup-detail-placeholder">${sec.placeholder}</div>
+        </div>
+      </div>`;
+  });
+
   return `
     <div class="popup-inner">
       <div class="popup-header">
         <div class="popup-grade-dot ${site.grade}"></div>
         <div>
           <div class="popup-title">${site.ss || ''} ${site.name}${y1Tag}</div>
-          <div class="popup-subtitle">${site.emirate || site.category || ''} · ${site.area || ''}</div>
+          <div class="popup-subtitle">${site.emirate || site.category || ''} &middot; ${site.area || ''}</div>
         </div>
         <div class="popup-score-big ${site.grade}">${site.weighted_score}</div>
       </div>
       <div class="popup-criteria">${criteriaHTML}</div>
-      ${site.notes ? `<div class="popup-notes">${site.notes}</div>` : ''}
+      ${notesHTML}
+      <div class="popup-divider"></div>
+      <div class="popup-details">${detailsHTML}</div>
     </div>`;
 }
 
