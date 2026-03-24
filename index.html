@@ -53,6 +53,33 @@
     height: 100vh;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ===== CAVEAT BANNER ===== */
+  .caveat-banner {
+    background: #dc2626;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: 0.01em;
+    border-bottom: 2px solid #991b1b;
+  }
+
+  .caveat-banner strong {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   /* ===== SIDEBAR ===== */
@@ -436,6 +463,11 @@
 </head>
 <body>
 
+<div class="caveat-banner">
+  <strong>Important:</strong> ADNOC has only identified to us 5 confirmed sites. Post-NDA (March 24th), we have immediately asked them for the specific remaining sites — this site heat map is subject to change.
+</div>
+
+<div class="main-content">
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="logo-row">
@@ -492,6 +524,7 @@
   </div>
 </div>
 
+</div><!-- end main-content -->
 <script src="sites-data.js"></script>
 <script>
 // ===== INITIALIZE MAP =====
