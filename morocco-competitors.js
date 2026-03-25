@@ -1,0 +1,2 @@
+// Competition level: 1=Low, 2=Moderate, 3=High
+const COMPETITION_DATA = {"PTM-08": 2, "BOU2-05": 1, "PTM-01": 1, "BOU1-04": 2, "IST-ZNA": 1, "PTM-03": 1, "PTM-05": 2, "PTM-10": 2, "PTM-09": 2, "PTM-06": 2, "PTM-02": 2, "BOU3-06": 2, "PTM-13": 2, "PTM-04": 2, "ZOO-03": 2, "IST-BRG": 2, "IST-VIC": 2, "IST-PRG": 2, "PTM-11": 2, "CHA-01": 2, "VIC-07": 2, "IST-LIT": 1, "IST-OMR": 2, "PTM-07": 1, "PTM-12": 2, "IST-ERR": 1, "IST-FDS": 1, "IST-FOU": 2, "ANP-02": 2, "PTM-15": 2, "PTM-14": 2, "IST-JAO": 2, "IST-ECO": 2, "IST-ALA": 2};

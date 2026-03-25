@@ -861,6 +861,22 @@
   .popup-detail-text::-webkit-scrollbar-track { background: transparent; }
   .popup-detail-text::-webkit-scrollbar-thumb { background: rgba(94, 106, 128, 0.25); border-radius: 3px; }
 
+  .popup-text {
+    font-size: 11px;
+    color: #c8d4e0;
+    line-height: 1.6;
+    padding: 8px 11px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 120px;
+    overflow-y: auto;
+    font-weight: 400;
+  }
+  .popup-text::-webkit-scrollbar { width: 3px; }
+  .popup-text::-webkit-scrollbar-track { background: transparent; }
+  .popup-text::-webkit-scrollbar-thumb { background: rgba(200, 212, 224, 0.2); border-radius: 3px; }
+
   .popup-detail-placeholder {
     font-size: 10px;
     color: var(--text-muted);
@@ -921,27 +937,28 @@
   .legend-dot.red { background: var(--red); box-shadow: 0 0 6px rgba(239, 68, 68, 0.4); }
   .legend-dot.y1 { background: var(--y1-highlight); box-shadow: 0 0 6px rgba(168, 85, 247, 0.4); }
 
-  /* ===== ATTRIBUTION ===== */
-  .attribution {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 800;
-    font-size: 9px;
-    color: var(--text-muted);
-    opacity: 0.6;
+  .legend-sep {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 8px 0;
   }
 
-  .attribution a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
+  /* ===== COMPETITION TOGGLE ===== */
+  .comp-toggle { gap: 4px; display: inline-flex; align-items: center; }
+  .comp-toggle.active { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; }
 
-  .attribution a:hover {
-    color: var(--text-secondary);
+  .comp-tooltip {
+    background: rgba(10, 14, 28, 0.9) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #f0f4f8 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
   }
+  .comp-tooltip::before { border-top-color: rgba(10, 14, 28, 0.9) !important; }
 
   /* ===== LEAFLET OVERRIDES ===== */
   .leaflet-control-zoom {
@@ -1047,6 +1064,10 @@
     <button class="filter-btn" data-filter="Abu Dhabi">Abu Dhabi</button>
     <button class="filter-btn" data-filter="Dubai">Dubai</button>
     <button class="filter-btn" data-filter="Sharjah">Sharjah</button>
+    <button class="filter-btn comp-toggle" id="comp-toggle" data-active="false">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      Competition
+    </button>
   </div>
 
   <div class="search-bar">
@@ -1068,15 +1089,18 @@
     <div class="legend-item"><span class="legend-dot green"></span>Green &mdash; Prime (&ge; 6.8)</div>
     <div class="legend-item"><span class="legend-dot yellow"></span>Yellow &mdash; Viable (5.0&ndash;6.7)</div>
     <div class="legend-item"><span class="legend-dot red"></span>Red &mdash; Weak (&lt; 5.0)</div>
+    <div class="legend-sep"></div>
+    <div class="legend-title">Competition Density</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>Low &mdash; Opportunity</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#eab308"></span>Moderate</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>High &mdash; Saturated</div>
   </div>
 
-  <div class="attribution">
-    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
-  </div>
 </div>
 </div>
 
 <script src="uae-data.js"></script>
+<script src="uae-competitors.js"></script>
 <script>
 const map = L.map('map', {
   center: [24.8, 55.0],
@@ -1138,6 +1162,43 @@ SITES_DATA.forEach(site => {
   marker.addTo(map);
   markers.push(marker);
   markerMap[site.ss || site.name] = marker;
+});
+
+// Competition rings
+const compRings = [];
+const COMP_COLORS = { 1: '#22c55e', 2: '#eab308', 3: '#ef4444' };
+const COMP_LABELS = { 1: 'Low', 2: 'Moderate', 3: 'High' };
+const COMP_RADIUS = { 1: 400, 2: 600, 3: 800 };
+
+markers.forEach(m => {
+    const key = m.siteData.ss;
+    const level = COMPETITION_DATA[key];
+    if (!level) return;
+    
+    const ring = L.circle(m.getLatLng(), {
+        radius: COMP_RADIUS[level],
+        fillColor: COMP_COLORS[level],
+        fillOpacity: 0.08,
+        color: COMP_COLORS[level],
+        weight: 1.5,
+        opacity: 0.4,
+        dashArray: '4 4'
+    });
+    ring.bindTooltip(`Competition: ${COMP_LABELS[level]}`, { direction: 'top', className: 'comp-tooltip' });
+    compRings.push(ring);
+});
+
+const compLayer = L.layerGroup(compRings);
+let compVisible = false;
+
+document.getElementById('comp-toggle').addEventListener('click', function() {
+    compVisible = !compVisible;
+    this.classList.toggle('active', compVisible);
+    if (compVisible) {
+        compLayer.addTo(map);
+    } else {
+        compLayer.remove();
+    }
 });
 
 function buildPopup(site) {
