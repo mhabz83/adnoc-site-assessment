@@ -35,7 +35,7 @@
             width: 90%;
         }
         .auth-logo {
-            height: 48px;
+            height: 60px;
             margin-bottom: 24px;
             filter: brightness(0) invert(1) brightness(0.85);
         }
