@@ -926,6 +926,13 @@
   .comp-toggle { gap: 4px; display: inline-flex; align-items: center; }
   .comp-toggle.active { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; }
 
+  .comp-ring { transition: opacity 0.3s ease; }
+  @keyframes compPulse3 {
+    0%, 100% { stroke-opacity: 0.6; fill-opacity: 0.12; }
+    50% { stroke-opacity: 0.9; fill-opacity: 0.2; }
+  }
+  .comp-ring-3 { animation: compPulse3 2s ease-in-out infinite; }
+
   .comp-tooltip {
     background: rgba(10, 14, 28, 0.9) !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
@@ -1141,31 +1148,32 @@ ALL_SITES.forEach(site => {
   markerMap[site.code] = marker;
 });
 
-// Competition rings
-const compRings = [];
+// Competition overlay — marker-based (visible at any zoom)
 const COMP_COLORS = { 1: '#22c55e', 2: '#eab308', 3: '#ef4444' };
-const COMP_LABELS = { 1: 'Low', 2: 'Moderate', 3: 'High' };
-const COMP_RADIUS = { 1: 400, 2: 600, 3: 800 };
+const COMP_LABELS = { 1: 'Low Competition', 2: 'Moderate Competition', 3: 'High Competition' };
+const COMP_RING_SIZE = { 1: 14, 2: 18, 3: 22 };
 
+const compMarkers = [];
 markers.forEach(m => {
     const key = m.siteData.code;
     const level = COMPETITION_DATA[key];
     if (!level) return;
-    
-    const ring = L.circle(m.getLatLng(), {
-        radius: COMP_RADIUS[level],
-        fillColor: COMP_COLORS[level],
-        fillOpacity: 0.08,
-        color: COMP_COLORS[level],
-        weight: 1.5,
-        opacity: 0.4,
-        dashArray: '4 4'
+    const c = COMP_COLORS[level];
+    const r = COMP_RING_SIZE[level];
+    const ring = L.circleMarker(m.getLatLng(), {
+        radius: r,
+        fillColor: c,
+        fillOpacity: 0.12,
+        color: c,
+        weight: 2,
+        opacity: 0.6,
+        className: 'comp-ring comp-ring-' + level
     });
-    ring.bindTooltip(`Competition: ${COMP_LABELS[level]}`, { direction: 'top', className: 'comp-tooltip' });
-    compRings.push(ring);
+    ring.bindTooltip(COMP_LABELS[level], { direction: 'top', className: 'comp-tooltip', offset: [0, -r] });
+    compMarkers.push(ring);
 });
 
-const compLayer = L.layerGroup(compRings);
+const compLayer = L.layerGroup(compMarkers);
 let compVisible = false;
 
 document.getElementById('comp-toggle').addEventListener('click', function() {
