@@ -98,7 +98,7 @@
         overlay.id = 'auth-overlay';
         overlay.innerHTML = `
             <div class="auth-box">
-                <img src="wag-logo.jpg" alt="WAG" class="auth-logo">
+
                 <h2>Aftermarket Site Assessment</h2>
                 <p>Enter access code to continue</p>
                 <input type="password" id="auth-input" placeholder="Access code" autocomplete="off">
