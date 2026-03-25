@@ -1,6 +1,6 @@
 (function() {
     const PASS_HASH = '6524bfe7b845f42a453603a89c087b24eb8cb3df013cc31b9ba930ca7f014c38'; // SHA-256 of 'WAG2026'
-    const AUTH_KEY = 'wag_dashboard_auth';
+    const AUTH_KEY = 'wag_site_access_v2';
     const AUTH_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
 
     // Check if already authenticated
