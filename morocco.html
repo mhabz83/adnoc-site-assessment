@@ -840,7 +840,7 @@
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .popup-section.expanded .popup-section-content { max-height: 200px; }
+  .popup-section.expanded .popup-section-content { max-height: 400px; }
 
   .popup-text {
     font-size: 10.5px;
@@ -1155,20 +1155,21 @@ function buildPopup(site) {
     criteriaHTML += '</div>';
   }
 
-  // Overview note
-  const overview = site.clean_overview || '';
+  // Overview note: prefer key_insight from deep research, fallback to clean_overview
+  const overview = site.key_insight || site.clean_overview || '';
   const notesHTML = overview ? `<div class="popup-notes">${overview}</div>` : '';
 
-  // Collapsible detail sections
+  // Collapsible detail sections — deep research fields first, then legacy clean_* fields
   const detailSections = [
-    { key: 'clean_observations', label: 'Key Observations' },
+    { key: 'market_intel', label: 'Market Intelligence' },
+    { key: 'competitor_analysis', label: 'Competitor Analysis' },
+    { key: 'traffic_access', label: 'Traffic & Access' },
+    { key: 'infrastructure_new', label: 'Infrastructure Projects' },
+    { key: 'commercial_context_new', label: 'Commercial Context' },
+    { key: 'fleet_potential', label: 'Fleet Potential' },
     { key: 'clean_concerns', label: 'Concerns' },
     { key: 'clean_strategic', label: 'Strategic Potential' },
     { key: 'clean_population', label: 'Population Data' },
-    { key: 'clean_traffic', label: 'Traffic Data' },
-    { key: 'clean_competitors', label: 'Competitors' },
-    { key: 'clean_infrastructure', label: 'Infrastructure' },
-    { key: 'clean_commercial', label: 'Commercial Context' },
     { key: 'clean_transport', label: 'Transport Links' }
   ];
 

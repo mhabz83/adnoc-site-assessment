@@ -842,7 +842,7 @@
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .popup-section.expanded .popup-section-content { max-height: 200px; }
+  .popup-section.expanded .popup-section-content { max-height: 400px; }
 
   .popup-detail-text {
     font-size: 10.5px;
@@ -1167,18 +1167,23 @@ function buildPopup(site) {
   const uid = (site.ss || site.name).replace(/\s+/g, '_');
   let detailsHTML = '';
 
-  // Notes go into an expandable section if long, otherwise inline
-  const notesHTML = site.notes ? `<div class="popup-notes">${site.notes}</div>` : '';
+  // Notes: prefer key_insight from research if available, fallback to notes
+  const noteText = site.key_insight || site.notes || '';
+  const notesHTML = noteText ? `<div class="popup-notes">${noteText}</div>` : '';
 
-  // Future expandable sections
+  // Deep research expandable sections
   const expandSections = [
-    { label: 'Market Intelligence', placeholder: 'Data will be added post-NDA confirmation.' },
-    { label: 'Competitor Analysis', placeholder: 'Competitive landscape data pending.' },
-    { label: 'Infrastructure & Access', placeholder: 'Infrastructure details pending.' }
+    { key: 'market_intel', label: 'Market Intelligence' },
+    { key: 'competitor_analysis', label: 'Competitor Analysis' },
+    { key: 'infrastructure_access', label: 'Infrastructure & Access' },
+    { key: 'ev_fleet', label: 'EV & Fleet' },
+    { key: 'commercial_context', label: 'Commercial Context' }
   ];
 
   expandSections.forEach((sec, i) => {
+    const val = site[sec.key] || '';
     const secId = uid + '_' + i;
+    const content = val.length > 5 ? val.substring(0, 600) + (val.length > 600 ? '…' : '') : '<span style="opacity:.5">Data pending</span>';
     detailsHTML += `
       <div class="popup-section" id="section-${secId}">
         <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${secId}');s.classList.toggle('expanded');})(event)">
@@ -1186,7 +1191,7 @@ function buildPopup(site) {
           <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </div>
         <div class="popup-section-content">
-          <div class="popup-detail-placeholder">${sec.placeholder}</div>
+          <div class="popup-text">${content}</div>
         </div>
       </div>`;
   });
