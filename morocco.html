@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="WAG">
+<meta name="author" content="World Automotive Group">
 <title>Morocco Site Assessment — Aftermarket Site Assessment</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -129,6 +131,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .nav-logo {
+    height: 22px;
+    filter: brightness(0) invert(1) brightness(0.85);
+    opacity: 0.7;
+    object-fit: contain;
   }
 
   .nav-badge {
@@ -997,6 +1006,7 @@
 </style>
 </head>
 <body>
+<script src="auth.js"></script>
 
 <div class="top-nav">
   <a href="index.html" class="back-link">
@@ -1006,6 +1016,7 @@
   <span class="nav-flag">&#x1F1F2;&#x1F1E6;</span>
   <span class="nav-title">Morocco &mdash; Site Assessment</span>
   <span class="nav-badge">Dual-Partner Strategy</span>
+  <img src="wag-logo.jpg" alt="WAG" class="nav-logo">
 </div>
 
 <div class="main-content">
