@@ -643,6 +643,42 @@
     vertical-align: middle;
   }
 
+  /* Year badges — color-coded by deployment year */
+  .year-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    margin-left: 4px;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+  .year-badge.y2026 { background: rgba(168, 85, 247, 0.12); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
+  .year-badge.y2027 { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+  .year-badge.y2028 { background: rgba(14, 165, 233, 0.12); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+  .year-badge.y2029 { background: rgba(20, 184, 166, 0.12); color: #2dd4bf; border: 1px solid rgba(20, 184, 166, 0.3); }
+  .year-badge.y2030 { background: rgba(234, 179, 8, 0.12); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); }
+  .year-badge.y2031 { background: rgba(107, 114, 128, 0.12); color: #9ca3af; border: 1px solid rgba(107, 114, 128, 0.3); }
+
+  /* Bay count badge */
+  .bay-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 7px;
+    font-weight: 600;
+    margin-left: 3px;
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    letter-spacing: 0.01em;
+  }
+
   /* ===== MAP ===== */
   .map-container {
     flex: 1;
@@ -1111,6 +1147,9 @@
     <button class="filter-btn" data-filter="Abu Dhabi">Abu Dhabi</button>
     <button class="filter-btn" data-filter="Dubai">Dubai</button>
     <button class="filter-btn" data-filter="Sharjah">Sharjah</button>
+    <button class="filter-btn" data-filter="2bay">2 Bays</button>
+    <button class="filter-btn" data-filter="34bay">3–4 Bays</button>
+    <button class="filter-btn" data-filter="5bay">5+ Bays</button>
     <button class="filter-btn comp-toggle" id="comp-toggle" data-active="false">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
       Competition
@@ -1373,7 +1412,7 @@ function renderList(sites) {
     el.innerHTML = `
       <div class="site-dot ${site.grade}"></div>
       <div class="site-info">
-        <div class="site-name">${site.ss || ''} ${site.name}${isY1 ? '<span class="y1-badge">Y1</span>' : ''}${site.confirmed ? '<span class="confirmed-badge">✓</span>' : ''}</div>
+        <div class="site-name">${site.ss || ''} ${site.name}${site.deployment_year ? `<span class="year-badge y${site.deployment_year}">${site.deployment_year}</span>` : ''}${site.archetype ? `<span class="bay-badge">${site.archetype}</span>` : ''}</div>
         <div class="site-meta">${site.emirate || site.category || ''} · ${site.area || ''}</div>
       </div>
       <div class="site-score ${site.grade}">${site.weighted_score}</div>
@@ -1407,6 +1446,12 @@ function getVisibleSites() {
       passFilter = site.priority === 'Y1-2026';
     } else if (['Abu Dhabi', 'Dubai', 'Sharjah'].includes(activeFilter)) {
       passFilter = site.emirate === activeFilter;
+    } else if (activeFilter === '2bay') {
+      passFilter = site.archetype === '2-bays';
+    } else if (activeFilter === '34bay') {
+      passFilter = site.archetype === '3-4 bays';
+    } else if (activeFilter === '5bay') {
+      passFilter = site.archetype === '5+ bays';
     }
 
     let passSearch = true;
