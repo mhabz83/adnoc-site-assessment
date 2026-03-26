@@ -482,19 +482,26 @@
   /* ===== LEGEND ===== */
   .ds-map-legend {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px;
+    right: 16px;
     background: var(--bg-overlay);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-primary);
-    border-radius: var(--radius-lg);
-    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
     z-index: 800;
-    font-size: 10.5px;
+    font-size: 10px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
+    max-width: 200px;
+    pointer-events: auto;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+  .ds-map-legend:hover {
+    opacity: 1;
   }
 
   .ds-legend-title {
@@ -509,15 +516,16 @@
   .ds-legend-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 11px;
+    gap: 6px;
+    font-size: 10px;
     font-weight: 500;
     color: var(--text-secondary);
+    line-height: 1.2;
   }
 
   .ds-legend-swatch {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -615,7 +623,7 @@
 </nav>
 
 <div class=”ds-caveat”>
-  <strong>Info:</strong> ADNOC has confirmed 80 sites for car servicing deployment (2026&ndash;2031). Use the &ldquo;Confirmed&rdquo; filter to isolate these sites. Remaining sites are from the broader ADNOC network assessment.
+  <strong style="color:#4f8ff7;">&#9432; Info:</strong> ADNOC has confirmed 80 sites for car servicing deployment (2026&ndash;2031). Use the &ldquo;Confirmed&rdquo; filter to isolate these sites. Remaining sites are from the broader ADNOC network assessment.
 </div>
 
 <div class="main-content">
