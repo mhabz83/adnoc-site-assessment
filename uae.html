@@ -183,7 +183,7 @@
 
   /* ===== CAVEAT BANNER ===== */
   .caveat-banner {
-    background: linear-gradient(90deg, #b91c1c 0%, #dc2626 50%, #b91c1c 100%);
+    background: #1e3a5f;
     color: #fff;
     padding: 9px 28px;
     font-size: 11px;
@@ -191,7 +191,7 @@
     line-height: 1.55;
     text-align: center;
     flex-shrink: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #2d5a8e;
     letter-spacing: 0.005em;
     position: relative;
     overflow: hidden;
@@ -327,6 +327,12 @@
     border-color: var(--y1-border);
   }
 
+  .stat-badge.blue {
+    background: rgba(59, 130, 246, 0.08);
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.22);
+  }
+
   .stat-badge .num {
     font-size: 20px;
     font-weight: 900;
@@ -409,6 +415,14 @@
     border-color: var(--red);
     color: var(--red);
     box-shadow: 0 0 12px rgba(239, 68, 68, 0.1);
+  }
+
+  .filter-btn.active.confirmed-f {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+    color: #3b82f6;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
   }
 
   /* ===== SEARCH BAR ===== */
@@ -614,6 +628,19 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.6;
+  }
+
+  .confirmed-badge {
+    display: inline-block;
+    padding: 0px 4px;
+    border-radius: 3px;
+    font-size: 8px;
+    font-weight: 700;
+    background: rgba(59, 130, 246, 0.12);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    margin-left: 4px;
+    vertical-align: middle;
   }
 
   /* ===== MAP ===== */
@@ -1056,7 +1083,7 @@
 </div>
 
 <div class="caveat-banner">
-  <strong>Important:</strong> ADNOC has only identified to us 5 confirmed sites. Post-NDA (March 24th), we have immediately asked them for the specific remaining sites &mdash; this site heat map is subject to change.
+  <strong>Info:</strong> ADNOC has confirmed 80 sites for car servicing deployment (2026–2031). Use the “Confirmed” filter to isolate these sites. Remaining sites are from the broader ADNOC network assessment.
 </div>
 
 <div class="main-content">
@@ -1067,6 +1094,7 @@
   </div>
 
   <div class="stats-row">
+    <div class="stat-badge blue"><span class="num" id="stat-confirmed">80</span>Confirmed</div>
     <div class="stat-badge y1"><span class="num" id="stat-y1">5</span>Y1 Priority</div>
     <div class="stat-badge green"><span class="num" id="stat-green">0</span>Green</div>
     <div class="stat-badge yellow"><span class="num" id="stat-yellow">0</span>Yellow</div>
@@ -1074,6 +1102,7 @@
   </div>
 
   <div class="filter-bar">
+    <button class="filter-btn confirmed-f" data-filter="confirmed">Confirmed (80)</button>
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn green-f" data-filter="green">Green</button>
     <button class="filter-btn yellow-f" data-filter="yellow">Yellow</button>
@@ -1107,6 +1136,9 @@
     <div class="legend-item"><span class="legend-dot green"></span>Green &mdash; Prime (&ge; 6.8)</div>
     <div class="legend-item"><span class="legend-dot yellow"></span>Yellow &mdash; Viable (5.0&ndash;6.7)</div>
     <div class="legend-item"><span class="legend-dot red"></span>Red &mdash; Weak (&lt; 5.0)</div>
+    <div class="legend-sep"></div>
+    <div class="legend-title">Confirmed Sites</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>Confirmed (blue ring)</div>
     <div class="legend-sep"></div>
     <div class="legend-title">Competition Density</div>
     <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>Low &mdash; Opportunity</div>
@@ -1161,14 +1193,15 @@ SITES_DATA.forEach(site => {
   if (!site.lat || !site.lng) return;
 
   const isY1 = site.priority === 'Y1-2026';
+  const isConfirmed = site.confirmed === true;
   const color = COLORS[site.grade] || COLORS.red;
-  const radius = isY1 ? 9 : 6;
+  const radius = isY1 ? 9 : isConfirmed ? 7 : 5;
 
   const marker = L.circleMarker([site.lat, site.lng], {
     radius: radius,
     fillColor: color,
-    color: isY1 ? Y1_COLOR : color,
-    weight: isY1 ? 3 : 1.5,
+    color: isY1 ? Y1_COLOR : isConfirmed ? '#3b82f6' : color,
+    weight: isY1 ? 3 : isConfirmed ? 2 : 1.5,
     opacity: 1,
     fillOpacity: 0.8
   });
@@ -1277,6 +1310,12 @@ function buildPopup(site) {
       </div>`;
   });
 
+  const confirmedTag = site.confirmed ?
+    `<div style="display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;">
+        <span style="padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;background:rgba(59,130,246,0.1);color:#3b82f6;border:1px solid rgba(59,130,246,0.2);text-transform:uppercase;letter-spacing:0.05em;">✓ Confirmed ${site.deployment_year || ''}</span>
+        ${site.archetype ? `<span style="padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;background:rgba(255,255,255,0.04);color:#94a3b8;border:1px solid rgba(255,255,255,0.06);">${site.archetype}</span>` : ''}
+    </div>` : '';
+
   return `
     <div class="popup-inner">
       <div class="popup-header">
@@ -1287,6 +1326,7 @@ function buildPopup(site) {
         </div>
         <div class="popup-score-big ${site.grade}">${site.weighted_score}</div>
       </div>
+      ${confirmedTag}
       <div class="popup-criteria">${criteriaHTML}</div>
       ${notesHTML}
       <div class="popup-divider"></div>
@@ -1299,10 +1339,12 @@ function updateStats(filteredSites) {
   const y = filteredSites.filter(s => s.grade === 'yellow').length;
   const r = filteredSites.filter(s => s.grade === 'red').length;
   const p = filteredSites.filter(s => s.priority === 'Y1-2026').length;
+  const c = filteredSites.filter(s => s.confirmed === true).length;
   document.getElementById('stat-green').textContent = g;
   document.getElementById('stat-yellow').textContent = y;
   document.getElementById('stat-red').textContent = r;
   document.getElementById('stat-y1').textContent = p;
+  document.getElementById('stat-confirmed').textContent = c;
   // Update nav KPIs
   const navG = document.getElementById('nav-green');
   const navY = document.getElementById('nav-yellow');
@@ -1331,7 +1373,7 @@ function renderList(sites) {
     el.innerHTML = `
       <div class="site-dot ${site.grade}"></div>
       <div class="site-info">
-        <div class="site-name">${site.ss || ''} ${site.name}${isY1 ? '<span class="y1-badge">Y1</span>' : ''}</div>
+        <div class="site-name">${site.ss || ''} ${site.name}${isY1 ? '<span class="y1-badge">Y1</span>' : ''}${site.confirmed ? '<span class="confirmed-badge">✓</span>' : ''}</div>
         <div class="site-meta">${site.emirate || site.category || ''} · ${site.area || ''}</div>
       </div>
       <div class="site-score ${site.grade}">${site.weighted_score}</div>
@@ -1357,7 +1399,9 @@ let searchTerm = '';
 function getVisibleSites() {
   return SITES_DATA.filter(site => {
     let passFilter = true;
-    if (activeFilter === 'green' || activeFilter === 'yellow' || activeFilter === 'red') {
+    if (activeFilter === 'confirmed') {
+      passFilter = site.confirmed === true;
+    } else if (activeFilter === 'green' || activeFilter === 'yellow' || activeFilter === 'red') {
       passFilter = site.grade === activeFilter;
     } else if (activeFilter === 'y1') {
       passFilter = site.priority === 'Y1-2026';
@@ -1387,7 +1431,7 @@ function applyFilters() {
     const key = m.siteData.ss || m.siteData.name;
     if (visibleKeys.has(key)) {
       m.setStyle({ fillOpacity: 0.8, opacity: 1 });
-      m.setRadius(m.siteData.priority === 'Y1-2026' ? 9 : 6);
+      m.setRadius(m.siteData.priority === 'Y1-2026' ? 9 : m.siteData.confirmed ? 7 : 5);
     } else {
       m.setStyle({ fillOpacity: 0.08, opacity: 0.08 });
       m.setRadius(3);
