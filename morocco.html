@@ -1032,17 +1032,17 @@
   </div>
 
   <div class="stats-row">
-    <div class="stat-badge green"><span class="num" id="stat-green">0</span>Shortlist</div>
-    <div class="stat-badge yellow"><span class="num" id="stat-yellow">0</span>Under Review</div>
-    <div class="stat-badge red"><span class="num" id="stat-red">0</span>No Go</div>
+    <div class="stat-badge green"><span class="num" id="stat-green">0</span>Prime (&ge;6.5)</div>
+    <div class="stat-badge yellow"><span class="num" id="stat-yellow">0</span>Viable (5–6.4)</div>
+    <div class="stat-badge red"><span class="num" id="stat-red">0</span>Weak (&lt;5)</div>
     <div class="stat-badge blue"><span class="num" id="stat-assessed">0</span>Assessed</div>
   </div>
 
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn green-f" data-filter="green">Shortlist</button>
-    <button class="filter-btn yellow-f" data-filter="yellow">Review</button>
-    <button class="filter-btn red-f" data-filter="red">No Go</button>
+    <button class="filter-btn green-f" data-filter="green">Prime</button>
+    <button class="filter-btn yellow-f" data-filter="yellow">Viable</button>
+    <button class="filter-btn red-f" data-filter="red">Weak</button>
     <button class="filter-btn" data-filter="assessed">Assessed</button>
     <button class="filter-btn" data-filter="desktop">Desktop Only</button>
     <button class="filter-btn comp-toggle" id="comp-toggle" data-active="false">
@@ -1066,9 +1066,9 @@
 
   <div class="legend-overlay">
     <div class="legend-title">Recommendations</div>
-    <div class="legend-item"><span class="legend-dot green"></span>Shortlist / Priority</div>
-    <div class="legend-item"><span class="legend-dot yellow"></span>Under Review / Maybe</div>
-    <div class="legend-item"><span class="legend-dot red"></span>No Go / Concern</div>
+    <div class="legend-item"><span class="legend-dot green"></span>Prime &mdash; Score &ge; 6.5</div>
+    <div class="legend-item"><span class="legend-dot yellow"></span>Viable &mdash; Score 5.0&ndash;6.4</div>
+    <div class="legend-item"><span class="legend-dot red"></span>Weak &mdash; Score &lt; 5.0</div>
     <div class="legend-sep"></div>
     <div class="legend-title">Partners</div>
     <div class="legend-item"><span class="legend-dot petrom"></span>Petrom (350+ stations)</div>
@@ -1321,7 +1321,8 @@ function renderList(sites) {
     el.className = 'site-item';
     el.style.animationDelay = `${idx * 0.02}s`;
 
-    const ratingStr = site.rating ? `${site.rating}/5` : '\u2014';
+    const ws = site.weighted_score || site.derived_scores?.weighted_score;
+    const ratingStr = ws ? ws.toFixed(1) : '\u2014';
     const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner === 'petrom' ? 'PTR' : 'PTM'}</span>`;
     const assessedTag = site.status === 'Assessed' ? '<span class="rec-badge assessed">Assessed</span>' : '';
 
