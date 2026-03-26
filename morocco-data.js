@@ -36,7 +36,11 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 7.0
       },
-      "weighted_score": 7.0
+      "weighted_score": 7.0,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgBGNsBuZX2WRYHZHs9c6cB0AcAk902GGSytTTV2t1tPzeE?e=9aONfS",
+      "satellite_url": "https://www.google.com/maps/@33.5896,-7.6263,500m/data=!3m1!1e1",
+      "facilities": "\u2022 1 car wash bay\n\u2022 1 Bosch Car Service bay\n\u2022 Western Union money exchange\n\u2022 Small store (L'Egale)\n\u2022 Bosch parts storage\n\u2022 Go Swap (electric motorcycle battery station)\n\u2022 Manager's office",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "ANP-02",
@@ -74,7 +78,11 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.1
       },
-      "weighted_score": 5.1
+      "weighted_score": 5.1,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgC20VKTZDBPoNu7rJPa9CKWAQUQjnPD-ck1vTsGE0y_ZgA?e=xahfh4",
+      "satellite_url": "https://www.google.com/maps/@33.6040,-7.6150,500m/data=!3m1!1e1",
+      "facilities": "\u2022 2 very large high service bays (truck scale)\n\u2022 Car wash (truck washing)\n\u2022 Large restaurant \"L'Etoile\" (modern, underutilized)\n\u2022 Large store (underutilized)\n\u2022 Wafaa Cash & Western Union money exchange\n\u2022 Empty hall upstairs",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "ZOO-03",
@@ -112,7 +120,11 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 6.2
       },
-      "weighted_score": 6.2
+      "weighted_score": 6.2,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgAlDl0tPqZxfbTFU7V5S0UBAT0WfBDXQb5yxfgc4rO82Q?e=CdpPxY",
+      "satellite_url": "https://www.google.com/maps/@33.6037,-7.5295,500m/data=!3m1!1e1",
+      "facilities": "\u2022 1 Bosch Car Service bay (professional equipment)\n\u2022 2 Elephant Bleu car wash bays\n\u2022 Self-service car wash\n\u2022 Modern L'Etoile store (wicker lights, African flags)\n\u2022 McDonald's drive-through\n\u2022 Carrefour nearby/linked\n\u2022 Underground: 200 parking spots + mosque",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "BOU1-04",
@@ -150,7 +162,11 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 7.0
       },
-      "weighted_score": 7.0
+      "weighted_score": 7.0,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgEVThR6_Tih75UvQK1_7aZFARYyDCu_jV2vcEEeBBiJFgk?e=ym7t8c",
+      "satellite_url": "https://www.google.com/maps/@33.436,-7.721,500m/data=!3m1!1e1",
+      "facilities": "\u2022 1 Bosch Car Service bay (expansion possible)\n\u2022 McDonald's drive-through\n\u2022 Carrefour linked\n\u2022 Modern forecourt\n\u2022 Ramp connection to Bouskoura 2",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "BOU2-05",
@@ -188,7 +204,11 @@ const MOROCCO_DATA = {
         "demand": 3,
         "weighted_score": 4.5
       },
-      "weighted_score": 4.5
+      "weighted_score": 4.5,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgATuBQZZgFKiZ5TG7mDFVe_AQjqYNOYSH0XiXESwm_8tA?e=emf72G",
+      "satellite_url": "https://www.google.com/maps/@33.435,-7.720,500m/data=!3m1!1e1",
+      "facilities": "\u2022 McDonald's McDrive (visible from street)\n\u2022 Ramp connection to Bouskoura 1",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "BOU3-06",
@@ -226,7 +246,11 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 6.8
       },
-      "weighted_score": 6.8
+      "weighted_score": 6.8,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgDmq7b_0I5WaYvNV7s8mO7eAasUn9HnaCdqpxxIGUaDJQ?e=YMqsad",
+      "satellite_url": "https://www.google.com/maps/@33.450,-7.650,500m/data=!3m1!1e1",
+      "facilities": "\u2022 SGS Amanauuto Vehicle Inspection Center (VIC)\n\u2022 Dialcom inspection facility\n\u2022 Bosch Car Service (multiple bays)\n\u2022 Car wash tunnel\n\u2022 L'Etoile store\n\u2022 Residential building behind (captive market)",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "VIC-07",
@@ -264,7 +288,11 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "https://skelmore-my.sharepoint.com/:f:/g/personal/mhabib_wag-me_com/IgCd4KOhyZV5RraIdB-tJVtQARTF-d4H5OMsqhk1B_bJ5A?e=xtVxFe",
+      "satellite_url": "https://www.google.com/maps/@33.470,-7.650,500m/data=!3m1!1e1",
+      "facilities": "\u2022 UNIVERS XPRO service bay\n\u2022 L'Etoile store\n\u2022 Petrom Academy training room\n\u2022 Conference/training facilities\n\u2022 Professional setup",
+      "visit_date": "2026-02-17"
     },
     {
       "code": "IST-VIC",
@@ -302,7 +330,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.9
       },
-      "weighted_score": 5.9
+      "weighted_score": 5.9,
+      "photos_url": "",
+      "satellite_url": "",
+      "facilities": ""
     },
     {
       "code": "IST-ECO",
@@ -340,7 +371,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.9
       },
-      "weighted_score": 5.9
+      "weighted_score": 5.9,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.509803079643184,-7.63057279580998,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-ERR",
@@ -378,7 +412,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.2
       },
-      "weighted_score": 5.2
+      "weighted_score": 5.2,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.824,-6.0663,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-FDS",
@@ -416,7 +453,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.4
       },
-      "weighted_score": 5.4
+      "weighted_score": 5.4,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.5646,-7.64689,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-JAO",
@@ -454,7 +494,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.3
       },
-      "weighted_score": 5.3
+      "weighted_score": 5.3,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.555,-7.584,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-ALA",
@@ -492,7 +535,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.5
       },
-      "weighted_score": 5.5
+      "weighted_score": 5.5,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.572733,-7.532985,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-LIT",
@@ -530,7 +576,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.2
       },
-      "weighted_score": 5.2
+      "weighted_score": 5.2,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.669,-7.444,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-ZNA",
@@ -568,7 +617,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@32.0303311,-7.3962653,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-BRG",
@@ -606,7 +658,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.883056,-6.278611,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-PRG",
@@ -644,7 +699,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "",
+      "satellite_url": "",
+      "facilities": ""
     },
     {
       "code": "IST-OMR",
@@ -682,7 +740,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.8
       },
-      "weighted_score": 5.8
+      "weighted_score": 5.8,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.58,-7.58,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "IST-FOU",
@@ -720,7 +781,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.5
       },
-      "weighted_score": 5.5
+      "weighted_score": 5.5,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@34.233,-6.543,500m/data=!3m1!1e1",
+      "facilities": ""
     }
   ],
   "petromin": [
@@ -761,7 +825,10 @@ const MOROCCO_DATA = {
         "demand": 6,
         "weighted_score": 5.5
       },
-      "weighted_score": 5.5
+      "weighted_score": 5.5,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.5338617,-7.7237976,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-02",
@@ -800,7 +867,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.9
       },
-      "weighted_score": 5.9
+      "weighted_score": 5.9,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.4053584,-7.5342901,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-03",
@@ -839,7 +909,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 6.2
       },
-      "weighted_score": 6.2
+      "weighted_score": 6.2,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.4085758,-7.5392102,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-04",
@@ -878,7 +951,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 6.4
       },
-      "weighted_score": 6.4
+      "weighted_score": 6.4,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.3978690,-7.5348200,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-05",
@@ -917,7 +993,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.9
       },
-      "weighted_score": 5.9
+      "weighted_score": 5.9,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.5093719,-7.6188088,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-06",
@@ -956,7 +1035,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 6.0
       },
-      "weighted_score": 6.0
+      "weighted_score": 6.0,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.5826995,-7.5372646,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-07",
@@ -995,7 +1077,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.8
       },
-      "weighted_score": 5.8
+      "weighted_score": 5.8,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.5331650,-7.6817151,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-08",
@@ -1034,7 +1119,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.9
       },
-      "weighted_score": 5.9
+      "weighted_score": 5.9,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.4458764,-7.6499556,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-09",
@@ -1073,7 +1161,10 @@ const MOROCCO_DATA = {
         "demand": 5,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.4625952,-7.6646235,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-10",
@@ -1112,7 +1203,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.3
       },
-      "weighted_score": 5.3
+      "weighted_score": 5.3,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6142988,-7.5314861,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-11",
@@ -1151,7 +1245,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.5
       },
-      "weighted_score": 5.5
+      "weighted_score": 5.5,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6219729,-7.5282482,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-12",
@@ -1190,7 +1287,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.0
       },
-      "weighted_score": 5.0
+      "weighted_score": 5.0,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6332131,-7.4581042,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-13",
@@ -1229,7 +1329,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.1
       },
-      "weighted_score": 5.1
+      "weighted_score": 5.1,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6259657,-7.4823453,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-14",
@@ -1268,7 +1371,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.2
       },
-      "weighted_score": 5.2
+      "weighted_score": 5.2,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6153420,-7.5042627,500m/data=!3m1!1e1",
+      "facilities": ""
     },
     {
       "code": "PTM-15",
@@ -1307,7 +1413,10 @@ const MOROCCO_DATA = {
         "demand": 7,
         "weighted_score": 5.5
       },
-      "weighted_score": 5.5
+      "weighted_score": 5.5,
+      "photos_url": "",
+      "satellite_url": "https://www.google.com/maps/@33.6153420,-7.5042627,500m/data=!3m1!1e1",
+      "facilities": ""
     }
   ]
 };

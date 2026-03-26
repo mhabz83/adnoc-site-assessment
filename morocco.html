@@ -590,6 +590,88 @@
     margin: 10px 0;
   }
 
+  /* Info bar: visit date, photos, satellite links */
+  .popup-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .info-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: default;
+  }
+
+  .info-tag.visited {
+    background: rgba(34, 197, 94, 0.08);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .info-tag.photos {
+    background: rgba(168, 85, 247, 0.08);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    cursor: pointer;
+  }
+
+  .info-tag.photos:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.4);
+  }
+
+  .info-tag.satellite {
+    background: rgba(14, 165, 233, 0.08);
+    color: #0ea5e9;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    cursor: pointer;
+  }
+
+  .info-tag.satellite:hover {
+    background: rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.4);
+  }
+
+  /* Facilities list */
+  .popup-facilities {
+    list-style: none;
+    padding: 8px 10px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .popup-facilities li {
+    font-size: 10.5px;
+    color: #c8d4e0;
+    padding: 3px 0;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .popup-facilities li:last-child { border-bottom: none; }
+
+  .popup-facilities li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #3b82f6;
+    flex-shrink: 0;
+  }
+
   /* ===== LEGEND ===== */
   .legend-overlay {
     position: absolute;
@@ -962,6 +1044,38 @@ function buildPopup(site) {
   const ws = site.weighted_score || site.derived_scores?.weighted_score || '\u2014';
   const scoreGrade = ws >= 6.5 ? 'green' : ws >= 5 ? 'yellow' : 'red';
 
+  // Site info bar: visit date, facilities, photo/satellite links
+  let infoBarHTML = '';
+  const infoParts = [];
+  if (site.visit_date) infoParts.push(`<span class="info-tag visited">Visited ${site.visit_date}</span>`);
+  if (site.photos_url) infoParts.push(`<a href="${site.photos_url}" target="_blank" rel="noopener" class="info-tag photos">\ud83d\udcf8 Photos</a>`);
+  if (site.satellite_url) infoParts.push(`<a href="${site.satellite_url}" target="_blank" rel="noopener" class="info-tag satellite">\ud83d\udef0 Satellite</a>`);
+  if (infoParts.length) {
+    infoBarHTML = `<div class="popup-info-bar">${infoParts.join('')}</div>`;
+  }
+
+  // Facilities list
+  let facilitiesHTML = '';
+  if (site.facilities && site.facilities.length > 3) {
+    const items = site.facilities.split('\n').filter(l => l.trim()).map(l => {
+      const clean = l.replace(/^[\u2022\-\*]\s*/, '').trim();
+      return clean ? `<li>${clean}</li>` : '';
+    }).join('');
+    if (items) {
+      const facUid = (site.code || '') + '_fac';
+      facilitiesHTML = `
+      <div class="popup-section" id="section-${facUid}">
+        <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${facUid}');s.classList.toggle('expanded');})(event)">
+          <span class="popup-section-title">\ud83c\udfe2 Facilities On-Site</span>
+          <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="popup-section-content">
+          <ul class="popup-facilities">${items}</ul>
+        </div>
+      </div>`;
+    }
+  }
+
   return `
     <div class="popup-inner">
       <div class="popup-header">
@@ -972,8 +1086,10 @@ function buildPopup(site) {
         </div>
         <div class="popup-score-big ${scoreGrade}">${ws}</div>
       </div>
+      ${infoBarHTML}
       <div class="popup-criteria">${criteriaHTML}</div>
       ${notesHTML}
+      ${facilitiesHTML}
       <div class="popup-divider"></div>
       <div class="popup-details">${detailsHTML}</div>
     </div>`;
