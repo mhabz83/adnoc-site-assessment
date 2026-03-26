@@ -1,455 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="generator" content="WAG">
-<meta name="author" content="World Automotive Group">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aftermarket Site Assessment</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    <meta name="generator" content="WAG">
+    <meta name="author" content="World Automotive Group">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aftermarket Site Assessment</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg-primary: #06080f;
-    --bg-secondary: #0c1021;
-    --bg-card: #111631;
-    --bg-card-hover: #161d3e;
-    --border: #1e2a4a;
-    --border-glow: rgba(59, 130, 246, 0.2);
-    --text-primary: #edf2f7;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --accent: #3b82f6;
-    --accent-soft: rgba(59, 130, 246, 0.08);
-    --green: #22c55e;
-    --yellow: #eab308;
-    --red: #ef4444;
-    --purple: #a855f7;
-    --teal: #14b8a6;
-  }
+        :root {
+            --bg-base: #0a0b0f;
+            --bg-elevated: #111318;
+            --bg-surface: #16181e;
+            --bg-surface-hover: #1c1f27;
+            --border-primary: rgba(255, 255, 255, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.03);
+            --border-accent: rgba(255, 255, 255, 0.10);
+            --text-primary: #e8eaed;
+            --text-secondary: #8b8f98;
+            --text-tertiary: #55585f;
+            --accent: #4f8ff7;
+            --green: #34d399;
+            --amber: #fbbf24;
+            --red: #f87171;
+            --purple: #a78bfa;
+        }
 
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  /* Animated grid background */
-  .bg-grid {
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: 0;
-    pointer-events: none;
-  }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 56px;
+            border-bottom: 1px solid var(--border-primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 11, 15, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
 
-  .bg-glow {
-    position: fixed;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 600px;
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-  }
+        .nav-left { display: flex; align-items: center; gap: 20px; }
 
-  /* Top nav */
-  .top-bar {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 40px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(6, 8, 15, 0.85);
-    backdrop-filter: blur(20px);
-  }
+        .nav-brand { display: flex; flex-direction: column; }
 
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+        .nav-brand h1 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
 
-  .brand-icon {
-    width: auto;
-    height: 36px;
-    border-radius: 0;
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-  }
+        .nav-brand span {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
 
-  .brand-text h1 {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.02em;
+        }
 
-  .brand-text p {
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+        .nav-status {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--green);
+        }
 
-  .timestamp {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-align: right;
-  }
+        .main {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 64px 48px 48px;
+        }
 
-  .timestamp .live-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    margin-right: 6px;
-    animation: pulse-dot 2s infinite;
-  }
+        .header { margin-bottom: 56px; }
 
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(34,197,94,0.4); }
-    50% { opacity: 0.5; box-shadow: 0 0 8px rgba(34,197,94,0.6); }
-  }
+        .header-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 14px;
+        }
 
-  /* Main content */
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 40px;
-  }
+        .header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
 
-  .hero {
-    text-align: center;
-    margin-bottom: 64px;
-  }
+        .header p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 560px;
+            font-weight: 400;
+        }
 
-  .hero h2 {
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
 
-  .hero p {
-    font-size: 16px;
-    color: var(--text-secondary);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
+        .metric {
+            background: var(--bg-elevated);
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
-  /* KPI strip */
-  .kpi-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 56px;
-  }
+        .metric:first-child { border-radius: 11px 0 0 11px; }
+        .metric:last-child { border-radius: 0 11px 11px 0; }
 
-  .kpi-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    text-align: center;
-    transition: all 0.2s;
-  }
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
 
-  .kpi-card:hover {
-    border-color: var(--border-glow);
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.06);
-  }
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
 
-  .kpi-val {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
 
-  .kpi-val.blue { color: var(--accent); }
-  .kpi-val.green { color: var(--green); }
-  .kpi-val.purple { color: var(--purple); }
-  .kpi-val.teal { color: var(--teal); }
+        .country-card {
+            position: relative;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
 
-  .kpi-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 600;
-  }
+        a.country-card:hover {
+            border-color: var(--border-accent);
+            background: var(--bg-surface);
+        }
 
-  /* Country cards grid */
-  .countries-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 48px;
-  }
+        .country-card.pending {
+            opacity: 0.45;
+            pointer-events: none;
+        }
 
-  .country-card {
-    position: relative;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
+        .country-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-  .country-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
-  }
+        .country-id { display: flex; align-items: center; gap: 14px; }
 
-  .country-card.disabled {
-    cursor: default;
-    opacity: 0.5;
-  }
+        .country-flag-wrap {
+            width: 40px;
+            height: 28px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            font-size: 20px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
 
-  .country-card.disabled:hover {
-    border-color: var(--border);
-    transform: none;
-    box-shadow: none;
-  }
+        .country-name-block h3 {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
 
-  .country-flag {
-    font-size: 36px;
-    margin-bottom: 14px;
-    display: block;
-  }
+        .country-name-block span {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
 
-  .country-name {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
+        .card-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-primary);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
 
-  .country-subtitle {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
+        a.country-card:hover .card-arrow {
+            border-color: var(--accent);
+            background: rgba(79, 143, 247, 0.08);
+        }
 
-  .country-stats {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+        .card-arrow svg { width: 14px; height: 14px; }
 
-  .country-stat {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
-  }
+        .country-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 24px;
+            flex: 1;
+        }
 
-  .country-stat .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-  }
+        .country-desc strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
-  .country-stat .dot.green { background: var(--green); }
-  .country-stat .dot.yellow { background: var(--yellow); }
-  .country-stat .dot.red { background: var(--red); }
-  .country-stat .dot.purple { background: var(--purple); }
-  .country-stat .dot.blue { background: var(--accent); }
+        .status-bar {
+            display: flex;
+            gap: 2px;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
 
-  .country-arrow {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
+        .status-segment { border-radius: 1px; }
+        .status-segment.green { background: var(--green); }
+        .status-segment.amber { background: var(--amber); }
+        .status-segment.red { background: var(--red); }
+        .status-segment.accent { background: var(--accent); }
 
-  .country-card:hover .country-arrow {
-    background: var(--accent);
-  }
+        .status-legend { display: flex; gap: 16px; flex-wrap: wrap; }
 
-  .country-card:hover .country-arrow svg path {
-    stroke: #fff;
-  }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
 
-  .in-progress-badge {
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    background: rgba(234, 179, 8, 0.1);
-    color: var(--yellow);
-    border: 1px solid rgba(234, 179, 8, 0.2);
-    margin-top: 8px;
-  }
+        .legend-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 32px 0;
-    font-size: 12px;
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border);
-    letter-spacing: 0.02em;
-  }
+        .legend-dot.green { background: var(--green); }
+        .legend-dot.amber { background: var(--amber); }
+        .legend-dot.red { background: var(--red); }
+        .legend-dot.accent { background: var(--accent); }
 
-  .footer a { color: var(--text-muted); text-decoration: none; }
-  .footer a:hover { color: var(--text-secondary); }
+        .legend-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 11px;
+            color: var(--text-primary);
+        }
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    .top-bar { padding: 12px 20px; }
-    .container { padding: 32px 20px; }
-    .hero h2 { font-size: 28px; }
-    .kpi-strip { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .countries-grid { grid-template-columns: 1fr; }
-    .country-card { padding: 24px; }
-  }
-</style>
+        .pipeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border-primary);
+            background: var(--bg-surface);
+            margin-top: auto;
+        }
+
+        .pipeline-badge::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--text-tertiary);
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            border-top: 1px solid var(--border-primary);
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .main { padding: 40px 20px 32px; }
+            .header h2 { font-size: 26px; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .metric:first-child { border-radius: 11px 0 0 0; }
+            .metric:nth-child(2) { border-radius: 0 11px 0 0; }
+            .metric:nth-child(3) { border-radius: 0 0 0 11px; }
+            .metric:last-child { border-radius: 0 0 11px 0; }
+            .country-grid { grid-template-columns: 1fr; }
+            .country-card { padding: 24px; }
+            .nav-right { display: none; }
+        }
+    </style>
 </head>
 <body>
+
 <script src="auth.js"></script>
-<div class="bg-grid"></div>
-<div class="bg-glow"></div>
 
-<div class="top-bar">
-  <div class="brand">
-
-    <div class="brand-text">
-      <h1>Aftermarket Site Assessment</h1>
-      <p>Global Operations Dashboard</p>
+<nav class="nav">
+    <div class="nav-left">
+        <div class="nav-brand">
+            <h1>Aftermarket Site Assessment</h1>
+            <span>World Automotive Group</span>
+        </div>
     </div>
-  </div>
-  <div class="timestamp">
-    <span class="live-dot"></span>Last updated: March 2026
-  </div>
-</div>
-
-<div class="container">
-  <div class="hero">
-    <h2>Site Assessment Portfolio</h2>
-    <p>Comprehensive multi-country evaluation of aftermarket quick-service bay opportunities across the MENA region.</p>
-  </div>
-
-  <div class="kpi-strip">
-    <div class="kpi-card">
-      <div class="kpi-val blue">4</div>
-      <div class="kpi-label">Target Markets</div>
+    <div class="nav-right">
+        <span class="nav-status"></span>
+        Updated Mar 2026
     </div>
-    <div class="kpi-card">
-      <div class="kpi-val green">209</div>
-      <div class="kpi-label">Sites Evaluated</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-val purple">2</div>
-      <div class="kpi-label">Active Assessments</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-val teal">2</div>
-      <div class="kpi-label">In Pipeline</div>
-    </div>
-  </div>
+</nav>
 
-  <div class="countries-grid">
-    <!-- UAE -->
-    <a href="uae.html" class="country-card">
-      <span class="country-flag">🇦🇪</span>
-      <div class="country-name">United Arab Emirates</div>
-      <div class="country-subtitle">ADNOC partnership — Abu Dhabi, Dubai, Sharjah<br>209 sites scored across 6 weighted criteria</div>
-      <div class="country-stats">
-        <div class="country-stat"><span class="dot blue"></span>80 Confirmed</div>
-        <div class="country-stat"><span class="dot green"></span>10 Green</div>
-        <div class="country-stat"><span class="dot yellow"></span>63 Yellow</div>
-        <div class="country-stat"><span class="dot red"></span>92 Red</div>
-      </div>
-      <div class="country-arrow">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </a>
-
-    <!-- Morocco -->
-    <a href="morocco.html" class="country-card">
-      <span class="country-flag">🇲🇦</span>
-      <div class="country-name">Morocco</div>
-      <div class="country-subtitle">Petrom (19 sites) + Petromin (15 sites)<br>Dual-partner strategy — Casablanca hub focus</div>
-      <div class="country-stats">
-        <div class="country-stat"><span class="dot green"></span>3 Prime</div>
-        <div class="country-stat"><span class="dot yellow"></span>30 Viable</div>
-        <div class="country-stat"><span class="dot red"></span>1 Weak</div>
-        <div class="country-stat"><span class="dot blue"></span>34 Total</div>
-      </div>
-      <div class="country-arrow">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </a>
-
-    <!-- Egypt -->
-    <div class="country-card disabled">
-      <span class="country-flag">🇪🇬</span>
-      <div class="country-name">Egypt</div>
-      <div class="country-subtitle">Great Automotive acquisition under review<br>Total Energies ~390 stations (monitoring)</div>
-      <div class="in-progress-badge">In Progress</div>
+<main class="main">
+    <div class="header">
+        <div class="header-eyebrow">Global Operations</div>
+        <h2>Site Assessment Portfolio</h2>
+        <p>Multi-country evaluation of quick-service bay opportunities across the MENA region. Four target markets, 209 sites evaluated.</p>
     </div>
 
-    <!-- Saudi Arabia -->
-    <div class="country-card disabled">
-      <span class="country-flag">🇸🇦</span>
-      <div class="country-name">Saudi Arabia</div>
-      <div class="country-subtitle">$10.4B addressable market<br>63 workshops mapped (monitoring phase)</div>
-      <div class="in-progress-badge">In Progress</div>
+    <div class="metrics">
+        <div class="metric">
+            <div class="metric-value">4</div>
+            <div class="metric-label">Markets</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">209</div>
+            <div class="metric-label">Sites Evaluated</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">2</div>
+            <div class="metric-label">Active</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">2</div>
+            <div class="metric-label">Pipeline</div>
+        </div>
     </div>
-  </div>
 
-  <div class="footer">Created by WAG &mdash; Aftermarket Business Development</div>
-</div>
+    <div class="country-grid">
+        <a href="uae.html" class="country-card">
+            <div class="country-card-top">
+                <div class="country-id">
+                    <div class="country-flag-wrap">&#x1F1E6;&#x1F1EA;</div>
+                    <div class="country-name-block">
+                        <h3>United Arab Emirates</h3>
+                        <span>ADNOC Distribution</span>
+                    </div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 14 14" fill="none"><path d="M5 2.5L9.5 7L5 11.5" stroke="#55585f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+            <div class="country-desc">
+                <strong>209 sites</strong> scored across 6 weighted criteria &mdash; Abu Dhabi, Dubai, Sharjah. 80 confirmed for deployment.
+            </div>
+            <div class="status-bar">
+                <div class="status-segment accent" style="flex: 80;"></div>
+                <div class="status-segment green" style="flex: 10;"></div>
+                <div class="status-segment amber" style="flex: 63;"></div>
+                <div class="status-segment red" style="flex: 92;"></div>
+            </div>
+            <div class="status-legend">
+                <div class="legend-item"><span class="legend-dot accent"></span><span class="legend-value">80</span> Confirmed</div>
+                <div class="legend-item"><span class="legend-dot green"></span><span class="legend-value">10</span> Green</div>
+                <div class="legend-item"><span class="legend-dot amber"></span><span class="legend-value">63</span> Yellow</div>
+                <div class="legend-item"><span class="legend-dot red"></span><span class="legend-value">92</span> Red</div>
+            </div>
+        </a>
+
+        <a href="morocco.html" class="country-card">
+            <div class="country-card-top">
+                <div class="country-id">
+                    <div class="country-flag-wrap">&#x1F1F2;&#x1F1E6;</div>
+                    <div class="country-name-block">
+                        <h3>Morocco</h3>
+                        <span>Petrom &middot; Petromin</span>
+                    </div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 14 14" fill="none"><path d="M5 2.5L9.5 7L5 11.5" stroke="#55585f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+            <div class="country-desc">
+                Dual-partner strategy &mdash; <strong>19 Petrom</strong> + <strong>15 Petromin</strong> sites. Casablanca hub focus.
+            </div>
+            <div class="status-bar">
+                <div class="status-segment green" style="flex: 3;"></div>
+                <div class="status-segment amber" style="flex: 30;"></div>
+                <div class="status-segment red" style="flex: 1;"></div>
+            </div>
+            <div class="status-legend">
+                <div class="legend-item"><span class="legend-dot green"></span><span class="legend-value">3</span> Prime</div>
+                <div class="legend-item"><span class="legend-dot amber"></span><span class="legend-value">30</span> Viable</div>
+                <div class="legend-item"><span class="legend-dot red"></span><span class="legend-value">1</span> Weak</div>
+            </div>
+        </a>
+
+        <div class="country-card pending">
+            <div class="country-card-top">
+                <div class="country-id">
+                    <div class="country-flag-wrap">&#x1F1EA;&#x1F1EC;</div>
+                    <div class="country-name-block">
+                        <h3>Egypt</h3>
+                        <span>Under Review</span>
+                    </div>
+                </div>
+            </div>
+            <div class="country-desc">
+                Great Automotive acquisition under review. Total Energies ~390 stations monitored.
+            </div>
+            <div class="pipeline-badge">Pipeline</div>
+        </div>
+
+        <div class="country-card pending">
+            <div class="country-card-top">
+                <div class="country-id">
+                    <div class="country-flag-wrap">&#x1F1F8;&#x1F1E6;</div>
+                    <div class="country-name-block">
+                        <h3>Saudi Arabia</h3>
+                        <span>Monitoring Phase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="country-desc">
+                $10.4B addressable market. 63 workshops mapped in monitoring phase.
+            </div>
+            <div class="pipeline-badge">Pipeline</div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <span>WAG &mdash; Aftermarket Business Development</span>
+        <span>Confidential</span>
+    </footer>
+</main>
+
 </body>
 </html>
