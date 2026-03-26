@@ -3,1287 +3,393 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="WAG">
-<meta name="author" content="World Automotive Group">
-<title>Morocco Site Assessment — Aftermarket Site Assessment</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="design-system.css">
+<title>Morocco — Aftermarket Site Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>
-  /* Morocco-specific custom variables (not in design-system.css) */
-  :root {
-    --petrom-color: #f97316;
-    --petrom-bg: rgba(249, 115, 22, 0.08);
-    --petrom-border: rgba(249, 115, 22, 0.25);
-    --petromin-color: #06b6d4;
-    --petromin-bg: rgba(6, 182, 212, 0.08);
-    --petromin-border: rgba(6, 182, 212, 0.25);
-  }
-
-  body {
-    font-family: var(--font-sans);
-    background: var(--bg-base);
-    color: var(--text-primary);
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* ===== TOP NAVIGATION (ds-nav from design-system.css) ===== */
-
-  /* ===== MAIN LAYOUT ===== */
-  .main-content {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
-
-  /* ===== SIDEBAR (ds-sidebar from design-system.css) ===== */
-
-  /* ===== PARTNER TOGGLE ===== */
-  .partner-toggle {
-    display: flex;
-    padding: 12px 22px;
-    gap: 8px;
-    border-bottom: 1px solid var(--border-primary);
-    flex-shrink: 0;
-  }
-
-  .partner-btn {
-    flex: 1;
-    padding: 8px 12px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-primary);
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    font-family: var(--font-sans);
-    text-align: center;
-    letter-spacing: -0.01em;
-  }
-
-  .partner-btn:hover {
-    border-color: var(--border-accent);
-    background: var(--bg-surface);
-  }
-
-  .partner-btn.active.all-p {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-    color: var(--accent);
-  }
-
-  .partner-btn.active.petrom-p {
-    background: var(--petrom-bg);
-    border-color: var(--petrom-border);
-    color: var(--petrom-color);
-  }
-
-  .partner-btn.active.petromin-p {
-    background: var(--petromin-bg);
-    border-color: var(--petromin-border);
-    color: var(--petromin-color);
-  }
-
-  .partner-btn .btn-count {
-    font-size: 10px;
-    font-weight: 700;
-    opacity: 0.6;
-    margin-left: 4px;
-    font-family: var(--font-mono);
-  }
-
-  /* ===== STATS ROW (ds-stats-row from design-system.css) ===== */
-
-  /* ===== FILTER BAR ===== */
-  .filter-bar {
-    padding: 12px 22px;
-    border-bottom: 1px solid var(--border-primary);
-    display: flex;
-    gap: 6px;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-  }
-
-  .filter-btn {
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--border-primary);
-    background: transparent;
-    color: var(--text-tertiary);
-    font-size: 10.5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    font-family: var(--font-sans);
-    letter-spacing: 0.01em;
-  }
-
-  .filter-btn:hover {
-    border-color: var(--border-accent);
-    color: var(--text-secondary);
-    background: var(--bg-surface);
-  }
-
-  .filter-btn.active {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-    color: var(--accent);
-  }
-
-  .filter-btn.active.green-f {
-    background: var(--green-bg);
-    border-color: var(--green-border);
-    color: var(--green);
-  }
-
-  .filter-btn.active.yellow-f {
-    background: var(--amber-bg);
-    border-color: var(--amber-border);
-    color: var(--amber);
-  }
-
-  .filter-btn.active.red-f {
-    background: var(--red-bg);
-    border-color: var(--red-border);
-    color: var(--red);
-  }
-
-  /* ===== SEARCH ===== */
-  .search-bar {
-    padding: 10px 22px;
-    border-bottom: 1px solid var(--border-primary);
-    flex-shrink: 0;
-  }
-
-  .search-bar input {
-    width: 100%;
-    padding: 8px 12px 8px 36px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-primary);
-    background: var(--bg-base);
-    color: var(--text-primary);
-    font-size: 12px;
-    font-family: var(--font-sans);
-    font-weight: 400;
-    outline: none;
-    transition: border-color var(--transition-fast);
-  }
-
-  .search-bar input:focus {
-    border-color: var(--border-focus);
-  }
-
-  .search-bar input::placeholder { color: var(--text-tertiary); font-weight: 400; }
-
-  .search-wrapper {
-    position: relative;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-tertiary);
-    pointer-events: none;
-    transition: color var(--transition-fast);
-  }
-
-  .search-wrapper:focus-within .search-icon { color: var(--accent); }
-
-  /* ===== SITE LIST ===== */
-  .site-list {
-    flex: 1;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.06) transparent;
-  }
-
-  .site-list::-webkit-scrollbar { width: 4px; }
-  .site-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
-
-  .site-item {
-    padding: 14px 22px;
-    cursor: pointer;
-    transition: background var(--transition-fast);
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .site-item:hover {
-    background: var(--bg-surface);
-  }
-
-  .site-item.selected {
-    background: var(--bg-surface-hover);
-    border-left: 2px solid var(--accent);
-    padding-left: 20px;
-  }
-
-  .site-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .site-dot.green { background: var(--green); }
-  .site-dot.yellow { background: var(--amber); }
-  .site-dot.red { background: var(--red); }
-
-  .site-info { flex: 1; min-width: 0; }
-
-  .site-name {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-
-  .site-meta {
-    font-size: 11px;
-    color: var(--text-tertiary);
-    margin-top: 1px;
-    font-weight: 400;
-  }
-
-  .partner-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 1px 7px;
-    border-radius: 4px;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
-  .partner-tag.petrom {
-    background: var(--petrom-bg);
-    color: var(--petrom-color);
-    border: 1px solid var(--petrom-border);
-  }
-
-  .partner-tag.petromin {
-    background: var(--petromin-bg);
-    color: var(--petromin-color);
-    border: 1px solid var(--petromin-border);
-  }
-
-  .site-rating {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    flex-shrink: 0;
-    letter-spacing: -0.02em;
-  }
-
-  .rec-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
-  .rec-badge.shortlist {
-    background: var(--green-bg);
-    color: var(--green);
-    border: 1px solid var(--green-border);
-  }
-
-  .rec-badge.assessed {
-    background: var(--accent-bg);
-    color: var(--accent);
-    border: 1px solid var(--accent-border);
-  }
-
-  .rec-badge.maybe {
-    background: var(--amber-bg);
-    color: var(--amber);
-    border: 1px solid var(--amber-border);
-  }
-
-  .rec-badge.nogo {
-    background: var(--red-bg);
-    color: var(--red);
-    border: 1px solid var(--red-border);
-  }
-
-  .rec-badge.priority {
-    background: var(--purple-bg);
-    color: var(--purple);
-    border: 1px solid var(--purple-border);
-  }
-
-  .rec-badge.visit {
-    background: var(--accent-bg);
-    color: var(--accent);
-    border: 1px solid var(--accent-border);
-  }
-
-  /* ===== MAP ===== */
-  .map-container { flex: 1; position: relative; background: var(--bg-base); }
-  #map { width: 100%; height: 100%; }
-
-  /* ===== POPUP STYLES ===== */
-  .leaflet-popup-content-wrapper {
-    background: var(--bg-elevated) !important;
-    border: 1px solid var(--border-primary) !important;
-    border-radius: var(--radius-lg) !important;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
-    padding: 0 !important;
-  }
-
-  .leaflet-popup-tip {
-    background: var(--bg-elevated) !important;
-    border: 1px solid var(--border-primary) !important;
-  }
-
-  .leaflet-popup-content { margin: 0 !important; width: 360px !important; font-family: var(--font-sans) !important; font-size: 12px !important; }
-
-  .leaflet-popup-close-button {
-    color: var(--text-tertiary) !important;
-    font-size: 20px !important;
-    right: 10px !important;
-    top: 8px !important;
-    transition: color var(--transition-fast) !important;
-    width: 24px !important;
-    height: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .leaflet-popup-close-button:hover { color: var(--text-primary) !important; }
-
-  .popup-inner { padding: 18px; }
-
-  .popup-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .popup-grade-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 4px;
-  }
-
-  .popup-grade-dot.green { background: var(--green); }
-  .popup-grade-dot.yellow { background: var(--amber); }
-  .popup-grade-dot.red { background: var(--red); }
-
-  .popup-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-  }
-
-  .popup-subtitle {
-    font-size: 10.5px;
-    color: var(--text-tertiary);
-    margin-top: 3px;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-  }
-
-  .popup-rating-big {
-    font-family: var(--font-mono);
-    font-size: 24px;
-    font-weight: 600;
-    text-align: right;
-    margin-left: auto;
-    flex-shrink: 0;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--text-primary);
-  }
-
-  .popup-rating-big small {
-    font-size: 13px;
-    font-weight: 500;
-    opacity: 0.4;
-  }
-
-  .popup-rec {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .popup-rec.shortlist { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
-  .popup-rec.maybe { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
-  .popup-rec.nogo { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
-  .popup-rec.visit { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
-  .popup-rec.priority { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
-
-  /* Criteria grid (UAE-style 6-bar overview) */
-  .popup-criteria {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    margin-bottom: 12px;
-  }
-
-  .criteria-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 6px 9px;
-    background: var(--bg-surface);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-subtle);
-    transition: background var(--transition-fast);
-  }
-
-  .criteria-item:hover { background: var(--bg-surface-hover); }
-
-  .criteria-label {
-    font-size: 8.5px;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 600;
-  }
-
-  .criteria-bar-container {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .criteria-bar-bg {
-    width: 40px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .criteria-bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .criteria-val {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    width: 16px;
-    text-align: right;
-  }
-
-  /* Notes overview */
-  .popup-notes {
-    font-size: 10.5px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    padding: 9px 11px;
-    background: var(--bg-surface);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-primary);
-    border-left: 2px solid var(--accent);
-    margin-bottom: 10px;
-  }
-
-  /* Detail sections */
-  .popup-details {
-    margin-top: 2px;
-  }
-
-  .popup-section {
-    margin-bottom: 8px;
-  }
-
-  .popup-section-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 5px 0;
-    user-select: none;
-  }
-
-  .popup-section-toggle:hover .popup-section-title { color: var(--text-secondary); }
-
-  .popup-section-title {
-    font-size: 9px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    transition: color var(--transition-fast);
-  }
-
-  .popup-section-chevron {
-    width: 12px;
-    height: 12px;
-    color: var(--text-tertiary);
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .popup-section.expanded .popup-section-chevron { transform: rotate(180deg); }
-
-  .popup-section-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .popup-section.expanded .popup-section-content { max-height: 400px; }
-
-  .popup-text {
-    font-size: 11px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    padding: 8px 11px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-primary);
-    max-height: 120px;
-    overflow-y: auto;
-    font-weight: 400;
-  }
-
-  .popup-text::-webkit-scrollbar { width: 3px; }
-  .popup-text::-webkit-scrollbar-track { background: transparent; }
-  .popup-text::-webkit-scrollbar-thumb { background: rgba(200, 212, 224, 0.2); border-radius: 3px; }
-
-  /* Divider in popup */
-  .popup-divider {
-    height: 1px;
-    background: var(--border-primary);
-    margin: 10px 0;
-  }
-
-  /* Info bar: visit date, photos, satellite links */
-  .popup-info-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
-  }
-
-  .info-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.15s ease;
-    cursor: default;
-  }
-
-  .info-tag.visited {
-    background: rgba(34, 197, 94, 0.08);
-    color: #22c55e;
-    border: 1px solid rgba(34, 197, 94, 0.2);
-  }
-
-  .info-tag.photos {
-    background: rgba(168, 85, 247, 0.08);
-    color: #a855f7;
-    border: 1px solid rgba(168, 85, 247, 0.2);
-    cursor: pointer;
-  }
-
-  .info-tag.photos:hover {
-    background: rgba(168, 85, 247, 0.15);
-    border-color: rgba(168, 85, 247, 0.4);
-  }
-
-  .info-tag.satellite {
-    background: rgba(14, 165, 233, 0.08);
-    color: #0ea5e9;
-    border: 1px solid rgba(14, 165, 233, 0.2);
-    cursor: pointer;
-  }
-
-  .info-tag.satellite:hover {
-    background: rgba(14, 165, 233, 0.15);
-    border-color: rgba(14, 165, 233, 0.4);
-  }
-
-  /* Facilities list */
-  .popup-facilities {
-    list-style: none;
-    padding: 8px 10px;
-    margin: 0;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-  }
-
-  .popup-facilities li {
-    font-size: 10.5px;
-    color: #c8d4e0;
-    padding: 3px 0;
-    line-height: 1.5;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .popup-facilities li:last-child { border-bottom: none; }
-
-  .popup-facilities li::before {
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #3b82f6;
-    flex-shrink: 0;
-  }
-
-  /* ===== LEGEND ===== */
-  .legend-overlay {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: var(--bg-overlay);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-primary);
-    border-radius: var(--radius-lg);
-    padding: 14px 18px;
-    z-index: 800;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 180px;
-  }
-
-  .legend-title {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 2px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    padding: 2px 0;
-  }
-
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .legend-dot.green { background: var(--green); }
-  .legend-dot.yellow { background: var(--amber); }
-  .legend-dot.red { background: var(--red); }
-  .legend-dot.petrom { background: var(--petrom-color); }
-  .legend-dot.petromin { background: var(--petromin-color); }
-
-  .legend-sep {
-    height: 1px;
-    background: var(--border-primary);
-    margin: 6px 0;
-  }
-
-  /* ===== COMPETITION TOGGLE ===== */
-  .comp-toggle { gap: 4px; display: inline-flex; align-items: center; }
-  .comp-toggle.active { background: var(--red-bg); border-color: var(--red-border); color: var(--red); }
-
-  .comp-ring { transition: opacity 0.3s ease; }
-
-  .comp-tooltip {
-    background: var(--bg-elevated) !important;
-    border: 1px solid var(--border-primary) !important;
-    color: var(--text-primary) !important;
-    font-family: var(--font-sans) !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    padding: 4px 10px !important;
-    border-radius: 6px !important;
-  }
-  .comp-tooltip::before { border-top-color: var(--bg-elevated) !important; }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .main-content { flex-direction: column; }
-    .ds-sidebar { width: 100%; min-width: unset; height: 45vh; }
-    .map-container { height: 55vh; }
-    .ds-sidebar-header { padding: 14px 16px 10px; }
-    .partner-toggle, .ds-stats-row, .filter-bar, .search-bar { padding-left: 16px; padding-right: 16px; }
-    .site-item { padding: 9px 16px; }
-    .legend-overlay { bottom: 12px; right: 12px; padding: 12px 14px; }
-  }
-
-  /* ===== ANIMATIONS (removed decorative animations) ===== */
-
-  /* Leaflet overrides */
-  .leaflet-container {
-    background: var(--bg-base) !important;
-    font-family: var(--font-sans) !important;
-  }
-
-  .leaflet-control-zoom a {
-    background: var(--bg-overlay) !important;
-    color: var(--text-secondary) !important;
-    border-color: var(--border-primary) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    transition: all var(--transition-fast) !important;
-  }
-
-  .leaflet-control-zoom a:hover {
-    background: var(--bg-surface-hover) !important;
-    color: var(--text-primary) !important;
-  }
-
-  .leaflet-control-attribution {
-    background: var(--bg-overlay) !important;
-    color: var(--text-tertiary) !important;
-    font-size: 9px !important;
-  }
-
-  .leaflet-control-attribution a { color: var(--text-tertiary) !important; }
-</style>
-</head>
-<body>
 <script src="auth.js"></script>
-
-<nav class="ds-nav">
-    <div class="ds-nav-left">
-        <a href="index.html" class="ds-back-link">
-            <svg viewBox="0 0 12 12" fill="none"><path d="M7.5 2L3.5 6L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Portfolio
-        </a>
-        <span class="ds-nav-title">Morocco Assessment</span>
-        <span class="ds-nav-subtitle">Petrom &middot; Petromin &middot; 34 sites</span>
-    </div>
-    <div class="ds-nav-right">
-    </div>
-</nav>
-
-<div class="main-content">
-<div class="ds-sidebar">
-  <div class="ds-sidebar-header">
-    <h2>Morocco Site Assessment</h2>
-    <p>Petrom + Petromin &mdash; 34 Sites Under Evaluation</p>
-  </div>
-
-  <div class="partner-toggle">
-    <button class="partner-btn active all-p" data-partner="all">All Sites <span class="btn-count" id="count-all">34</span></button>
-    <button class="partner-btn petrom-p" data-partner="petrom">Petrom <span class="btn-count" id="count-petrom">19</span></button>
-    <button class="partner-btn petromin-p" data-partner="petromin">Petromin <span class="btn-count" id="count-petromin">15</span></button>
-  </div>
-
-  <div class="ds-stats-row">
-    <div class="ds-stat-badge" data-filter="green"><span class="stat-count" id="stat-green">0</span>Prime (&ge;6.5)</div>
-    <div class="ds-stat-badge" data-filter="yellow"><span class="stat-count" id="stat-yellow">0</span>Viable (5&ndash;6.4)</div>
-    <div class="ds-stat-badge" data-filter="red"><span class="stat-count" id="stat-red">0</span>Weak (&lt;5)</div>
-    <div class="ds-stat-badge" data-filter="assessed"><span class="stat-count" id="stat-assessed">0</span>Assessed</div>
-  </div>
-
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn green-f" data-filter="green">Prime</button>
-    <button class="filter-btn yellow-f" data-filter="yellow">Viable</button>
-    <button class="filter-btn red-f" data-filter="red">Weak</button>
-    <button class="filter-btn" data-filter="assessed">Assessed</button>
-    <button class="filter-btn" data-filter="desktop">Desktop Only</button>
-    <button class="filter-btn comp-toggle" id="comp-toggle" data-active="false">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-      Competition
-    </button>
-  </div>
-
-  <div class="search-bar">
-    <div class="search-wrapper">
-      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="search-input" placeholder="Search by site name, code, or city...">
-    </div>
-  </div>
-
-  <div class="site-list" id="site-list"></div>
-</div>
-
-<div class="map-container">
-  <div id="map"></div>
-
-  <div class="legend-overlay">
-    <div class="legend-title">Recommendations</div>
-    <div class="legend-item"><span class="legend-dot green"></span>Prime &mdash; Score &ge; 6.5</div>
-    <div class="legend-item"><span class="legend-dot yellow"></span>Viable &mdash; Score 5.0&ndash;6.4</div>
-    <div class="legend-item"><span class="legend-dot red"></span>Weak &mdash; Score &lt; 5.0</div>
-    <div class="legend-sep"></div>
-    <div class="legend-title">Partners</div>
-    <div class="legend-item"><span class="legend-dot petrom"></span>Petrom (350+ stations)</div>
-    <div class="legend-item"><span class="legend-dot petromin"></span>Petromin</div>
-    <div class="legend-sep"></div>
-    <div class="legend-title">Competition Density</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>Low &mdash; Opportunity</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#eab308"></span>Moderate</div>
-    <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>High &mdash; Saturated</div>
-  </div>
-</div>
-</div>
-
 <script src="morocco-data.js"></script>
 <script src="morocco-competitors.js"></script>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-left">
+    <a href="index.html" class="topnav-back">← Dashboard</a>
+  </div>
+  <div class="topnav-center">
+    <span class="topnav-flag">🇲🇦</span>
+    <span class="topnav-title">Morocco Site Assessment</span>
+  </div>
+  <div class="topnav-right">WAG</div>
+</nav>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">Morocco</h1>
+      <p class="sidebar-subtitle">Petrom & Petromin partner network</p>
+    </div>
+
+    <div class="stats-row" id="statsRow"></div>
+
+    <div class="partner-toggle" id="partnerToggle">
+      <button class="partner-btn active" data-partner="all">All</button>
+      <button class="partner-btn" data-partner="Petrom">Petrom</button>
+      <button class="partner-btn" data-partner="Petromin">Petromin</button>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-group" id="filterGroup"></div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search sites..." class="search-input">
+    </div>
+
+    <div class="competition-toggle">
+      <label class="toggle-label">
+        <input type="checkbox" id="competitionToggle">
+        <span class="toggle-text">Show competition</span>
+      </label>
+    </div>
+
+    <div class="site-list" id="siteList"></div>
+
+    <div class="sidebar-footer">
+      <span class="footer-text">34 sites · WAG Aftermarket</span>
+    </div>
+  </aside>
+
+  <!-- MAP -->
+  <div class="map-container">
+    <div id="map"></div>
+    <div class="map-legend" id="mapLegend">
+      <div class="legend-title">Grade</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#22c55e"></span> Prime</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#eab308"></span> Viable</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span> Weak</div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ===== INITIALIZE MAP =====
-const map = L.map('map', {
-  center: [33.5, -7.5],
-  zoom: 10,
-  zoomControl: false,
-  attributionControl: false
-});
+(function() {
+  const GRADE_COLORS = { green: '#22c55e', yellow: '#eab308', red: '#ef4444' };
+  const GRADE_LABELS = { green: 'Prime', yellow: 'Viable', red: 'Weak' };
+  const CRITERIA_LABELS = ['Traffic', 'Location', 'Access', 'Space', 'Low Compet.', 'Demand'];
+  const CRITERIA_KEYS = ['traffic', 'location', 'access', 'space', 'competition', 'demand'];
 
-L.control.zoom({ position: 'topright' }).addTo(map);
-L.control.attribution({ position: 'bottomleft', prefix: false }).addTo(map);
+  // Flatten data
+  const ALL_SITES = [...(MOROCCO_DATA.petrom || []), ...(MOROCCO_DATA.petromin || [])];
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OSM &copy; CARTO',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
+  // State
+  let activeFilters = {};
+  let activePartner = 'all';
+  let searchQuery = '';
+  let showCompetition = false;
+  let markers = [];
+  let competitionCircles = [];
+  let selectedSite = null;
 
-// ===== MERGE DATA =====
-const ALL_SITES = [
-  ...MOROCCO_DATA.petrom.map(s => ({ ...s, _partner: 'petrom' })),
-  ...MOROCCO_DATA.petromin.map(s => ({ ...s, _partner: 'petromin' }))
-];
+  // Init map
+  const map = L.map('map', { zoomControl: true }).setView([33.3, -7.5], 8);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
 
-// ===== COLORS =====
-const COLORS = { green: '#22c55e', yellow: '#eab308', red: '#ef4444' };
-const PARTNER_COLORS = { petrom: '#f97316', petromin: '#06b6d4' };
-
-// ===== HELPERS =====
-function criteriaColor(val) {
-  if (val >= 7) return COLORS.green;
-  if (val >= 5) return COLORS.yellow;
-  return COLORS.red;
-}
-
-const CRITERIA_LABELS = {
-  traffic: 'Traffic',
-  location: 'Location',
-  access: 'Access',
-  space: 'Space',
-  competition: 'Low Compet.',
-  demand: 'Demand'
-};
-
-// ===== CREATE MARKERS =====
-const markers = [];
-const markerMap = {};
-
-ALL_SITES.forEach(site => {
-  if (!site.lat || !site.lng) return;
-
-  const color = COLORS[site.grade] || COLORS.yellow;
-  const partnerColor = PARTNER_COLORS[site._partner];
-  const isAssessed = site.status === 'Assessed';
-  const radius = isAssessed ? 8 : 6;
-
-  const marker = L.circleMarker([site.lat, site.lng], {
-    radius: radius,
-    fillColor: color,
-    color: partnerColor,
-    weight: 2.5,
-    opacity: 1,
-    fillOpacity: 0.75
-  });
-
-  const popupHTML = buildPopup(site);
-  marker.bindPopup(popupHTML, { maxWidth: 380, className: 'dark-popup' });
-
-  marker.siteData = site;
-  marker.addTo(map);
-  markers.push(marker);
-  markerMap[site.code] = marker;
-});
-
-// Competition overlay — marker-based (visible at any zoom)
-const COMP_COLORS = { 1: '#22c55e', 2: '#eab308', 3: '#ef4444' };
-const COMP_LABELS = { 1: 'Low Competition', 2: 'Moderate Competition', 3: 'High Competition' };
-const COMP_RING_SIZE = { 1: 14, 2: 18, 3: 22 };
-
-const compMarkers = [];
-markers.forEach(m => {
-    const key = m.siteData.code;
-    const level = COMPETITION_DATA[key];
-    if (!level) return;
-    const c = COMP_COLORS[level];
-    const r = COMP_RING_SIZE[level];
-    const ring = L.circleMarker(m.getLatLng(), {
-        radius: r,
-        fillColor: c,
-        fillOpacity: 0.12,
-        color: c,
-        weight: 2,
-        opacity: 0.6,
-        className: 'comp-ring comp-ring-' + level
-    });
-    ring.bindTooltip(COMP_LABELS[level], { direction: 'top', className: 'comp-tooltip', offset: [0, -r] });
-    compMarkers.push(ring);
-});
-
-const compLayer = L.layerGroup(compMarkers);
-let compVisible = false;
-
-document.getElementById('comp-toggle').addEventListener('click', function() {
-    compVisible = !compVisible;
-    this.classList.toggle('active', compVisible);
-    if (compVisible) {
-        compLayer.addTo(map);
-    } else {
-        compLayer.remove();
-    }
-});
-
-function buildPopup(site) {
-  const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner.toUpperCase()}</span>`;
-
-  // 6-criteria grid
-  let criteriaHTML = '';
-  const scores = site.derived_scores || {};
-  if (Object.keys(scores).length > 0) {
-    for (const [key, label] of Object.entries(CRITERIA_LABELS)) {
-      const val = scores[key] || 0;
-      const pct = val * 10;
-      const barColor = criteriaColor(val);
-      criteriaHTML += `
-        <div class="criteria-item">
-          <span class="criteria-label">${label}</span>
-          <div class="criteria-bar-container">
-            <div class="criteria-bar-bg">
-              <div class="criteria-bar-fill" style="width:${pct}%;background:${barColor}"></div>
-            </div>
-            <span class="criteria-val">${val}</span>
-          </div>
-        </div>`;
-    }
-  }
-
-  // Expandable detail sections — always show, same as UAE
-  const uid = (site.code || site.name).replace(/[\s\.]+/g, '_');
-  let detailsHTML = '';
-
-  // Overview note
-  const noteText = site.key_insight || site.clean_overview || '';
-  const notesHTML = noteText ? `<div class="popup-notes">${noteText}</div>` : '';
-
-  // Deep research expandable sections
-  const expandSections = [
-    { key: 'market_intel', label: 'Market Intelligence' },
-    { key: 'competitor_analysis', label: 'Competitor Analysis' },
-    { key: 'traffic_access', label: 'Traffic & Access' },
-    { key: 'infrastructure_new', label: 'Infrastructure Projects' },
-    { key: 'commercial_context_new', label: 'Commercial Context' },
-    { key: 'fleet_potential', label: 'Fleet Potential' }
-  ];
-
-  expandSections.forEach((sec, i) => {
-    const val = site[sec.key] || '';
-    const secId = uid + '_' + i;
-    const content = val.length > 5 ? val.substring(0, 600) + (val.length > 600 ? '\u2026' : '') : '<span style="opacity:.5">Data pending</span>';
-    detailsHTML += `
-      <div class="popup-section" id="section-${secId}">
-        <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${secId}');s.classList.toggle('expanded');})(event)">
-          <span class="popup-section-title">${sec.label}</span>
-          <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-        <div class="popup-section-content">
-          <div class="popup-text">${content}</div>
-        </div>
-      </div>`;
-  });
-
-  // Weighted score
-  const ws = site.weighted_score || site.derived_scores?.weighted_score || '\u2014';
-  const scoreGrade = ws >= 6.5 ? 'green' : ws >= 5 ? 'yellow' : 'red';
-
-  // Site info bar: visit date, facilities, photo/satellite links
-  let infoBarHTML = '';
-  const infoParts = [];
-  if (site.visit_date) infoParts.push(`<span class="info-tag visited">Visited ${site.visit_date}</span>`);
-  if (site.photos_url) infoParts.push(`<a href="${site.photos_url}" target="_blank" rel="noopener" class="info-tag photos">\ud83d\udcf8 Photos</a>`);
-  if (site.satellite_url) infoParts.push(`<a href="${site.satellite_url}" target="_blank" rel="noopener" class="info-tag satellite">\ud83d\udef0 Satellite</a>`);
-  if (infoParts.length) {
-    infoBarHTML = `<div class="popup-info-bar">${infoParts.join('')}</div>`;
-  }
-
-  // Facilities list
-  let facilitiesHTML = '';
-  if (site.facilities && site.facilities.length > 3) {
-    const items = site.facilities.split('\n').filter(l => l.trim()).map(l => {
-      const clean = l.replace(/^[\u2022\-\*]\s*/, '').trim();
-      return clean ? `<li>${clean}</li>` : '';
-    }).join('');
-    if (items) {
-      const facUid = (site.code || '') + '_fac';
-      facilitiesHTML = `
-      <div class="popup-section" id="section-${facUid}">
-        <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${facUid}');s.classList.toggle('expanded');})(event)">
-          <span class="popup-section-title">\ud83c\udfe2 Facilities On-Site</span>
-          <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-        <div class="popup-section-content">
-          <ul class="popup-facilities">${items}</ul>
-        </div>
-      </div>`;
-    }
-  }
-
-  return `
-    <div class="popup-inner">
-      <div class="popup-header">
-        <div class="popup-grade-dot ${site.grade}"></div>
-        <div>
-          <div class="popup-title">${site.code} ${site.name}${partnerTag}</div>
-          <div class="popup-subtitle">${site.city || ''} ${site.area ? '&middot; ' + site.area : ''} &middot; ${site.status || 'Desktop Research'}</div>
-        </div>
-        <div class="popup-score-big ${scoreGrade}">${ws}</div>
-      </div>
-      ${infoBarHTML}
-      <div class="popup-criteria">${criteriaHTML}</div>
-      ${notesHTML}
-      ${facilitiesHTML}
-      <div class="popup-divider"></div>
-      <div class="popup-details">${detailsHTML}</div>
-    </div>`;
-}
-
-// ===== STATS =====
-function updateStats(filteredSites) {
-  document.getElementById('stat-green').textContent = filteredSites.filter(s => s.grade === 'green').length;
-  document.getElementById('stat-yellow').textContent = filteredSites.filter(s => s.grade === 'yellow').length;
-  document.getElementById('stat-red').textContent = filteredSites.filter(s => s.grade === 'red').length;
-  document.getElementById('stat-assessed').textContent = filteredSites.filter(s => s.status === 'Assessed').length;
-}
-
-// ===== SIDEBAR LIST =====
-function renderList(sites) {
-  const list = document.getElementById('site-list');
-  list.innerHTML = '';
-
-  sites.sort((a, b) => {
-    // Assessed first, then by grade priority (green > yellow > red), then alphabetical
-    const gradeOrder = { green: 0, yellow: 1, red: 2 };
-    const statusOrder = (a.status === 'Assessed' ? 0 : 1) - (b.status === 'Assessed' ? 0 : 1);
-    if (statusOrder !== 0) return statusOrder;
-    const go = (gradeOrder[a.grade] || 1) - (gradeOrder[b.grade] || 1);
-    if (go !== 0) return go;
-    if (a.rating && b.rating) return b.rating - a.rating;
-    return (a.name || '').localeCompare(b.name || '');
-  });
-
-  sites.forEach((site, idx) => {
-    const el = document.createElement('div');
-    el.className = 'site-item';
-
-    const ws = site.weighted_score || site.derived_scores?.weighted_score;
-    const ratingStr = ws ? ws.toFixed(1) : '\u2014';
-    const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner === 'petrom' ? 'PTR' : 'PTM'}</span>`;
-    const assessedTag = site.status === 'Assessed' ? '<span class="rec-badge assessed">Assessed</span>' : '';
-
-    el.innerHTML = `
-      <div class="site-dot ${site.grade}"></div>
-      <div class="site-info">
-        <div class="site-name">${site.code} ${site.name}${partnerTag}${assessedTag}</div>
-        <div class="site-meta">${site.city || ''} ${site.area ? '&middot; ' + site.area : ''}</div>
-      </div>
-      <div class="site-rating">${ratingStr}</div>
+  // Stats
+  function renderStats() {
+    const prime = ALL_SITES.filter(s => s.grade === 'green').length;
+    const viable = ALL_SITES.filter(s => s.grade === 'yellow').length;
+    const weak = ALL_SITES.filter(s => s.grade === 'red').length;
+    const assessed = ALL_SITES.filter(s => s.status === 'Assessed').length;
+    document.getElementById('statsRow').innerHTML = `
+      <div class="stat-badge stat-green"><span class="stat-val">${prime}</span><span class="stat-lbl">Prime</span></div>
+      <div class="stat-badge stat-yellow"><span class="stat-val">${viable}</span><span class="stat-lbl">Viable</span></div>
+      <div class="stat-badge stat-red"><span class="stat-val">${weak}</span><span class="stat-lbl">Weak</span></div>
+      <div class="stat-badge stat-blue"><span class="stat-val">${assessed}</span><span class="stat-lbl">Assessed</span></div>
     `;
-    el.addEventListener('click', () => {
-      if (site.lat && site.lng) {
-        map.flyTo([site.lat, site.lng], 14, { duration: 0.8 });
-        if (markerMap[site.code]) markerMap[site.code].openPopup();
-      }
-      document.querySelectorAll('.site-item').forEach(i => i.classList.remove('selected'));
-      el.classList.add('selected');
-    });
-    list.appendChild(el);
-  });
-
-  updateStats(sites);
-}
-
-// ===== FILTERING =====
-let activePartner = 'all';
-const activeFilters = new Set();
-let searchTerm = '';
-
-const FILTER_CHECKS_MA = {
-  green: s => s.grade === 'green',
-  yellow: s => s.grade === 'yellow',
-  red: s => s.grade === 'red',
-  assessed: s => s.status === 'Assessed',
-  desktop: s => s.status !== 'Assessed'
-};
-
-const FILTER_GROUPS_MA = {
-  grade: ['green', 'yellow', 'red'],
-  status: ['assessed', 'desktop']
-};
-
-function getFilterGroupMA(f) {
-  for (const [g, m] of Object.entries(FILTER_GROUPS_MA)) {
-    if (m.includes(f)) return g;
   }
-  return null;
-}
 
-function passSearchMA(site) {
-  if (!searchTerm) return true;
-  const term = searchTerm.toLowerCase();
-  return (site.name || '').toLowerCase().includes(term) ||
-         (site.code || '').toLowerCase().includes(term) ||
-         (site.city || '').toLowerCase().includes(term) ||
-         (site.area || '').toLowerCase().includes(term);
-}
-
-function getVisibleSites() {
-  return ALL_SITES.filter(site => {
-    // Partner filter
-    if (activePartner !== 'all' && site._partner !== activePartner) return false;
-
-    // Multi-select filters
-    if (activeFilters.size > 0) {
-      const grouped = {};
-      activeFilters.forEach(f => {
-        const g = getFilterGroupMA(f) || 'other';
-        if (!grouped[g]) grouped[g] = [];
-        grouped[g].push(f);
-      });
-      for (const [group, filters] of Object.entries(grouped)) {
-        const passGroup = filters.some(f => FILTER_CHECKS_MA[f] ? FILTER_CHECKS_MA[f](site) : false);
-        if (!passGroup) return false;
-      }
-    }
-
-    return passSearchMA(site);
-  });
-}
-
-function applyFilters() {
-  const visible = getVisibleSites();
-  renderList(visible);
-
-  // Update partner counts
-  const partnerFiltered = ALL_SITES.filter(s => {
-    if (activePartner !== 'all' && s._partner !== activePartner) return false;
-    return true;
-  });
-  document.getElementById('count-all').textContent = ALL_SITES.length;
-  document.getElementById('count-petrom').textContent = ALL_SITES.filter(s => s._partner === 'petrom').length;
-  document.getElementById('count-petromin').textContent = ALL_SITES.filter(s => s._partner === 'petromin').length;
-
-  // Show/hide markers
-  const visibleCodes = new Set(visible.map(s => s.code));
-  markers.forEach(m => {
-    const code = m.siteData.code;
-    if (visibleCodes.has(code)) {
-      const partnerColor = PARTNER_COLORS[m.siteData._partner];
-      m.setStyle({ fillOpacity: 0.75, opacity: 1, color: partnerColor });
-      m.setRadius(m.siteData.status === 'Assessed' ? 8 : 6);
-    } else {
-      m.setStyle({ fillOpacity: 0.06, opacity: 0.06 });
-      m.setRadius(3);
-    }
-  });
-}
-
-// Partner toggle
-document.querySelectorAll('.partner-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+  // Partner toggle
+  document.getElementById('partnerToggle').addEventListener('click', function(e) {
+    const btn = e.target.closest('.partner-btn');
+    if (!btn) return;
     document.querySelectorAll('.partner-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activePartner = btn.dataset.partner;
-    applyFilters();
+    updateView();
   });
-});
 
-// Filter buttons (multi-select)
-document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    if (f === 'all') {
-      activeFilters.clear();
-      document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  // Filters
+  const FILTER_GROUPS = [
+    { label: 'Grade', filters: [
+      { key: 'grade', value: 'green', label: 'Prime' },
+      { key: 'grade', value: 'yellow', label: 'Viable' },
+      { key: 'grade', value: 'red', label: 'Weak' }
+    ]},
+    { label: 'Status', filters: [
+      { key: 'status', value: 'Assessed', label: 'Assessed' },
+      { key: 'status', value: 'Desktop Research', label: 'Desktop Only' }
+    ]}
+  ];
+
+  function renderFilters() {
+    let html = '<button class="filter-btn filter-all active" data-action="all">All</button>';
+    FILTER_GROUPS.forEach(group => {
+      html += `<span class="filter-divider"></span>`;
+      group.filters.forEach(f => {
+        const isActive = activeFilters[f.key] && activeFilters[f.key].includes(f.value);
+        html += `<button class="filter-btn${isActive ? ' active' : ''}" data-key="${f.key}" data-value="${f.value}">${f.label}</button>`;
+      });
+    });
+    document.getElementById('filterGroup').innerHTML = html;
+    const hasAny = Object.keys(activeFilters).some(k => activeFilters[k].length > 0);
+    const allBtn = document.querySelector('.filter-all');
+    if (allBtn) allBtn.classList.toggle('active', !hasAny);
+  }
+
+  document.getElementById('filterGroup').addEventListener('click', function(e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    if (btn.dataset.action === 'all') {
+      activeFilters = {};
     } else {
-      document.querySelector('.filter-btn[data-filter="all"]')?.classList.remove('active');
-      if (activeFilters.has(f)) {
-        activeFilters.delete(f);
-        btn.classList.remove('active');
-      } else {
-        activeFilters.add(f);
-        btn.classList.add('active');
-      }
-      if (activeFilters.size === 0) {
-        document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+      const key = btn.dataset.key;
+      const val = btn.dataset.value;
+      if (!activeFilters[key]) activeFilters[key] = [];
+      const idx = activeFilters[key].indexOf(val);
+      if (idx >= 0) activeFilters[key].splice(idx, 1);
+      else activeFilters[key].push(val);
+      if (activeFilters[key].length === 0) delete activeFilters[key];
+    }
+    renderFilters();
+    updateView();
+  });
+
+  // Search
+  document.getElementById('searchInput').addEventListener('input', function(e) {
+    searchQuery = e.target.value.toLowerCase();
+    updateView();
+  });
+
+  // Competition toggle
+  document.getElementById('competitionToggle').addEventListener('change', function(e) {
+    showCompetition = e.target.checked;
+    updateCompetition();
+  });
+
+  function filterSite(site) {
+    // Partner
+    if (activePartner !== 'all' && site.partner !== activePartner) return false;
+    // Search
+    if (searchQuery) {
+      const hay = `${site.code} ${site.name} ${site.area} ${site.city} ${site.partner}`.toLowerCase();
+      if (!hay.includes(searchQuery)) return false;
+    }
+    // Filters
+    for (const key of Object.keys(activeFilters)) {
+      if (activeFilters[key].length === 0) continue;
+      if (key === 'grade') {
+        if (!activeFilters[key].includes(site.grade)) return false;
+      } else if (key === 'status') {
+        if (!activeFilters[key].includes(site.status)) return false;
       }
     }
-    applyFilters();
+    return true;
+  }
+
+  function getFiltered() {
+    return ALL_SITES.filter(filterSite).sort((a, b) => (b.weighted_score || 0) - (a.weighted_score || 0));
+  }
+
+  // Sidebar list
+  function renderList(sites) {
+    const list = document.getElementById('siteList');
+    if (sites.length === 0) {
+      list.innerHTML = '<div class="list-empty">No sites match filters</div>';
+      return;
+    }
+    list.innerHTML = sites.map(s => {
+      const gc = GRADE_COLORS[s.grade] || '#64748b';
+      const score = s.weighted_score || (s.derived_scores && s.derived_scores.weighted_score) || 0;
+      const isSelected = selectedSite && selectedSite.code === s.code;
+      return `<div class="site-item${isSelected ? ' selected' : ''}" data-code="${s.code}">
+        <div class="site-item-top">
+          <span class="grade-dot" style="background:${gc}"></span>
+          <span class="site-code">${s.code}</span>
+          <span class="site-name-text">${escapeHTML(s.name)}</span>
+          <span class="badge badge-partner">${s.partner}</span>
+          <span class="site-score" style="color:${gc}">${score.toFixed(1)}</span>
+        </div>
+        <div class="site-item-sub">${escapeHTML(s.city)} · ${escapeHTML(s.area)}</div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('siteList').addEventListener('click', function(e) {
+    const item = e.target.closest('.site-item');
+    if (!item) return;
+    const code = item.dataset.code;
+    const site = ALL_SITES.find(s => s.code === code);
+    if (site) openPopup(site);
   });
-});
 
-// Search
-document.getElementById('search-input').addEventListener('input', e => {
-  searchTerm = e.target.value;
-  applyFilters();
-});
+  // Map markers
+  function renderMarkers(sites) {
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+    sites.forEach(s => {
+      const gc = GRADE_COLORS[s.grade] || '#64748b';
+      const marker = L.circleMarker([s.lat, s.lng], {
+        radius: 6,
+        fillColor: gc,
+        fillOpacity: 0.85,
+        color: 'rgba(0,0,0,0.3)',
+        weight: 1
+      }).addTo(map);
+      marker.on('click', () => openPopup(s));
+      markers.push(marker);
+    });
+  }
 
-// Initial render
-applyFilters();
+  function updateCompetition() {
+    competitionCircles.forEach(c => map.removeLayer(c));
+    competitionCircles = [];
+    if (!showCompetition) return;
+    const filtered = getFiltered();
+    filtered.forEach(s => {
+      const level = COMPETITION_DATA[s.code];
+      if (!level) return;
+      const colors = { 1: '#22c55e', 2: '#eab308', 3: '#ef4444' };
+      const radii = { 1: 600, 2: 900, 3: 1200 };
+      const circle = L.circle([s.lat, s.lng], {
+        radius: radii[level] || 800,
+        fillColor: colors[level] || '#eab308',
+        fillOpacity: 0.08,
+        color: colors[level] || '#eab308',
+        weight: 1,
+        opacity: 0.3
+      }).addTo(map);
+      competitionCircles.push(circle);
+    });
+  }
 
-// Fit bounds
-const allLatLngs = markers.filter(m => m.siteData.lat).map(m => m.getLatLng());
-if (allLatLngs.length) {
-  map.fitBounds(L.latLngBounds(allLatLngs).pad(0.1));
-}
+  // Popup
+  function openPopup(site) {
+    selectedSite = site;
+    renderList(getFiltered());
+    map.setView([site.lat, site.lng], 14);
+    map.closePopup();
+
+    const gc = GRADE_COLORS[site.grade] || '#64748b';
+    const gradeLabel = GRADE_LABELS[site.grade] || site.grade;
+    const score = site.weighted_score || (site.derived_scores && site.derived_scores.weighted_score) || 0;
+    const scores = site.derived_scores || {};
+
+    // Info tags
+    let tags = '';
+    if (site.visit_date) tags += `<span class="popup-tag tag-visit">Visited ${site.visit_date}</span>`;
+    if (site.photos_url) tags += `<a href="${site.photos_url}" target="_blank" class="popup-tag tag-photos">📷 Photos</a>`;
+    if (site.satellite_url) tags += `<a href="${site.satellite_url}" target="_blank" class="popup-tag tag-sat">🛰 Satellite</a>`;
+
+    // Criteria grid
+    let criteriaHTML = '<div class="criteria-grid">';
+    CRITERIA_KEYS.forEach((key, i) => {
+      const val = scores[key] || 0;
+      const pct = val * 10;
+      const barColor = val >= 7 ? '#22c55e' : val >= 5 ? '#eab308' : '#ef4444';
+      criteriaHTML += `<div class="criteria-item">
+        <span class="criteria-label">${CRITERIA_LABELS[i]}</span>
+        <div class="criteria-bar-wrap">
+          <div class="criteria-bar" style="width:${pct}%;background:${barColor}"></div>
+        </div>
+        <span class="criteria-val" style="color:${barColor}">${val}</span>
+      </div>`;
+    });
+    criteriaHTML += '</div>';
+
+    // Key insight
+    let insightHTML = '';
+    if (site.recommendation_rationale) {
+      insightHTML = `<div class="popup-insight">${escapeHTML(site.recommendation_rationale)}</div>`;
+    }
+
+    // Expandable sections
+    let sections = '';
+    sections += makeSection('Market Intelligence', site.population_data || 'Data pending');
+    sections += makeSection('Competitor Analysis', site.competitors || 'Data pending');
+    sections += makeSection('Traffic & Access', site.traffic_data || 'Data pending');
+    sections += makeSection('Infrastructure Projects', site.infrastructure || 'Data pending');
+    sections += makeSection('Commercial Context', site.commercial || 'Data pending');
+    sections += makeSection('Fleet Potential', site.transport || 'Data pending');
+    if (site.facilities) {
+      sections += makeSection('Facilities On-Site', site.facilities);
+    }
+
+    const popupContent = `
+      <div class="site-popup">
+        <div class="popup-header">
+          <span class="grade-dot-lg" style="background:${gc}"></span>
+          <div class="popup-header-text">
+            <div class="popup-name">${escapeHTML(site.code)} ${escapeHTML(site.name)}</div>
+            <div class="popup-sub">${escapeHTML(site.city)} · ${escapeHTML(site.area)} · ${escapeHTML(site.partner)}</div>
+          </div>
+          <span class="popup-score" style="color:${gc}">${score.toFixed(1)}</span>
+        </div>
+        ${tags ? `<div class="popup-tags">${tags}</div>` : ''}
+        ${criteriaHTML}
+        ${insightHTML}
+        <div class="popup-sections">${sections}</div>
+      </div>
+    `;
+
+    const popup = L.popup({
+      maxWidth: 420,
+      minWidth: 380,
+      className: 'custom-popup'
+    }).setLatLng([site.lat, site.lng]).setContent(popupContent).openOn(map);
+
+    setTimeout(() => {
+      document.querySelectorAll('.section-header').forEach(h => {
+        h.addEventListener('click', function() {
+          this.classList.toggle('expanded');
+          this.nextElementSibling.classList.toggle('show');
+        });
+      });
+    }, 50);
+  }
+
+  function makeSection(title, content) {
+    const safe = escapeHTML(content || 'Data pending').replace(/\n/g, '<br>');
+    return `<div class="popup-section">
+      <div class="section-header">▶ ${escapeHTML(title)}</div>
+      <div class="section-body">${safe}</div>
+    </div>`;
+  }
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function updateView() {
+    const filtered = getFiltered();
+    renderList(filtered);
+    renderMarkers(filtered);
+    updateCompetition();
+  }
+
+  // Init
+  renderStats();
+  renderFilters();
+  updateView();
+})();
 </script>
 </body>
 </html>

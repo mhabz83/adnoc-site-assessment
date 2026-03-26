@@ -23,7 +23,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@25.130002,55.260369,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS222",
@@ -47,7 +49,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.095,55.175,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS535",
@@ -68,7 +72,8 @@ const SITES_DATA = [
     "grade": "green",
     "notes": "Business Bay / SZR. Ultra-premium location. Maximum visibility. Corporate catchment.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.185,55.275,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS533",
@@ -94,7 +99,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@25.19837,55.432693,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS209",
@@ -115,7 +122,8 @@ const SITES_DATA = [
     "grade": "green",
     "notes": "Same Al Warqa corridor as Y1 site. Established residential.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.195,55.43,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS220",
@@ -136,7 +144,8 @@ const SITES_DATA = [
     "grade": "green",
     "notes": "E311 near Dubai Hills. Major arterial. Premium catchment nearby.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.085,55.23,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS227",
@@ -160,7 +169,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.155,55.215,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS357",
@@ -181,7 +192,8 @@ const SITES_DATA = [
     "grade": "green",
     "notes": "Jumeirah Beach Road. Ultra-premium area. High car care demand.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.205,55.245,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS969",
@@ -207,7 +219,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@24.46,54.351,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS384",
@@ -228,7 +242,8 @@ const SITES_DATA = [
     "grade": "green",
     "notes": "Arabian Ranches - premium villa community. Very affluent. Strong car care demand.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.055,55.285,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS528",
@@ -252,7 +267,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.115,55.195,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS169",
@@ -278,7 +295,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@24.398722,54.690537,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS171",
@@ -304,7 +323,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@24.320774,54.614905,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS537",
@@ -325,7 +346,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Badaa / Jumeirah. Premium residential. Very high car care demand.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.225,55.265,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS176",
@@ -349,7 +371,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2026,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@25.34,55.385,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS536",
@@ -370,7 +394,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Nad Al Sheba. Established villa area. Good income. Near Meydan.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.145,55.325,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS437",
@@ -391,7 +416,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Near Yas Island. Premium community (Yas Acres). Higher affluence.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.425,54.685,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS228",
@@ -412,7 +438,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Deira side. Dense residential/commercial. High footfall. Cross-border with Sharjah.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.285,55.345,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS232",
@@ -433,7 +460,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Damac Hills - premium master-planned community. Affluent families.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.055,55.26,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS378",
@@ -454,7 +482,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Mirdif - established villa community. Family-oriented. Good income.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.215,55.415,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS463",
@@ -475,7 +504,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Dense Al Nahda. Cross-border with Sharjah. Very high residential density.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.28,55.36,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS527",
@@ -496,7 +526,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Khawaneej - premium Emirati residential. Very affluent.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.24,55.46,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS523",
@@ -517,7 +548,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Khalifa City - established affluent suburb. Good car ownership. EV-friendly.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.435,54.62,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS124",
@@ -538,7 +570,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E311/SMBZ Road. Extremely high traffic. Industrial/commercial zone.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.04,55.12,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS248",
@@ -559,7 +592,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Khawaneej / Al Ttay. Premium villa area. Growing community.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.23,55.44,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS178",
@@ -580,7 +614,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Nahda Sharjah - cross-border with Dubai. Extremely dense residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.31,55.38,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS883",
@@ -601,7 +636,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Qasba / Al Khan. Premium Sharjah waterfront. Good catchment.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.338,55.385,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS114",
@@ -622,7 +658,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E11 Baniyas. Dense residential. High footfall. Multiple competitors.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.504,54.66,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS377",
@@ -643,7 +680,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Near The Villa community - premium residential. Good income levels.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.41,54.53,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS241",
@@ -664,7 +702,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E311 Nadd Al Hamar. Good highway access. Residential nearby.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.173,55.375,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS532",
@@ -688,7 +727,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.23,55.295,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS225",
@@ -709,7 +750,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Quoz - major auto service hub. High car care demand. Strong footfall.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.14,55.235,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS376",
@@ -730,7 +772,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Khawaneej villa area. Premium residential.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.245,55.455,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS529",
@@ -751,7 +794,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Quoz - UAE's largest auto services cluster. Massive car care demand. Heavy competition but proven market.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.145,55.22,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS530",
@@ -772,7 +816,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Muhaisnah dense residential. Near Al Qusais. High footfall.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.27,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS229",
@@ -796,7 +841,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.045,55.31,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS240",
@@ -817,7 +864,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Near Dubai Hills/Barsha. Residential corridor.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.115,55.235,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS174",
@@ -841,7 +889,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.32,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS183",
@@ -862,7 +912,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Taawun - premium Sharjah area near Sahara Centre. Higher income.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.305,55.375,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS193",
@@ -886,7 +937,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.308,55.378,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS165",
@@ -910,7 +963,23 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-03",
+    "assessment_notes": "Assessment (Feb 3, 2026, ~12:00 PM):\nOVERALL RATING: 3/5* (Conditional) - MAYBE\n\nLOCATION:\n- Al-Rahba South - Typical Emirati neighborhood\n- Quiet area with large villas\n- Demographics: 80-90% Emirati population\n- Residential catchment area\n\nFACILITIES STATUS:\n- Tyre repair shop: Currently leased (Hassan Al-Hosani - active tenant)\n- Car wash (left & right): Will be operated by ADNOC (NOT available for rent)\n- Vacuum bay: Will be operated by ADNOC (NOT available for rent)\n- ADNOC Lube (loop): Pre",
+    "recommendation_text": "MAYBE - Good location but limited rental scope (tyre shop only), ADNOC controls key services",
+    "competition_notes": "",
+    "maps_url": "https://maps.app.goo.gl/jS4nCQY3dPrMryiB7",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 3.0,
+    "your_access_score": 3.0,
+    "your_space_score": 2.5,
+    "your_traffic_score": 2.5,
+    "your_overall_rating": "3/5*",
+    "year_label": "Y4",
+    "satellite_url": "https://maps.app.goo.gl/jS4nCQY3dPrMryiB7"
   },
   {
     "ss": "SS147",
@@ -931,7 +1000,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Shakbout City - established residential. Good income levels. Growing car ownership.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.412,54.596,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS170",
@@ -955,7 +1025,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.385,54.61,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS314",
@@ -976,7 +1048,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Falah established residential. Similar profile to South.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.395,54.6,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS198",
@@ -1000,7 +1073,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.338,55.39,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS568",
@@ -1021,7 +1096,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "University City / Muweilah. Growing community. Student + residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.34,55.46,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS877",
@@ -1042,7 +1118,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Muwaileh - one of Sharjah's fastest growing areas. New developments.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.338,55.458,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS861",
@@ -1063,7 +1140,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E11 near Shahama residential. Growing area. Multiple fuel stations.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.53,54.72,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS954",
@@ -1084,7 +1162,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E11 Shahama area. Residential growth. Good visibility.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.535,54.715,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS156",
@@ -1108,7 +1187,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2031,
     "archetype": "3-4 bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y6",
+    "satellite_url": "https://www.google.com/maps/@24.4,54.7,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS423",
@@ -1129,7 +1210,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Central Al Shamkha. Growing suburb with good services.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.398,54.705,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS522",
@@ -1150,7 +1232,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Baniyas corridor. Highway traffic with residential catchment.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.51,54.67,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS196",
@@ -1171,7 +1254,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Al Tawan residential. Good income area.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.312,55.38,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS216",
@@ -1192,7 +1276,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Residential area near Mirdif/Al Warqa. Moderate density.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.165,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS217",
@@ -1216,7 +1301,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.16,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS356",
@@ -1237,7 +1324,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Hor Al Anz / Deira. Dense residential. Good footfall.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.265,55.36,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS177",
@@ -1261,7 +1349,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.345,55.455,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS887",
@@ -1282,7 +1372,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E11 corridor near Al Samha residential. Growing community. Moderate traffic.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.445,54.735,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS888",
@@ -1306,7 +1397,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.447,54.73,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS117",
@@ -1327,7 +1420,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Growing residential in New Shahama. Good highway access.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.54,54.7,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS538",
@@ -1348,7 +1442,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Dubai Studio City. Mixed use. Developing. Lower competition.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.04,55.24,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS175",
@@ -1372,7 +1467,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.325,55.44,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS179",
@@ -1393,7 +1490,22 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Central Sharjah commercial area.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE ASSESSMENT (Feb 2, 2026):\n\nMOUNIR'S ASSESSMENT:\n> \"Only the auto wash is available for rent. There isn't even a vacuum bay. Location is 3/5. We are a couple of kilometers away from the industrial area, or fully industrial area. However the site would require us to build. Maybe it can be reformatted from the side to operate as a service bay. Overall in comparison to the others I would give it a 3/5 and rate it as possible.\"\n\nAVAILABLE FOR RENT (VERY LIMITED):\n- Auto wash only\n- NO vacuum bay",
+    "recommendation_text": "MAYBE",
+    "competition_notes": "Auto wash only - no other services visible on-site.\n   \nMinimal direct competition at this location.",
+    "maps_url": "https://maps.app.goo.gl/VeNeP7eycw71DXJ991",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcf8 View Photos (2 photos + 2 videos)",
+    "your_location_score": 3.0,
+    "your_access_score": 3.0,
+    "your_space_score": 3.0,
+    "your_traffic_score": 3.0,
+    "your_overall_rating": "3",
+    "satellite_url": "https://maps.app.goo.gl/VeNeP7eycw71DXJ991"
   },
   {
     "ss": "SS180",
@@ -1417,7 +1529,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.37,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS192",
@@ -1438,7 +1552,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Central Sharjah. Dense mixed-use.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.355,55.4,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS274",
@@ -1459,7 +1574,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Ittihad Street commercial corridor.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.37,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS579",
@@ -1480,7 +1596,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Khalidiya residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.345,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS799",
@@ -1501,7 +1618,22 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Samnan central area.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE ASSESSMENT (Feb 2, 2026):\n\nMOUNIR'S ASSESSMENT:\n> \"This site is in a slightly better neighborhood; however, it is literally one block, less than one kilometer away from the heavy industrial areas, similar to other Sharjah sites. Only the auto wash and vacuum bay are available for rent, with a Bridgestone tire repair in the middle and an ADNOC lube in the middle. This eliminates the ability to have a quick service center because of the layout so it can only be used as a car wash. Overall: 2.",
+    "recommendation_text": "No Go",
+    "competition_notes": "Bridgestone tire repair (middle bay)\nADNOC Lube (middle bay)\n\nThese facilities occupy middle space, creating layout issue.",
+    "maps_url": "https://maps.app.goo.gl/PgVaRaTau1xiwS7w812",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 2.0,
+    "your_access_score": 3.0,
+    "your_space_score": 2.0,
+    "your_traffic_score": 2.0,
+    "your_overall_rating": "2.5",
+    "satellite_url": "https://maps.app.goo.gl/PgVaRaTau1xiwS7w812"
   },
   {
     "ss": "SS662",
@@ -1522,7 +1654,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Major highway location. High pass-through traffic. Industrial zone - limited residential but high vehicle counts.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.55,54.94,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS242",
@@ -1543,7 +1676,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "Emirates Road E611. Pass-through traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.105,55.355,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS246",
@@ -1564,7 +1698,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E611 corridor. Transit traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.13,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS247",
@@ -1585,7 +1720,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E611 corridor. Similar to Rowaiyah 3.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.135,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS379",
@@ -1606,7 +1742,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "E66 Dubai-Al Ain. Transit traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.125,55.425,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS520",
@@ -1627,7 +1764,8 @@ const SITES_DATA = [
     "grade": "yellow",
     "notes": "DIP - mixed industrial/residential. Growing area.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.01,55.175,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS329",
@@ -1648,7 +1786,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Production City. Mixed residential/commercial. Moderate demand.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.045,55.185,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS666",
@@ -1669,7 +1808,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Highway corridor between AD and Dubai. Transit traffic. Limited residential catchment.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.54,54.92,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS164",
@@ -1693,7 +1833,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.536,54.64,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS312",
@@ -1714,7 +1856,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Shahama area. Moderate profile.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.52,54.675,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS612",
@@ -1735,7 +1878,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Rahba residential. Moderate density.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.495,54.73,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS534",
@@ -1756,7 +1900,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remraam community. Growing. Limited services = opportunity.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.035,55.265,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS723",
@@ -1777,7 +1922,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "MBZ corridor. Highway pass-through traffic. Limited local residential.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.515,54.855,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS724",
@@ -1798,7 +1944,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "MBZ corridor. Same profile as East - highway traffic dominant.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.51,54.84,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS141",
@@ -1822,7 +1969,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "5+ bays",
-    "site_type": "Greenfield"
+    "site_type": "Greenfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.385,54.64,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS166",
@@ -1846,7 +1995,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.52,54.63,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS313",
@@ -1870,7 +2021,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.378,54.635,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS231",
@@ -1891,7 +2044,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Aweer market area. Commercial traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.175,55.44,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS531",
@@ -1912,7 +2066,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial/commercial area. Auto services hub.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.27,55.38,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS181",
@@ -1933,7 +2088,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Qadisiya residential. Moderate density.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.36,55.44,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS238",
@@ -1954,7 +2110,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Rahmania residential. Growing area.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.37,55.48,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS330",
@@ -1975,7 +2132,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "E611 Emirates Road. Highway pass-through.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.39,55.455,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS331",
@@ -1996,7 +2154,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "E611 corridor. Same profile as Hamriya Club.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.395,55.46,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS498",
@@ -2020,7 +2179,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.352,55.385,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS582",
@@ -2044,7 +2205,23 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE VISIT ASSESSMENT:\n\nAVAILABLE FOR RENT (LIMITED):\n- Automatic car wash only\n- Manual car wash only\n- Vacuum bays only\n(NOT the full service bays - those are occupied)\n\nEXISTING COMPETITION:\n- Golden Future Car Care (MAJOR) - very large space\n  Services: mechanical, electrical, detailing, polishing, comprehensive offerings\n- RTA Vehicle Inspection Center (drives traffic but not direct competitor)\n\nSITE CHARACTERISTICS:\n- Layout is CHAOTIC (despite being large site)\n- Located in HEAVY INDUSTRI",
+    "recommendation_text": "No Go",
+    "competition_notes": "HEAVY - Golden Future Car Care occupies large space on-site:\n- Comprehensive services: mechanical, electrical, detailing, polishing, and more\n- Very big footprint\n\nAVAILABLE SPACE FOR RENT (limited scope):\n- Automatic car wash\n- Manual car wash\n- Vacuum bays\n\nNOT AVAILABLE: Service bay space already occupied by Golden Future.",
+    "maps_url": "https://maps.app.goo.gl/AQgU1s5NpMidaRhi81",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 2.0,
+    "your_access_score": 3.0,
+    "your_space_score": 2.0,
+    "your_traffic_score": 3.0,
+    "your_overall_rating": "2",
+    "year_label": "Y4",
+    "satellite_url": "https://maps.app.goo.gl/AQgU1s5NpMidaRhi81"
   },
   {
     "ss": "SS657",
@@ -2065,7 +2242,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Wasit/Al Huma area. Growing residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE ASSESSMENT (Feb 2, 2026):\n\nMOUNIR'S ASSESSMENT:\n> \"Al Wasit site 657 is off of a highway of sorts. There is again a car wash and vacuum bay for rent. There is an ADNOC Lube in the middle of it, which provides or presents us with a lot of logistical problems. Unless we do a car wash there is not much around. There is a mosque nearby, but then empty land and power stations, it seems, in the vicinity. Further behind the gas station, you can see on the screenshots that there are auto service re",
+    "recommendation_text": "Maybe",
+    "competition_notes": "NEARBY EXTERNAL COMPETITION (from Google Maps):\n- Sydney Auto Service Centre\n- OFFROAD MASTERS \n- RPM Auto Maintenance\n\u2192 Industrial area behind station with multiple auto service competitors\n\nINTERNAL LAYOUT ISSUE:\nADNOC Lube in the middle - \"provides or presents us with a lot of logistical problems\" (Mounir's exact words)\n\nSame pattern as SS761 and SS799.",
+    "maps_url": "https://maps.app.goo.gl/wyehwYmGTtpU1LVq91",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 2.0,
+    "your_access_score": 2.5,
+    "your_space_score": 3.0,
+    "your_traffic_score": 2.5,
+    "your_overall_rating": "2.5",
+    "satellite_url": "https://maps.app.goo.gl/wyehwYmGTtpU1LVq91"
   },
   {
     "ss": "SS769",
@@ -2086,7 +2278,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Shahba residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.365,55.445,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS783",
@@ -2107,7 +2300,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Maysaloon residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.364,55.412,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS828",
@@ -2128,7 +2322,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Ramtha residential. Moderate profile.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE ASSESSMENT (Feb 2, 2026):\n\nMOUNIR'S ASSESSMENT:\n> \"Zees is shut down, clearly from the pictures. Speaking to one of the forecourt managers, he told me that Zees was operational here for six months and then they were shut down basically because municipalities, they didn't have the correct licenses. Something like they tried to operate a car wash between the two buildings. He also told me that now KFC has rented the store room under where it says 'oil change' and 'battery', right next to the ",
+    "recommendation_text": "No Go",
+    "competition_notes": "NO ACTIVE COMPETITION - Zeez Workshop SHUT DOWN\n\nZEEZ HISTORY (from forecourt manager):\n- Operated for only 6 months\n- SHUT DOWN by municipalities\n- Reason: Did not have correct licenses\n- Tried to operate car wash between two buildings (licensing issue)\n\nCURRENT STATUS:\n- Workshop is closed/abandoned\n- KFC has rented the store room under \"oil change\" and \"battery\" area\n- No active quick service competitor on-site",
+    "maps_url": "https://maps.app.goo.gl/7h4mCJLamfPGKNgK8",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcf8 View Photos (3 photos + 2 videos)",
+    "your_location_score": 2.5,
+    "your_access_score": 2.5,
+    "your_space_score": 2.5,
+    "your_traffic_score": 2.5,
+    "your_overall_rating": "2.5",
+    "satellite_url": "https://maps.app.goo.gl/7h4mCJLamfPGKNgK8"
   },
   {
     "ss": "SS811",
@@ -2149,7 +2358,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "E11 border area between Abu Dhabi and Dubai. High pass-through. Limited local catchment.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.02,55.125,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS210",
@@ -2170,7 +2380,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Aweer commercial/wholesale area. High daytime traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.16,55.47,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS194",
@@ -2191,7 +2402,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Sharjah Industrial. Major auto services cluster. High car care demand.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.34,55.415,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS197",
@@ -2215,7 +2427,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.335,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS567",
@@ -2236,7 +2450,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial area. Auto services cluster.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.335,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS569",
@@ -2257,7 +2472,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial area. Auto services hub.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.332,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS127",
@@ -2278,7 +2494,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Near Jebel Ali. Mixed use area.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.02,55.135,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS383",
@@ -2299,7 +2516,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "International City / Al Warsan. Dense budget residential. High volume, lower spend.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.16,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS761",
@@ -2320,7 +2538,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone near Emirates Road.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "SITE ASSESSMENT (Feb 2, 2026):\n\nMOUNIR'S ASSESSMENT:\n> \"So this site is Emirates Road. The auto wash, manual wash, and vacuum bay are available for rent. There's the ADNOC Lube in the middle that is not available for rent. The entrance to the service station, as you can see in the video, is off of the highway somewhat and then it splits into a service road and then you enter into the service station. I would give that a 2.5/5. The physical location: I'll give 3.5/5 in terms of the building itsel",
+    "recommendation_text": "No Go",
+    "competition_notes": "ADNOC LUBE in middle - NOT available for rent\n\nCompetition assessment: Minimal external competition visible.\n\nLAYOUT ISSUE: ADNOC Lube positioned in middle creates access/flow problem (similar to SS799 Bridgestone issue).",
+    "maps_url": "https://maps.app.goo.gl/ze8jqNr7o4Wq6VD771",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 2.5,
+    "your_access_score": 2.5,
+    "your_space_score": 3.5,
+    "your_traffic_score": 2.5,
+    "your_overall_rating": "2.5",
+    "satellite_url": "https://maps.app.goo.gl/ze8jqNr7o4Wq6VD771"
   },
   {
     "ss": "SS872",
@@ -2341,7 +2574,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial area 3.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.336,55.415,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS876",
@@ -2365,7 +2599,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.34,55.455,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS686",
@@ -2386,7 +2622,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Sweihan road corridor. Moderate traffic. Growing suburbs. Low competition.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.405,54.88,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS195",
@@ -2407,7 +2644,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Dhaid Road corridor. Moderate traffic.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.365,55.47,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS126",
@@ -2428,7 +2666,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone. Commercial vehicle dominant.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-04",
+    "assessment_notes": "Industrial area surrounded by labor accommodation. Space available for rent is an ADNOC Lube - one bay with a small office.\n\nISSUE: Traffic exists but would be ineffective - location is deep inside a labor camp neighborhood, unsuitable for car service/ wash/retail service model.",
+    "recommendation_text": "No Go",
+    "competition_notes": "Unknown",
+    "maps_url": "https://maps.app.goo.gl/KnBtrqCpyrF4a7YU8",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcf8 View Photos (3 photos + 1 video)",
+    "your_location_score": 1.0,
+    "your_access_score": 1.0,
+    "your_space_score": 1.0,
+    "your_traffic_score": 1.5,
+    "your_overall_rating": "1.5",
+    "satellite_url": "https://maps.app.goo.gl/KnBtrqCpyrF4a7YU8"
   },
   {
     "ss": "SS511",
@@ -2449,7 +2702,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Al Seyouh - developing suburban area.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.33,55.49,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS570",
@@ -2470,7 +2724,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone. Moderate auto demand.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.338,55.412,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS869",
@@ -2491,7 +2746,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.328,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS243",
@@ -2512,7 +2768,17 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone - KIZAD. High commercial/truck traffic but low residential. Low car care demand. Low competition advantage.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-03",
+    "assessment_notes": "Assessment (Feb 3, 2026, 10:00 AM):\nOVERALL RATING: 1.5/5\n\nSITE CHARACTERISTICS:\n- Large highway site in KIZAD industrial area\n- Heavy truck traffic with dedicated truck filling section\n- Regular refueling present but low activity at 10am\n- Not a retail-focused location\n\nFACILITIES:\n- Car wash: Available for rent\n- Lube bay: Currently inactive, appears to be for rent (TO CONFIRM)\n- ADNOC Oasis: On-site\n- Food/Shop space: Available for rent next to ADNOC Oasis\n- Modern infrastructure complete but",
+    "recommendation_text": "No Go - Industrial location, rental model unclear",
+    "competition_notes": "",
+    "maps_url": "https://maps.app.goo.gl/L58wTi2c8Z3NqB4M821",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "satellite_url": "https://maps.app.goo.gl/L58wTi2c8Z3NqB4M821"
   },
   {
     "ss": "SS519",
@@ -2533,7 +2799,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "CORRECTED ASSESSMENT - HIGHWAY SITE\n\nLOCATION TYPE: Highway site (NOT residential as initially assessed from photos)\n\nMOUNIR'S ASSESSMENT:\n> \"This is a highway site. I don't foresee people coming to wash their car here, it could be retrofitted to a quick service station but again it is a highway site. Rating: 2.5/5. Personal recommendation is also a No Go.\"\n\nNEGATIVES:\n- Highway location = wrong customer behavior pattern\n- People don't stop on highways for car washes\n- Could potentially retrofit",
+    "recommendation_text": "No Go",
+    "competition_notes": "Minimal visible competition on-site.\n\nISSUE: Not competition, but LOCATION TYPE - highway site unsuitable for car wash/retail service model.",
+    "maps_url": "https://maps.app.goo.gl/9A9pXq7XYdpmypEa621",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 2.0,
+    "your_access_score": 3.0,
+    "your_space_score": 3.0,
+    "your_traffic_score": 2.0,
+    "your_overall_rating": "2.5",
+    "satellite_url": "https://maps.app.goo.gl/9A9pXq7XYdpmypEa621"
   },
   {
     "ss": "SS234",
@@ -2554,7 +2835,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.35,55.45,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS237",
@@ -2575,7 +2857,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.34,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS276",
@@ -2596,7 +2879,15 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": false,
+    "assessment_status": "",
+    "visit_date": "",
+    "assessment_notes": "",
+    "recommendation_text": "",
+    "competition_notes": "",
+    "maps_url": "https://maps.app.goo.gl/uNmzN7orgy7wZdVr8Space",
+    "satellite_url": "https://maps.app.goo.gl/uNmzN7orgy7wZdVr8Space"
   },
   {
     "ss": "SS278",
@@ -2617,7 +2908,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.335,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS279",
@@ -2638,7 +2930,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.35,55.4,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS456",
@@ -2659,7 +2952,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.385,55.435,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS560",
@@ -2683,7 +2977,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2029,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.365,55.435,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS564",
@@ -2707,7 +3003,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2027,
     "archetype": "5+ bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.355,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS565",
@@ -2728,7 +3026,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.345,55.46,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS571",
@@ -2749,7 +3048,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.375,55.39,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS572",
@@ -2770,7 +3070,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.36,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS574",
@@ -2791,7 +3092,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.362,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS575",
@@ -2812,7 +3114,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-02",
+    "assessment_notes": "ASSESSMENT (Feb 2, 2026):\n\nPOSITIVES:\n- Central Sharjah location\n- Well-maintained ADNOC station\n- Good visibility\n\nNEGATIVES:\n- Car wash building is SMALL - limited space for operation\n- Surrounding demographics NOT IDEAL for target market\n- Existing comprehensive competitor (Hani Habib) already on-site\n- Low confidence in customer appeal (\"clientele won't come here for car wash\")\n\nSPACE AVAILABLE: Car wash building (blue structure visible in photos)\n\nVISUAL OBSERVATIONS:\n- Large station with g",
+    "recommendation_text": "\ud83d\udcc2 View Folder",
+    "competition_notes": "HIGH - Hani Habib Al Khalsan already on-site with comprehensive offerings.\n\nDemographic concern: Surrounding area not ideal for target customer base.\n\nArea Context: Many independent small workshops in surrounding area (industrial zone)",
+    "maps_url": "https://maps.app.goo.gl/zjU21kPr3MCcYhLm7",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 3.0,
+    "your_access_score": 3.0,
+    "your_space_score": 2.0,
+    "your_traffic_score": 2.0,
+    "your_overall_rating": "2",
+    "satellite_url": "https://maps.app.goo.gl/zjU21kPr3MCcYhLm7"
   },
   {
     "ss": "SS576",
@@ -2833,7 +3150,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.358,55.415,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS577",
@@ -2854,7 +3172,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.365,55.43,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS583",
@@ -2875,7 +3194,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.358,55.388,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS584",
@@ -2899,7 +3219,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.36,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS585",
@@ -2920,7 +3242,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.332,55.415,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS586",
@@ -2944,7 +3267,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.36,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS592",
@@ -2965,7 +3290,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.368,55.402,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS593",
@@ -2989,7 +3315,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "3-4 bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.362,55.41,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS628",
@@ -3010,7 +3338,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.33,55.418,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS629",
@@ -3031,7 +3360,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.345,55.408,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS631",
@@ -3052,7 +3382,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.32,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS632",
@@ -3073,7 +3404,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.33,55.48,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS634",
@@ -3094,7 +3426,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.325,55.475,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS647",
@@ -3115,7 +3448,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.365,55.425,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS649",
@@ -3136,7 +3470,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.34,55.445,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS651",
@@ -3157,7 +3492,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.378,55.465,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS652",
@@ -3178,7 +3514,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.36,55.5,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS654",
@@ -3199,7 +3536,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.37,55.395,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS655",
@@ -3220,7 +3558,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.36,55.408,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS656",
@@ -3241,7 +3580,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.355,55.475,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS722",
@@ -3262,7 +3602,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.36,55.39,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS770",
@@ -3283,7 +3624,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.348,55.405,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS771",
@@ -3304,7 +3646,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.362,55.408,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS840",
@@ -3328,7 +3671,9 @@ const SITES_DATA = [
     "confirmed": true,
     "deployment_year": 2028,
     "archetype": "2-bays",
-    "site_type": "Brownfield"
+    "site_type": "Brownfield",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.36,55.396,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS880",
@@ -3349,7 +3694,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Default profile - area not individually assessed",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.35,55.435,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS614",
@@ -3370,7 +3716,20 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Semi-rural Sweihan corridor. Lower traffic density. Limited services = low competition. Limited affluent catchment.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Remote Assessment",
+    "visit_date": "2026-02-03",
+    "assessment_notes": "Very remote area, surrounded by camps and farms. No built-up areas in surrounding area. Eliminated based on Google Maps review. Not visited in person.",
+    "recommendation_text": "No Go - Remote location, camps/farms only (Google Maps review)",
+    "competition_notes": "",
+    "maps_url": "https://maps.app.goo.gl/XUNUrCJ98oFBQyQh9Space",
+    "your_location_score": 1.0,
+    "your_access_score": 2.0,
+    "your_space_score": 1.0,
+    "your_traffic_score": 1.0,
+    "your_overall_rating": "1",
+    "satellite_url": "https://maps.app.goo.gl/XUNUrCJ98oFBQyQh9Space"
   },
   {
     "ss": "SS975",
@@ -3391,7 +3750,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "E22 Abu Dhabi-Al Ain highway. Transit traffic. Limited residential.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.38,55.12,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS462",
@@ -3412,7 +3772,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Industrial zone. Commercial traffic.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.03,55.08,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS718",
@@ -3433,7 +3794,22 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Military/semi-rural area near Ajban. Low density. Very low competition.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "assessed": true,
+    "assessment_status": "Assessed",
+    "visit_date": "2026-02-03",
+    "assessment_notes": "Assessment (Feb 3, 2026, ~11:00 AM):\nOVERALL RATING: 1/5\n\nSITE CHARACTERISTICS:\n- Very remote location - nothing in surroundings\n- Very large site\n- Isolated highway location\n\nFACILITIES STATUS:\n- Auto wash: Available for rent (per drawings)\n- Vacuum bay: Available for rent (per drawings)\n- Lube bay: Present but rental status unclear\n- Tyre repair: Present but rental status unclear\n- Restaurant/Cafeteria: Empty space, possibly for rent (UNCERTAIN)\n  - Basic cafeteria only (tea/coffee service)\n  ",
+    "recommendation_text": "No Go- Remote location, limited rental opportunities",
+    "competition_notes": "",
+    "maps_url": "https://maps.app.goo.gl/YEzD1ttWgi4ip5TJ821",
+    "has_photos": true,
+    "photos_text": "\ud83d\udcc2 View Folder",
+    "your_location_score": 1.0,
+    "your_access_score": 1.0,
+    "your_space_score": 1.0,
+    "your_traffic_score": 1.0,
+    "your_overall_rating": "1",
+    "satellite_url": "https://maps.app.goo.gl/YEzD1ttWgi4ip5TJ821"
   },
   {
     "ss": "SS916",
@@ -3454,7 +3830,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Semi-rural between Abu Dhabi and Sweihan. Low density.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.405,55.07,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS334",
@@ -3475,7 +3852,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remote desert area. Low traffic. Minimal services.",
     "category": "Dubai",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.0,55.3,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS689",
@@ -3496,7 +3874,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Port/industrial area. Commercial traffic dominant. Very low residential.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.58,54.65,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS275",
@@ -3517,7 +3896,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remote industrial. Low residential.",
     "category": "Sharjah",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@25.37,55.5,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS690",
@@ -3538,7 +3918,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remote port area. Low traffic. Very limited services.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.61,54.64,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS873",
@@ -3559,7 +3940,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remote port/industrial. Specialized market.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.61,54.63,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS778",
@@ -3580,7 +3962,8 @@ const SITES_DATA = [
     "grade": "red",
     "notes": "Remote military area. Very low civilian traffic. Zero competition but minimal demand.",
     "category": "Abu Dhabi",
-    "confirmed": false
+    "confirmed": false,
+    "satellite_url": "https://www.google.com/maps/@24.47,55.42,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS948",
@@ -3609,7 +3992,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Hazza Bin Sultan St, key north-south artery at Zakher roundabout/intersection. Recent AED185M upgrade (2025): 900m tunnel, signalized junction reducing travel times. High visibility. Local buses (e.g., routes to Falaj Hazza). Al Ain avg congestion 22%. DMT, Gulf News, TomTom",
     "commercial_context": "Schools: Liwa Intl, Dar Al-Uloom Falaj Hazza. Mall: Makani Zakher nearby. Hospital: Al Ain Hospital ~10min, Twam/Vehicle inspection local. Police station Zakher. Commercial land/offices renting. Liwa School, Makani Zakher, SEHA",
     "key_insight": "Prime traffic hub on upgraded major road with residential catchment, but aftermarket bays face competition from on-site ADNOC Lube and local quick-service providers. Strong potential for 2-bay expansion if differentiated (e.g., premium/quick-fit). Deployment 2029 aligns with infrastructure maturity.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.171529,55.710126,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS753",
@@ -3638,7 +4023,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Hamdan Bin Mohammed St, arterial road in Al Ain. Al Ain avg congestion 22%, rush hour delays moderate. Public bus services city-wide. Visibility high as fuel station on main street. Local road projects like Al Bateen bicycle underpass.",
     "commercial_context": "Souq Extra Al Bateen retail nearby. Levantine Medical Center clinic in Al Bateen. Multiple schools in Al Ain (e.g. Al Ain English Speaking School). Larger malls like Al Jimi Mall ~5-10km. Residential with some services.",
     "key_insight": "Prime spot for quick-service bays: high visibility on busy street, residential catchment with car ownership, moderate competition allows 2028 deployment potential in growing Al Ain.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.219138,55.638588,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS892",
@@ -3667,7 +4054,9 @@ const SITES_DATA = [
     "infrastructure_access": "On M24 near 2nd Signal, excellent visibility. Major roads: E30 (Musaffah-Al Ain Rd), Street 8, Musaffah Bridge. High traffic density in industrial/commercial zone. Bus services to Mussafah Bus Station (lines 101,104, etc.). Upcoming roadworks/expansions on E30/Street 8 for better flow. DMT Redevelopment, Khaleej Times, Moovit.",
     "commercial_context": "Industrial/commercial hub: Ahalia Hospital nearby (M4/M24), The Village Mall (M24), Dalma Mall/ICAD Mall ~5-10km, numerous offices/warehouses, Mussafah Bus Station. No major schools noted nearby. Ahalia, 2GIS Malls, Waze.",
     "key_insight": "Prime spot for quick-service bays targeting industrial workforce/heavy vehicle traffic; high demand/traffic but moderate saturation and low affluence limit premium services. Strong for volume oil changes/car washes. ADNOC Find Station.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.364169,54.523809,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS687",
@@ -3696,7 +4085,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Sheikh Khalifa Bin Zayed Al Nahyan Hwy (E12 highway) with high visibility. Excellent access via major roads to Abu Dhabi/Dubai; public transport includes Yas Express shuttles, buses (Route 102), upcoming tram to airport. Abu Dhabi avg congestion 30%, highways busy; new bridges/road works improving flow. Handles high tourist traffic. 2GIS, TomTom, Yas Island.",
     "commercial_context": "Adjacent to YAS Mall (largest in Abu Dhabi, offices/coworking in mall); schools (Yas American Academy, SABIS, Noya British); theme parks, hotels, circuit. Hospitals ~15-20km (Cleveland Clinic, Reem Hospital). Yas Mall, Yas American Academy, Cloudspaces.",
     "key_insight": "Prime location for aftermarket quick-service expansion in 2027: high affluent traffic on major highway, low competition, growing residential/tourist base, excellent infrastructure - strong quick-fit bay potential.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.499484,54.58791,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS782",
@@ -3725,7 +4116,9 @@ const SITES_DATA = [
     "infrastructure_access": "On major Sheikh Rashid Bin Saeed St (E10 highway corridor, high visibility/traffic); near ADNEC, public bus stops; good access, no specific volumes/projects found but busy arterial road.2GIS, Trip.com",
     "commercial_context": "Near ADNEC exhibition center, embassies/consulates (Al Rawdah nearby), hotels/offices, Zayed Sports City; diplomatic hub, events traffic.Trip.com, Moovit",
     "key_insight": "Prime spot for aftermarket bays expansion: high-traffic affluent diplomatic area with station's existing lube/repair but room for quick-service growth amid low direct competition; supports 2027 deployment.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.428571,54.431996,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS933",
@@ -3754,7 +4147,9 @@ const SITES_DATA = [
     "infrastructure_access": "On high-visibility Corniche Rd (W45), near Al Khaleej Al Arabi St and Al Bateen St. Bus access (lines 8,9,10,11,40 nearby). Abu Dhabi avg 30% congestion, moderate rush hour traffic. Near Al Bateen Executive Airport. No recent expansion projects noted.Waze?to=place.ChIJUU3PT3BlXj4RhvRz0pazMzM), TomTom, Moovit",
     "commercial_context": "Al Bateen Mall (local), Khalidiyah Mall (6min), Nation Towers. Schools: Al Bateen Academy, British Orchard Nursery. Hospitals/clinics: Al Bateen Healthcare Center, Mediclinic Al Bateen. Offices/commercial spaces along Al Khaleej Al Arabi St. ADNEC nearby.Property Finder, Square Yards",
     "key_insight": "Excellent potential for 2-bay quick-service expansion in 2027 due to affluent catchment, high visibility on Corniche Rd, existing fuel/customers, low competitor density beyond station's own services.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.466652,54.333226,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS884",
@@ -3783,7 +4178,9 @@ const SITES_DATA = [
     "infrastructure_access": "Good access via local roads in residential zone; ongoing expansions (Rashidiya roads, Sheikh Zayed bridge) Gulf Today. High public transport (3.8M passengers 2024) Ajman Transport. Visibility strong; near Sharjah highways.",
     "commercial_context": "Local shops/mosques/hotel/post. Nearby: schools (Rashidiya private schools), Amina Hospital (Rashidiya 3), clinics. Malls: Ajman City Centre, Safeer Mall, Al Murad Mall (~few km) PropertyFinder, 2GIS.",
     "key_insight": "Prime spot for 2026 aftermarket quick-service bays in busy residential hub with existing car care demand (station already has bays), moderate competition, aligning with road upgrades and UAE EV push. Strong car wash/traffic potential offsets average affluence/EV [All sources above].",
-    "priority": "Y2026"
+    "priority": "Y2026",
+    "year_label": "Y1",
+    "satellite_url": "https://www.google.com/maps/@25.38696,55.55294,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS167",
@@ -3812,7 +4209,9 @@ const SITES_DATA = [
     "infrastructure_access": "MSH42 location, access to E40/E22 highways. Heavy peak traffic on MBZ Rd/Sultan Bin Zayed St (commutes double). Public bus 155 (57min to city). High visibility. Recent AED315M bridges cut delays 80% (7,500 veh/hr capacity). Ongoing highway enhancements. Eplog Guide, DMT, Rome2Rio.",
     "commercial_context": "Major hospital: Sheikh Shakhbout Medical City (~2km). 60+ schools (Ashbal Al Quds, Abu Dhabi Australian). Health centers, supermarkets. Commercial villas/offices. No local mall (Madinat Zayed further). SSMC, Edustoke, PropertyFinder.",
     "key_insight": "High potential for quick-service bays: growing residential/traffic hub near hospital/schools, station's existing services indicate demand, low independent competition. 2029 deployment fits area maturation. Scores reflect strong traffic/demand, moderate affluence/EV/competition.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.368353,54.625788,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS987",
@@ -3841,7 +4240,9 @@ const SITES_DATA = [
     "infrastructure_access": "On 98/2 Al Bunduq Road with good visibility. Near E11 highway (Abu Dhabi main west route, 2-2.5hr to city) and E15 upgrades (widening to 3-lanes Ghayathi-Ruwais). Public buses from Ruwais ADNOC Compound station. No specific daily traffic volumes found; industrial/residential traffic moderate. Road expansions ongoing. Eplog, BNC Network, Moovit.",
     "commercial_context": "Within/near ADNOC Ruwais Housing: shopping mall (Ruwais Mall/Al Dhannah Mall w/ 261 outlets, Lulu), 8 schools (ADNOC Schools), NMC hospital/clinic, recreation centers, central market. No major offices beyond ADNOC facilities. GISCO, Lever Ruwais Mall, ADNOC Schools.",
     "key_insight": "Prime spot for quick-service bay in 2029: high-income captive residential market (ADNOC staff), good access/visibility, moderate competition, growing area with EV signals at mall but low overall adoption ideal for traditional aftermarket services.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.090573,52.651153,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS970",
@@ -3870,7 +4271,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Hazza' Bin Zayed The First Street (arterial road with good visibility and access), connects to major E10/E12 highways. Central position ensures high daily traffic, public transport access. No exact volumes found, but urban arterials in Abu Dhabi handle substantial flow; ongoing road projects citywide. Waze Directions?to=place.ChIJDZJywwJmXj4RzdvFOmuf2t0), ScienceDirect Roads.",
     "commercial_context": "Global Care Hospital (Al Manhal), International Community School Al Manhal, Al Manhal Palace landmark, engineering offices. Nearby malls: Abu Dhabi Mall, Marina Mall (~3-5km). Residential towers, govt buildings. Global Care Hospital, ICS Al Manhal, 2GIS Scame EV.",
     "key_insight": "Excellent potential for 2027 aftermarket quick-service bays (oil/tire/wash) leveraging high affluent traffic, existing infrastructure, and moderate competition in prime downtown location.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.456959,54.35655,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS929",
@@ -3899,7 +4302,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Baghdad St near Al Salam St and E11 highway junction for high visibility and access. E11 is a major arterial road with significant traffic (Abu Dhabi avg congestion 30%, high rush hour volumes). Public buses frequent; near Traffic Management Centre. No specific expansion projects noted for this segment.Waze?to=place.ChIJ-zt0eltmXj4Rsm4u5kNxni8), TomTom, 2GIS",
     "commercial_context": "Dense commercial hub with offices (ADCB HQ nearby), hospitals (National Hospital 340m, Well Care 370m), malls (Abu Dhabi Mall 1km, Madinat Zayed), schools/colleges nearby, souks, supermarkets. High-rise offices and retail.Mapcarta, Property Finder",
     "key_insight": "Prime high-traffic urban location with low direct competition for quick-service bays, strong commercial/residential mix supports demand; ideal for 2029 deployment leveraging existing ADNOC lube infrastructure.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.49273,54.37473,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS766",
@@ -3928,7 +4333,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Al Sahayib St (local residential), excellent access to E11 Sheikh Khalifa Hwy (high-volume Abu Dhabi-Dubai road), E20 Al Khaleej Al Arabi upgrades improving flow (lanes 3-&gt;5, new intersections). Bus 160 (Sas Al Nakhl stop nearby). High visibility at 24/7 station near airport (high commuter traffic). [ITC Projects], [Rome2Rio].",
     "commercial_context": "Forsan Central Mall (Lulu, cinema, dining ~few km), NMC Royal Hospital/Mediclinic Khalifa City, ICS International School, gyms (Crash Gym, Spira Club), offices/residential commercial mix, police/ambulance stations. Strong family draw. [NMC], [Forsan Mall], [ICS School].",
     "key_insight": "Excellent potential for 2027 2-bay quick-service: underserved residential catchment with high car dependency, affluent families, airport/highway traffic, infrastructure growth, minimal local competition.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.405914,54.603337,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS309",
@@ -3957,7 +4364,9 @@ const SITES_DATA = [
     "infrastructure_access": "Al Urjuwan St local access; near Hazza bin Sultan St (new 900m tunnel upgrade The National); buses to Abu Dhabi; Al Ain congestion ~22% TomTom; high visibility as fuel station.",
     "commercial_context": "Twam Hospital nearby SEHA; local schools (Al Hemma etc WhichSchoolAdvisor); malls (Al Jimi ~15min); govt offices/residential hub.",
     "key_insight": "Promising for 2029 quick-service bay deployment: leverages residential/hospital traffic, moderate competition, improving infrastructure; EV low but growing nationally.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.185233,55.61748,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS931",
@@ -3986,7 +4395,9 @@ const SITES_DATA = [
     "infrastructure_access": "On major Sultan Bin Zayed The First Street (arterial road, high visibility, 24/7 open), peak congestion indicates good traffic volumes, near multiple ADNOC stations forming hub, central access in Abu Dhabi.2GIS, Waze, Property Finder",
     "commercial_context": "Commercial hub with offices for rent, residential towers; family-oriented with amenities; central Abu Dhabi near Corniche/Reem Island bridges (high capacity 7200 veh/hr).Property Finder Offices, Facebook",
     "key_insight": "High-potential site in dense, affluent traffic hub with strong fuel ecosystem and quick-service demand, moderated by existing on-site car wash and nearby competitors; ideal for 2-bay expansion targeting impulse residential/commercial traffic.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.476512,54.371726,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS845",
@@ -4015,7 +4426,9 @@ const SITES_DATA = [
     "infrastructure_access": "Major roads: Hazza bin Sultan St, Al Ain-Dubai Rd w/ recent upgrades (Dh185M tunnel 2025, intersections). Congestion 22%, rush delays 33hrs/yr, avg speed 43km/h. Smart monitoring, cycling paths. High visibility potential. TomTom, The National",
     "commercial_context": "Malls: Al Ain Mall (EV chargers), Hili/Bawadi Mall. Hospitals: Al Ain Hospital, Tawam, Mediclinic, NMC. Schools/unis abundant. Offices in central districts. PropertyFinder, Electromaps",
     "key_insight": "Strong potential for aftermarket bays at 2028 deployment in growing residential; moderate traffic/competition balanced by infrastructure upgrades & car care demand in dusty climate.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.2075,55.7447,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS623",
@@ -4044,7 +4457,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Al Farahidi St / Aqba Bin Nafa Rd in Al Hamra, accessible via major roads like King Faisal St, E11 highway nearby (Emirates Rd expansions to 5 lanes, capacity 9000 veh/hr). UAQ road upgrades (Corniche, Sheikh Mohammed Bin Rashid St). Good visibility at 24h fuel station; limited traffic volume data but regional expansions indicate growing flow.TradeArabia, Gulf Today",
     "commercial_context": "Umm Al Quwain Hospital, Sheikh Khalifa General Hospital nearby; small malls (Umm Al Quwain Mall, City Mall); schools/mosques in area; industrial zones, waterfront corniche with cafes/restaurants; free zone offices.EHS, SKGH, BookMyBooking",
     "key_insight": "Promising for quick-service bay at existing ADNOC with oil/car services; benefits from road upgrades/traffic hub potential but low EV/low affluence limits premium; moderate competition suggests opportunity if adding unique quick-fit bays.2GIS ADNOC, Waze?to=place.ChIJl9dXs9P_9T4RnkBGowNIgnA)",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.5409,55.545,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS973",
@@ -4073,7 +4488,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on 973 Eastern Road (E21 highway), high visibility. E21 provides major access; Abu Dhabi avg congestion 30% TomTom. Near Al Dhafra St and Sheikh Rashid Bin Saeed St junction. Bus stops nearby (A1,32,44,52,101 at Mushrif Mall). Part of broader Abu Dhabi infrastructure expansions. Waze?to=place.ChIJjepQqmdoXj4RQT8rVOMKFiY), GetProperty",
     "commercial_context": "Mushrif Mall (prime shopping, dining, kids entertainment at Al Dhafra St/Sheikh Rashid Bin Saeed St junction). Other malls: Al Wahda Mall, upcoming City Centre Al Jazirah. Clinics/medical centers in area (e.g., Wellness One Day Surgery on E21). Schools nearby. Government offices, banks. Mushrif Mall, GetProperty, 2GIS",
     "key_insight": "Prime spot for 2-bay quick-service addition in 2029: high-visibility highway location in growing mixed-use area with strong traffic/mall proximity, affluent residential catchment, low direct competitors within 2km, and rising EV presence - unsaturated opportunity near Mushrif Mall traffic hub.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.448,54.397,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS917",
@@ -4102,7 +4519,9 @@ const SITES_DATA = [
     "infrastructure_access": "On E22 Al Ain Hwy (major road). High visibility. Mahawi Interchange upgrades: signals/loop ramps. Buses 120/130/155 (~4km stops). Al Ain congestion 22%. Tatweer, Moovit, TomTom.",
     "commercial_context": "Residential focus. Near Abu Dhabi Univ (~2km), Mahwi Camp. Malls (Capital/Makani ~5km MBZC), offices for rent. Sheikh Shakhbout Med City ~4km. Wikimapia, 2GIS Malls.",
     "key_insight": "Prime spot for quick-service bays: high-traffic E22 underserved residential highway stop, minimal competitors, infra upgrades by 2028. Target ICE services given low local EV signals.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.322281,54.588382,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS150",
@@ -4131,7 +4550,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on/near Hameem Street (noted in top dangerous roads but improved safety). Major roads: Sultan Bin Zayed St, Shk Rashid Bin Saeed St, Muroor Rd nearby. Bus lines 101, 110, 162, 34, 54, 56 serve area Moovit. Good visibility as ADNOC station. No specific traffic volumes found; central location implies moderate-high traffic. Road expansions ongoing in Abu Dhabi.",
     "commercial_context": "Schools: Emirates National School Al Nahyan, Al Nahda National Schools. Hospitals/Clinics: Seha Emirates, NMC Royal Women's (near stadium), National Hospital, Mediclinic Al Mamoura. Malls: Al Wahda Mall ~5km, Abu Dhabi Mall nearby. Offices: Commercial offices/spaces available for rent PropertyFinder. Fidoc.",
     "key_insight": "Prime location in affluent residential area with ruling family ties, high traffic potential on accessible roads, adjacent Al Masaood competitor but room for ADNOC aftermarket bays given 5+ bays and 2027 deployment. Strong car wash/oil demand; moderate EV yet.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.4672,54.3845,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS717",
@@ -4160,7 +4581,9 @@ const SITES_DATA = [
     "infrastructure_access": "On E22 Al Ain-Abu Dhabi Highway (truck road), high visibility for highway traffic. Major commuter route with 85,000-140,000 vehicles/day Media.co.uk. Public buses 401/403/447 connect to Abu Dhabi Moovit. Recent speed limit changes E22 Al Nahda-Bani Yas for safety/flow Gulf News. North Al Wathba roads/pedestrian projects ongoing Metenders.",
     "commercial_context": "Local: Abu Dhabi Indian School - Al Wathba, mosques, small shops in housing projects. No major malls/offices/hospitals on-site. Nearest: Bawabat Al Sharq Mall (~15km), Mazyad Mall MBZ City (~20km), New Al Mafraq Hospital farther north. Residential-focused Yallaschools, Expedia.",
     "key_insight": "Prime location on busy E22 highway in expanding residential suburb with minimal competition makes SS717 ideal for 2-bay quick-service automotive addition by 2029, capturing traffic and new villa residents.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.270722,54.664503,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS971",
@@ -4189,7 +4612,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Mussafah to Abu Dhabi Road (likely E12 highway), major arterial connecting industrial Mussafah to city center. High visibility, 24h access. Near Airport Road (E20), Mussafah Bridge. Abu Dhabi avg congestion 30%, low globally. Public buses available. Wikipedia Al Mushrif, TomTom",
     "commercial_context": "Mushrif Mall (retail, hypermarket), international schools (ICS, AANS), clinics/hospitals (Corpofino, Universal), mosques/churches, government offices. Parks, Zayed Sports City nearby (~8min). Miva, ADNOC",
     "key_insight": "Prime location on busy highway in affluent residential area with existing station services but room for aftermarket quick bays given traffic hub and family demographics. Moderate competition; high potential for 2028 deployment.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.42972,54.394228,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS688",
@@ -4218,7 +4643,9 @@ const SITES_DATA = [
     "infrastructure_access": "On E12 Sheikh Khalifa Hwy (high visibility/traffic). New bridges (7200 vph) improve access. Buses/taxis to attractions. Gulf News",
     "commercial_context": "Yas Mall (largest AD mall), theme parks, Yas Bay dining. Schools (Yas School/SABIS <10min), planned clinics. High car usage area. Aldar Yas Mall",
     "key_insight": "Prime spot for aftermarket bays: affluent traffic, highway access, low comp., aligns w/ 2027 island growth.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.502163,54.588842,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS172",
@@ -4247,7 +4674,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on 84 Al Ma\u02b9rouf St, near major roads like E30 (Mussafah-Al Ain Rd) & Street 8; ongoing redevelopment improves traffic flow & commercial access.DMT Public bus (e.g., line 101 to Abu Dhabi city); high visibility near Mazyad Mall. High traffic area (Abu Dhabi congestion rank 12 globally).Waze?to=place.ChIJR9a4AiVHXj4RLrvmP20--yw)",
     "commercial_context": "Near Mazyad Mall (first mall in MBZ City, hypermarket, shops); multiple schools (Cambridge High, Bright Riders, Ajyal Intl, Al Manara Private); hospitals (NMC Royal MBZ City, Burjeel, Millennium Mussafah, Ahalia); offices/commercial in industrial Mussafah M9.Property FinderMazyad Mall",
     "key_insight": "Prime spot for aftermarket quick-service bays in fast-growing, traffic-heavy residential-commercial hub with low saturation; leverage existing ADNOC lube/wash traffic for 2027 deployment.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.371324,54.535611,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS719",
@@ -4276,7 +4705,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Al Fawanees St, near E22 Abu Dhabi-Al Ain Rd (major highway, high traffic, recent speed reductions 140-120km/h, new Baniyas East-West bridge cuts travel 11min to 3min, capacity 1400 veh/hr). High visibility from roads. Bus 490 nearby. Recent interchanges/upgrades improve access. General Abu Dhabi congestion 30% [TomTom].",
     "commercial_context": "Bawabat Al Sharq Mall adjacent. Schools: Al Ekhlass, Baraem Al Ain, GEMS Cambridge Int'l in Baniyas. Hospitals/clinics: Mediclinic Baniyas, Al Mafraq Medical Center, Healthline Medical Center Baniyas East. Offices: Baniyas Tower. New Mafraq Hospital nearby.",
     "key_insight": "Prime spot for quick-service bays: high-traffic E22 access, residential catchment with car ownership, growing EV infra at ADNOC (Al Dar listed as EV charger), station's own car wash/repair complements aftermarket potential. Moderate competition allows 2028 deployment upside in growing Abu Dhabi suburb.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.303688,54.622098,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS726",
@@ -4305,7 +4736,9 @@ const SITES_DATA = [
     "infrastructure_access": "SH28 local road high visibility, connects E11/E12 highways; buses every 30min; past AED237m internal roads project; Abu Dhabi highways 85-140k veh/day Rome2Rio, AARD",
     "commercial_context": "Makani Mall (Spar), ABC Private School, Sama Medical Center, Burjeel Clinic, emerging offices/commercial plots PropertyFinder Mall, SamaHC",
     "key_insight": "Excellent potential for quick bays in growing residential hub w/ low competition, high road visibility; 2028 timing matches area development",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.35,54.69,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS372",
@@ -4334,7 +4767,9 @@ const SITES_DATA = [
     "infrastructure_access": "On major Sheikh Mohammed Bin Zayed Road (E311), high visibility, easy highway access to Sharjah/Dubai. Ajman congestion 34%, rush hour delays common. Public buses along Ittihad St nearby. Recent projects: Al Hamidiya Bridge expansion reduces travel time 60% for Al Rashidiya. TomTom, Gulf News, Property Finder.",
     "commercial_context": "Malls: Grand Mall (Rashidiya 3), City Life Mall (Rashidiya 1), Dana Mall. Parks: Al Rashidiya Park. Mosque: Sheikh Rashid Bin Humaid. Commercial offices/shops. Schools/clinics present. Fish market. Property Finder, 2GIS.",
     "key_insight": "Prime spot for quick-service bays at high-traffic fuel station in growing urban residential area with moderate competition; strong traffic/fuel hub potential offsets middle-income catchment.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.391193,55.448633,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS983",
@@ -4363,7 +4798,9 @@ const SITES_DATA = [
     "infrastructure_access": "Likely on/near E22 Abu Dhabi-Al Ain Hwy (connects to Dubai ~130km). Al Ain avg congestion 21.7%, traffic speed 43km/h (vs potential 51km/h). 24/7 open station with good visibility. Ongoing road maintenance/upgrades/tunnels in Al Ain. 2GIS, TomTom Traffic Index, Wikipedia, DMT.",
     "commercial_context": "Schools nearby e.g. Mariam Bint Sultan Secondary (Um Al Sidir). Al Towayya Hospital (60 beds). Malls 10-15km (Al Ain Mall, Bawadi Mall). Residential with some commercial rentals. 2GIS Schools, Al Wadi Trading/Al Towayya Hospital, Tripadvisor Malls.",
     "key_insight": "Promising for 2-bay quick-service due to residential traffic, low direct competition, highway access; moderate income/traffic limits premium potential but supports everyday aftermarket (oil change/wash). EV infra growing but early-stage. Ideal for 2029 deployment in expanding Al Ain.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.252262,55.694655,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS159",
@@ -4392,7 +4829,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Sheikh Mohammed Bin Rashid Al Maktoum Road (E11), major highway connecting Abu Dhabi-Dubai with 4-6 lanes/direction, capacity 8,000 veh/hr. Good visibility, access via interchanges. Public buses available, ongoing infrastructure in Baniyas North. Moderate congestion per Abu Dhabi reports.2GIS, Wikipedia E11), Gulf News",
     "commercial_context": "Bawabat Al Sharq Mall nearby in Baniyas; schools (Al Ekhlass Private School, others); Mediclinic Baniyas hospital; local shops, mosques, parks in sectors. No major offices, primarily residential/commercial mix.Bawabat Al Sharq, Mediclinic, Edustoke",
     "key_insight": "Prime spot for quick-service bay expansion in growing middle-income residential area with highway traffic, low competition, and basic amenities driving car maintenance demand. Deployment 2028 aligns with ongoing developments.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@24.316232,54.677754,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS448",
@@ -4421,7 +4860,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Al Nakhwah street, SW4. Good public bus (line 160), access to major roads like E20 Al Khaleej Al Arabi (upgrades ongoing for better flow to/from Khalifa City). Abu Dhabi avg congestion 30%, bus every 30min. Visibility high on local street.Abu Dhabi Mobility, Rome2Rio",
     "commercial_context": "Forsan Central Mall, multiple international schools (Raha Int'l, Horizon, Canadian Int'l), hospitals (Mediclinic Khalifa City, NMC Royal Hospital Khalifa City), commercial offices available.PropertyFinder, Mediclinic, Forsan Mall",
     "key_insight": "Prime spot in growing family/residential area with traffic, nearby amenities, and moderate competition. 2027 deployment aligns with infrastructure upgrades and EV growth; quick-service bays have strong potential due to residential density and car ownership.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.412397,54.564363,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS465",
@@ -4450,7 +4891,9 @@ const SITES_DATA = [
     "infrastructure_access": "On 9, 7E Street, near Al Manama-RAK Rd and E18 highway (high traffic volume, key link). Bus stops nearby but car-dominant (93% drive to work). Road expansions ongoing for congestion relief. Good visibility at petrol station.Property Finder, Gulf News, Numbeo, TomTom",
     "commercial_context": "Nearby: RAK Hospital (Al Qusaidat), Al Qusaidat schools, mosques, ATMs. Malls (RAK Mall, Manar ~10min), supermarkets (Nesto), parks, golf course. Family-oriented.RAK Hospital, Property Finder, WOW-RAK",
     "key_insight": "Prime spot for quick-service bays due to high road traffic (E18 access), residential catchment, existing car care demand at station, but moderate competition; suitable for 2029 deployment targeting families/commuters.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@25.7578,55.9776,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS757",
@@ -4479,7 +4922,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on major Zayed Bin Sultan St (Hwy 10?) with high visibility. Public bus (line 900) at Al Noud station nearby. Al Ain avg congestion 22%, moderate traffic. Ongoing roads maintenance projects 2026. Waze?to=place.ChIJC9BHXu24ij4RELzmV1hT8KQ), Rome2Rio bus, TomTom.",
     "commercial_context": "Commercial hub with souks, offices, admin buildings, labor camps. Bawadi Mall and Bawadi clinic ~5km in Wadi Al Ain 1. No major malls/schools/hospitals directly within 2km; city center 10-15min drive. GetProperty Al Khrair, PropertyFinder Blog Malls, 2GIS clinics.",
     "key_insight": "Excellent opportunity for aftermarket quick-service bays (2-bays planned 2029) in under-served peripheral industrial/commercial area with solid road access/visibility, low local competition, and growing infrastructure support.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.124892,55.823243,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS157",
@@ -4508,7 +4953,9 @@ const SITES_DATA = [
     "infrastructure_access": "Accessed via E12/E22 highways (Abu Dhabi-Al Ain Rd). Bus routes (104, M3, A40) to MBZ Bus Station, airport, city center. Wide grid streets, ongoing internal road projects (Zone C/D/G). New parking/multi-storey to ease flow. Good visibility at station. Abu Dhabi low congestion overall.Moovit, NPC, DMT",
     "commercial_context": "Mazyad Mall (1st mall in MBZ), Capital Mall, LuLu Hypermarket. Multiple schools (Bright Riders, Ajyal Int'l, Emirates National, Al Dhafra). NMC Royal Hospital. Clinics, mosques, parks. Near airport, Musaffah industrial.Mazyad Mall, NMC, PropertyFinder",
     "key_insight": "Prime spot for 2-bay quick-service expansion in growing family suburb: high car dependency, low saturation, traffic from roads/airport, underserved aftermarket despite residential density. Deployment 2030 aligns with ongoing infrastructure.Eplog",
-    "priority": "Y2030"
+    "priority": "Y2030",
+    "year_label": "Y5",
+    "satellite_url": "https://www.google.com/maps/@24.325059,54.558186,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS964",
@@ -4537,7 +4984,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Shareat Hili street (high visibility, 24h operation). Al Ain low congestion (22%, TomTom 2025). Recent maintenance: Bani Yas St pedestrian/bike tracks (Jan 2026). Bus lines (380,911,912) nearby Hili Fun City. Connected to major roads (E22 Al Ain-Dubai Hwy upgrades). Public transport accessible. TomTom, Gulf Today, Rome2Rio",
     "commercial_context": "Hili Mall, Al Hili Healthcare Center, Applied Technology School Al Hili, Hili Fun City, parks/oasis. Nearby: Al Ain Hospital, stadium. Mix residential/commercial/industrial. Hili Mall, ATS School, Doctify",
     "key_insight": "High quick-service demand from traffic/residential but saturated competition limits aftermarket bay potential; leverage ADNOC fuel traffic for differentiation (e.g. EV prep for 2027). Historic/tourist area adds visibility.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.286914,55.768728,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS680",
@@ -4566,7 +5015,9 @@ const SITES_DATA = [
     "infrastructure_access": "On major Al Khaleej Al Arabi St (E20), key arterial road connecting to Khalifa City/Zayed City. New 2025 bridges (3-lane flyover + 2-lane ramp to Shakhbout Bin Sultan St toward Musaffah) reduce peak congestion 80%, capacity 7,500 vehicles/hour. High visibility. Public bus access via Abu Dhabi network. Recent expansions improve flow to airport/mainland. DMT Media Office, Gulf Today",
     "commercial_context": "Primarily residential; nearby malls: Forsan Central Mall (6km), Dalma Mall Mussafah (7km). Schools in area (family-oriented). Hospitals/clinics access via major roads (e.g., Mediclinic ~10km). Limited offices; emerging commercial like Blue Sky Tower on street. Square Yards",
     "key_insight": "Prime spot for quick-service bays: high-traffic arterial with recent upgrades, affluent villa residents underserved by competitors (only Super Fix nearby), strong carwash/traffic potential despite growing but moderate EV presence. 2027 deployment aligns with infrastructure maturity.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.4271,54.398,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS162",
@@ -4595,7 +5046,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Sheikh Rashid Bin Saeed St (E12 highway), high visibility/traffic (new bridges handle 7200 veh/hr nearby ArabianBusiness). Bus routes 160/111 serve area. Good access/public transport Rome2Rio.",
     "commercial_context": "Mushrif Mall (~3km), Al Mushrif Children\u2019s Specialty Center (140m), embassies (Seychelles 560m, Moldova 680m), Liwa International School Al Mushrif, Al-Jazira Stadium (2km), offices/commercial rentals Mapcarta, MushrifMall.",
     "key_insight": "Prime spot on busy E12 with existing ADNOC services but room for aftermarket quick bays given residential density, traffic, and low external competitors. EV service potential via Rabdan partnerships ADNOC. Strong for 2027 deployment.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.43632,54.40261,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS481",
@@ -4624,7 +5077,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Al Maqta' St (major road/bridge), high visibility, 24/7. Abu Dhabi avg congestion 30% TomTom. Expansions improve access Agility. Bus/public transport available. Good highway connectivity.",
     "commercial_context": "Al Maqtaa Mall, upcoming Rabdan Mall, Rabdan Academy (education), labour offices, clinics. Residential growth, no major hospital but health access. Wikipedia Malls, Rabdan Mall.",
     "key_insight": "High potential for quick-service bays: strong traffic/access on Al Maqta, residential expansion, proven demand (station services), unsaturated local competition. Fits 2030 deployment amid UAE EV/mobility growth.",
-    "priority": "Y2030"
+    "priority": "Y2030",
+    "year_label": "Y5",
+    "satellite_url": "https://www.google.com/maps/@24.411984,54.50427,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS561",
@@ -4653,7 +5108,9 @@ const SITES_DATA = [
     "infrastructure_access": "E11 highway (exits 202-214), bus station (X88 to Abu Dhabi), road expansions nearby; good visibility on major route Wikipedia E11), Rome2Rio, Gulf Today.",
     "commercial_context": "Al Marfa Hospital, schools/clinics, Al Dhafra Mall, co-op stores, hotels; growing retail/tourism Seha, Lineproperty.",
     "key_insight": "Low-competition highway site with tourism/EV growth suits 2027 quick-service bays, despite modest density/affluence.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.121,53.447,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS942",
@@ -4682,7 +5139,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Hessa bint Mohamed St/118th St with direct access to E40 Malaqit Hwy (truck road to Abu Dhabi/Dubai). Bus stops on street (e.g., Hessa Bint Mohammed / Ali Bin Harmal Mosque). Al Ain avg congestion 22%, highways absent but good industrial visibility. Recent projects like Zakher tunnel improve regional flow. Square Yards, TomTom, The National",
     "commercial_context": "Dominant industrial warehouses/offices/showrooms. Basic amenities: mosques, mini-marts. City malls (Al Ain Mall ~10km), schools (e.g., Al Ain English Speaking School nearby areas), Al Ain Hospital ~10km central. Serves workforce. Property Finder, Edarabia, SEHA",
     "key_insight": "Strong potential for 3-4 quick-service bays in 2027 due to steady industrial traffic, fuel station hub, and worker demand despite moderate competition and average incomes; EV low but growing UAE-wide.",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@24.198847,55.762037,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS249",
@@ -4711,7 +5170,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Tuwam St, Sallan. Public buses/taxis available in Al Ain (Hafilat cards). Al Ain congestion 22%, low-moderate traffic. Recent signalised intersections (Al Tawam), roads maintenance 2026, broader Dubai-Al Ain improvements. Good visibility as fuel station.Visit Al Ain, TomTom",
     "commercial_context": "Residential with schools (Alhamdaniya Grand, others). Al Ain malls (Al Ain Mall, Bawadi, etc.) city-wide, no hyper-local. Hospitals city-wide (Al Ain Hospital). Limited offices nearby.Edcare, Tripadvisor",
     "key_insight": "Promising for quick-service bay: residential/school traffic, low local competition, ADNOC EV charging signals future potential, moderate infrastructure supports access. Ideal for 2031 deployment in growing Al Ain suburb.",
-    "priority": "Y2031"
+    "priority": "Y2031",
+    "year_label": "Y6",
+    "satellite_url": "https://www.google.com/maps/@24.179959,55.662525,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS573",
@@ -4740,7 +5201,9 @@ const SITES_DATA = [
     "infrastructure_access": "**Road access & visibility:** The station fronts Al Ittihad Street (Sharjah section of E11), a primary Dubai\u2013Sharjah artery known for heavy peak-hour congestion and repeated widening/upgrade projects over time. (2GIS listing), (Gulf News on Al Ittihad Road)\n\n**Traffic/congestion indicator (city-level):** TomTom\u2019s traffic index for Sharjah reports an average congestion level around 50% (2025), consistent with a high-traffic metro context (note: this is city-level, not station-specific counts). (TomTom Traffic Index \u2013 Sharjah)\n\n**Public transport:** Rome2Rio indicates direct bus connectivity in the area (example route references a Line 1 bus between industrial street areas and Al Nahda St with ~30-min frequency), supporting non-car footfall for adjacent retail but limited direct relevance for drive-in bay services. (Rome2Rio \u2013 Sharjah to Al Nahda)",
     "commercial_context": "**Retail & events:** Ansar Mall is ~200m away and Expo Centre Sharjah ~800m away per 2GIS, placing the site near retail shopping and an exhibition/events venue. (2GIS listing)\n\n**Healthcare:** Al Nahda has established outpatient healthcare demand; NMC Medical Centre Al Nahda positions itself as a large multi-specialty medical centre serving 500+ patients/day (area-level draw). (NMC Medical Centre Al Nahda)\n\n**Offices:** Office leasing supply is actively marketed in Al Nahda (Sharjah), indicating commercial/daytime population presence beyond residential. (Property Finder \u2013 offices for rent Al Nahda Sharjah)",
     "key_insight": "Al Dorra (573) combines (1) verified very high-density Al Nahda catchment and (2) E11/Al Ittihad arterial exposure, plus nearby retail/events anchors (Ansar Mall, Expo Centre), making it a strong candidate for high-throughput quick-service bays\u2014but differentiation is essential because the corridor is service-rich and ADNOC already operates a 24-hour lube offering at this same site.",
-    "priority": "Y2028"
+    "priority": "Y2028",
+    "year_label": "Y3",
+    "satellite_url": "https://www.google.com/maps/@25.303484,55.370496,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS995",
@@ -4769,7 +5232,9 @@ const SITES_DATA = [
     "infrastructure_access": "On Zayed Bin Sultan St (major road, dynamic speeds), good visibility. Al Ain 22% congestion, bus+taxi access Waze, Tomtom.",
     "commercial_context": "Barari Outlet Mall (2.5km), schools (Al Dhaher School), Mazyad Healthcare, Lulu Hypermarket, mosques Squareyards.",
     "key_insight": "Good potential for 2-bay quick-service due to residential traffic and car care demand on major road, but moderate competition and affluence; suitable for 2030 deployment.",
-    "priority": "Y2030"
+    "priority": "Y2030",
+    "year_label": "Y5",
+    "satellite_url": "https://www.google.com/maps/@24.087,55.831,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS640",
@@ -4798,7 +5263,9 @@ const SITES_DATA = [
     "infrastructure_access": "Located on Jebel Hafeet Mountain Road (E95/E99), famous smooth paved tourist driving road LatLong.net. High visibility with mountain views. Nearby developments include road infrastructure Royal Development. Traffic: tourist/highway volumes, no exact AADT found. No public transport details; car-dependent area.",
     "commercial_context": "New villas with retail, mosques, clinics, schools, FDF buildings Royal Development. Green Mubazzarah chalets/park/hot springs nearby. No major malls/hospitals; Jabel Hafeet Charter School. Tourist landmarks: mountain, dam.",
     "key_insight": "Prime spot for aftermarket quick-service expansion at existing 3-4 bay ADNOC (potential 2029 upgrades); low competition, high tourist/affluent traffic on scenic road supports demand.",
-    "priority": "Y2029"
+    "priority": "Y2029",
+    "year_label": "Y4",
+    "satellite_url": "https://www.google.com/maps/@24.058611,55.7775,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS707",
@@ -4827,7 +5294,9 @@ const SITES_DATA = [
     "infrastructure_access": "On 88/4 Al Ittihad Rd (E11 highway), high visibility; daily traffic >85k vehicles; bus access (E400); recent road upgrades in Jurf 3 and Etihad Rd; good connectivity to Dubai/Sharjah.Media.co.uk, Ajman Municipality",
     "commercial_context": "City Centre Ajman mall on Al Ittihad Rd Jurf 2; schools (Woodlem Park, Habitat International Indian School Al Jurf-2); industrial warehouses/offices; no hospitals nearby noted.City Centre, Schools, Dubizzle",
     "key_insight": "Prime high-traffic highway location ideal for quick-service bays, but moderate competition and growing EV presence may require differentiation; 3-4 bays fit 2027 deployment amid UAE EV push.ADNOC, EV News",
-    "priority": "Y2027"
+    "priority": "Y2027",
+    "year_label": "Y2",
+    "satellite_url": "https://www.google.com/maps/@25.428993,55.503202,500m/data=!3m1!1e1"
   },
   {
     "ss": "SS142",
@@ -4856,6 +5325,8 @@ const SITES_DATA = [
     "infrastructure_access": "On 9 Ahmed Bin Ali Al Rumaithi St, high visibility local road. Near E11 Sheikh Maktoum Bin Rashid Rd (Abu Dhabi-Dubai highway) and E12 Sheikh Khalifa Bin Zayed Hwy Property Finder. Wide roads, roundabouts; nearby expansions like Al Falah Interchange, E12 bridges. No specific traffic volumes; suburban commuter traffic expected. Limited public transport focus on roads.",
     "commercial_context": "Local: Al Shawamekh School Instagram, Shawamekh Central Mall (under construction), Al Shawamekh Square commercial/industrial AL LUL. Nearby (~10-15km): Al Shamkha Makani Mall (12min), Shakhbout City offices, Sama Al Shamkha clinic, Abu Dhabi Intl Airport 15min [guides]. Family/residential draw.",
     "key_insight": "Promising for 2031 quick-service bays: growing family suburb with low competition, good highway access, moderate traffic; emerging fuel/EV hub (nearby ADNOC 754 Hub, ENOC EV plans). Demand from residential car ownership high, affluent moderate but affordable area supports volume business.",
-    "priority": "Y2031"
+    "priority": "Y2031",
+    "year_label": "Y6",
+    "satellite_url": "https://www.google.com/maps/@24.358836,54.665875,500m/data=!3m1!1e1"
   }
 ];
