@@ -903,26 +903,10 @@ document.getElementById('comp-toggle').addEventListener('click', function() {
 function buildPopup(site) {
   const partnerTag = `<span class="partner-tag ${site._partner}">${site._partner.toUpperCase()}</span>`;
 
-  // Recommendation badge
-  let recClass = 'visit';
-  const rec = (site.recommendation || '').toUpperCase();
-  if (rec === 'SHORTLIST') recClass = 'shortlist';
-  else if (rec === 'MAYBE') recClass = 'maybe';
-  else if (rec === 'NO GO') recClass = 'nogo';
-  else if (rec.includes('PRIORITY')) recClass = 'priority';
-
-  const recBadge = `<span class="popup-rec ${recClass}">${site.recommendation || 'Requires Visit'}</span>`;
-
-  // Weighted score display (always shown)
-  const ws = site.weighted_score || site.derived_scores?.weighted_score || '—';
-  const scoreGrade = ws >= 6.5 ? 'green' : ws >= 5 ? 'yellow' : 'red';
-  const scoreDisplay = `<div class="popup-rating-big">${ws}</div>`;
-
-  // 6-criteria grid (UAE-style)
+  // 6-criteria grid
   let criteriaHTML = '';
   const scores = site.derived_scores || {};
   if (Object.keys(scores).length > 0) {
-    criteriaHTML = '<div class="popup-criteria">';
     for (const [key, label] of Object.entries(CRITERIA_LABELS)) {
       const val = scores[key] || 0;
       const pct = val * 10;
@@ -938,46 +922,45 @@ function buildPopup(site) {
           </div>
         </div>`;
     }
-    criteriaHTML += '</div>';
   }
 
-  // Overview note: prefer key_insight from deep research, fallback to clean_overview
-  const overview = site.key_insight || site.clean_overview || '';
-  const notesHTML = overview ? `<div class="popup-notes">${overview}</div>` : '';
+  // Expandable detail sections — always show, same as UAE
+  const uid = (site.code || site.name).replace(/[\s\.]+/g, '_');
+  let detailsHTML = '';
 
-  // Collapsible detail sections — deep research fields first, then legacy clean_* fields
-  const detailSections = [
+  // Overview note
+  const noteText = site.key_insight || site.clean_overview || '';
+  const notesHTML = noteText ? `<div class="popup-notes">${noteText}</div>` : '';
+
+  // Deep research expandable sections
+  const expandSections = [
     { key: 'market_intel', label: 'Market Intelligence' },
     { key: 'competitor_analysis', label: 'Competitor Analysis' },
     { key: 'traffic_access', label: 'Traffic & Access' },
     { key: 'infrastructure_new', label: 'Infrastructure Projects' },
     { key: 'commercial_context_new', label: 'Commercial Context' },
-    { key: 'fleet_potential', label: 'Fleet Potential' },
-    { key: 'clean_concerns', label: 'Concerns' },
-    { key: 'clean_strategic', label: 'Strategic Potential' },
-    { key: 'clean_population', label: 'Population Data' },
-    { key: 'clean_transport', label: 'Transport Links' }
+    { key: 'fleet_potential', label: 'Fleet Potential' }
   ];
 
-  let detailsHTML = '';
-  detailSections.forEach(ds => {
-    const val = typeof site[ds.key] === 'string' ? site[ds.key] : '';
-    if (val.length > 5) {
-      const uid = site.code + '-' + ds.key;
-      detailsHTML += `
-        <div class="popup-section" id="section-${uid}">
-          <div class="popup-section-toggle" onclick="(function(e){var s=document.getElementById('section-${uid}');s.classList.toggle('expanded');})(event)">
-            <span class="popup-section-title">${ds.label}</span>
-            <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="popup-section-content">
-            <div class="popup-text">${val.substring(0, 500)}${val.length > 500 ? '…' : ''}</div>
-          </div>
-        </div>`;
-    }
+  expandSections.forEach((sec, i) => {
+    const val = site[sec.key] || '';
+    const secId = uid + '_' + i;
+    const content = val.length > 5 ? val.substring(0, 600) + (val.length > 600 ? '\u2026' : '') : '<span style="opacity:.5">Data pending</span>';
+    detailsHTML += `
+      <div class="popup-section" id="section-${secId}">
+        <div class="popup-section-toggle" onclick="(function(){var s=document.getElementById('section-${secId}');s.classList.toggle('expanded');})(event)">
+          <span class="popup-section-title">${sec.label}</span>
+          <svg class="popup-section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="popup-section-content">
+          <div class="popup-text">${content}</div>
+        </div>
+      </div>`;
   });
 
-  const expandableSection = detailsHTML ? '<div class="popup-divider"></div><div class="popup-details">' + detailsHTML + '</div>' : '';
+  // Weighted score
+  const ws = site.weighted_score || site.derived_scores?.weighted_score || '\u2014';
+  const scoreGrade = ws >= 6.5 ? 'green' : ws >= 5 ? 'yellow' : 'red';
 
   return `
     <div class="popup-inner">
@@ -987,12 +970,12 @@ function buildPopup(site) {
           <div class="popup-title">${site.code} ${site.name}${partnerTag}</div>
           <div class="popup-subtitle">${site.city || ''} ${site.area ? '&middot; ' + site.area : ''} &middot; ${site.status || 'Desktop Research'}</div>
         </div>
-        ${scoreDisplay}
+        <div class="popup-score-big ${scoreGrade}">${ws}</div>
       </div>
-      ${recBadge}
-      ${criteriaHTML}
+      <div class="popup-criteria">${criteriaHTML}</div>
       ${notesHTML}
-      ${expandableSection}
+      <div class="popup-divider"></div>
+      <div class="popup-details">${detailsHTML}</div>
     </div>`;
 }
 
