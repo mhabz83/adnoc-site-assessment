@@ -1101,6 +1101,7 @@
 </style>
 </head>
 <body>
+<script src="auth.js"></script>
 
 <div class="top-nav">
   <a href="index.html" class="back-link">
@@ -1432,39 +1433,68 @@ function renderList(sites) {
   updateStats(sites);
 }
 
-let activeFilter = 'all';
+const activeFilters = new Set();
 let searchTerm = '';
 
+// Filter categories — each check returns true if the site passes
+const FILTER_CHECKS = {
+  confirmed: s => s.confirmed === true,
+  green: s => s.grade === 'green',
+  yellow: s => s.grade === 'yellow',
+  red: s => s.grade === 'red',
+  y1: s => s.priority === 'Y1-2026',
+  'Abu Dhabi': s => s.emirate === 'Abu Dhabi',
+  'Dubai': s => s.emirate === 'Dubai',
+  'Sharjah': s => s.emirate === 'Sharjah',
+  '2bay': s => s.archetype === '2-bays',
+  '34bay': s => s.archetype === '3-4 bays',
+  '5bay': s => s.archetype === '5+ bays'
+};
+
+// Group filters so within-group acts as OR, across-groups as AND
+const FILTER_GROUPS = {
+  grade: ['green', 'yellow', 'red'],
+  emirate: ['Abu Dhabi', 'Dubai', 'Sharjah'],
+  bays: ['2bay', '34bay', '5bay'],
+  status: ['confirmed', 'y1']
+};
+
+function getFilterGroup(f) {
+  for (const [group, members] of Object.entries(FILTER_GROUPS)) {
+    if (members.includes(f)) return group;
+  }
+  return null;
+}
+
 function getVisibleSites() {
-  return SITES_DATA.filter(site => {
-    let passFilter = true;
-    if (activeFilter === 'confirmed') {
-      passFilter = site.confirmed === true;
-    } else if (activeFilter === 'green' || activeFilter === 'yellow' || activeFilter === 'red') {
-      passFilter = site.grade === activeFilter;
-    } else if (activeFilter === 'y1') {
-      passFilter = site.priority === 'Y1-2026';
-    } else if (['Abu Dhabi', 'Dubai', 'Sharjah'].includes(activeFilter)) {
-      passFilter = site.emirate === activeFilter;
-    } else if (activeFilter === '2bay') {
-      passFilter = site.archetype === '2-bays';
-    } else if (activeFilter === '34bay') {
-      passFilter = site.archetype === '3-4 bays';
-    } else if (activeFilter === '5bay') {
-      passFilter = site.archetype === '5+ bays';
-    }
+  if (activeFilters.size === 0) return SITES_DATA.filter(passSearch);
 
-    let passSearch = true;
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      passSearch = (site.name || '').toLowerCase().includes(term) ||
-                   (site.ss || '').toLowerCase().includes(term) ||
-                   (site.area || '').toLowerCase().includes(term) ||
-                   (site.emirate || '').toLowerCase().includes(term);
-    }
-
-    return passFilter && passSearch;
+  // Group active filters by category
+  const grouped = {};
+  activeFilters.forEach(f => {
+    const g = getFilterGroup(f) || 'other';
+    if (!grouped[g]) grouped[g] = [];
+    grouped[g].push(f);
   });
+
+  return SITES_DATA.filter(site => {
+    // Within each group: OR (site must pass at least one filter in that group)
+    // Across groups: AND (site must pass all groups)
+    for (const [group, filters] of Object.entries(grouped)) {
+      const passGroup = filters.some(f => FILTER_CHECKS[f] ? FILTER_CHECKS[f](site) : false);
+      if (!passGroup) return false;
+    }
+    return passSearch(site);
+  });
+}
+
+function passSearch(site) {
+  if (!searchTerm) return true;
+  const term = searchTerm.toLowerCase();
+  return (site.name || '').toLowerCase().includes(term) ||
+         (site.ss || '').toLowerCase().includes(term) ||
+         (site.area || '').toLowerCase().includes(term) ||
+         (site.emirate || '').toLowerCase().includes(term);
 }
 
 function applyFilters() {
@@ -1484,11 +1514,30 @@ function applyFilters() {
   });
 }
 
-document.querySelectorAll('.filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilter = btn.dataset.filter;
+    const f = btn.dataset.filter;
+    if (f === 'all') {
+      // "All" clears everything
+      activeFilters.clear();
+      document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    } else {
+      // Remove "All" active state
+      document.querySelector('.filter-btn[data-filter="all"]')?.classList.remove('active');
+      // Toggle this filter
+      if (activeFilters.has(f)) {
+        activeFilters.delete(f);
+        btn.classList.remove('active');
+      } else {
+        activeFilters.add(f);
+        btn.classList.add('active');
+      }
+      // If nothing selected, reactivate "All"
+      if (activeFilters.size === 0) {
+        document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+      }
+    }
     applyFilters();
   });
 });

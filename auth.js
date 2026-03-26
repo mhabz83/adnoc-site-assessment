@@ -1,6 +1,6 @@
 (function() {
-    const PASS_HASH = '6524bfe7b845f42a453603a89c087b24eb8cb3df013cc31b9ba930ca7f014c38'; // SHA-256 of 'WAG2026'
-    const AUTH_KEY = 'wag_site_access_v2';
+    const PASS_HASH = '6a92f2d69ed7b9a13e514b21791155da28647fec4d4f2dc1bc757a25cfb9157f'; // SHA-256 of 'WORLDAUTO26'
+    const AUTH_KEY = 'wag_site_access_v3';
     const AUTH_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
 
     // Check if already authenticated

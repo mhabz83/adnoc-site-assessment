@@ -1006,6 +1006,7 @@
 </style>
 </head>
 <body>
+<script src="auth.js"></script>
 
 <div class="top-nav">
   <a href="index.html" class="back-link">
@@ -1350,33 +1351,58 @@ function renderList(sites) {
 
 // ===== FILTERING =====
 let activePartner = 'all';
-let activeFilter = 'all';
+const activeFilters = new Set();
 let searchTerm = '';
+
+const FILTER_CHECKS_MA = {
+  green: s => s.grade === 'green',
+  yellow: s => s.grade === 'yellow',
+  red: s => s.grade === 'red',
+  assessed: s => s.status === 'Assessed',
+  desktop: s => s.status !== 'Assessed'
+};
+
+const FILTER_GROUPS_MA = {
+  grade: ['green', 'yellow', 'red'],
+  status: ['assessed', 'desktop']
+};
+
+function getFilterGroupMA(f) {
+  for (const [g, m] of Object.entries(FILTER_GROUPS_MA)) {
+    if (m.includes(f)) return g;
+  }
+  return null;
+}
+
+function passSearchMA(site) {
+  if (!searchTerm) return true;
+  const term = searchTerm.toLowerCase();
+  return (site.name || '').toLowerCase().includes(term) ||
+         (site.code || '').toLowerCase().includes(term) ||
+         (site.city || '').toLowerCase().includes(term) ||
+         (site.area || '').toLowerCase().includes(term);
+}
 
 function getVisibleSites() {
   return ALL_SITES.filter(site => {
     // Partner filter
     if (activePartner !== 'all' && site._partner !== activePartner) return false;
 
-    // Status/grade filter
-    let passFilter = true;
-    if (activeFilter === 'green') passFilter = site.grade === 'green';
-    else if (activeFilter === 'yellow') passFilter = site.grade === 'yellow';
-    else if (activeFilter === 'red') passFilter = site.grade === 'red';
-    else if (activeFilter === 'assessed') passFilter = site.status === 'Assessed';
-    else if (activeFilter === 'desktop') passFilter = site.status !== 'Assessed';
-
-    // Search
-    let passSearch = true;
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      passSearch = (site.name || '').toLowerCase().includes(term) ||
-                   (site.code || '').toLowerCase().includes(term) ||
-                   (site.city || '').toLowerCase().includes(term) ||
-                   (site.area || '').toLowerCase().includes(term);
+    // Multi-select filters
+    if (activeFilters.size > 0) {
+      const grouped = {};
+      activeFilters.forEach(f => {
+        const g = getFilterGroupMA(f) || 'other';
+        if (!grouped[g]) grouped[g] = [];
+        grouped[g].push(f);
+      });
+      for (const [group, filters] of Object.entries(grouped)) {
+        const passGroup = filters.some(f => FILTER_CHECKS_MA[f] ? FILTER_CHECKS_MA[f](site) : false);
+        if (!passGroup) return false;
+      }
     }
 
-    return passFilter && passSearch;
+    return passSearchMA(site);
   });
 }
 
@@ -1418,12 +1444,27 @@ document.querySelectorAll('.partner-btn').forEach(btn => {
   });
 });
 
-// Filter buttons
-document.querySelectorAll('.filter-btn').forEach(btn => {
+// Filter buttons (multi-select)
+document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilter = btn.dataset.filter;
+    const f = btn.dataset.filter;
+    if (f === 'all') {
+      activeFilters.clear();
+      document.querySelectorAll('.filter-btn:not(.comp-toggle)').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    } else {
+      document.querySelector('.filter-btn[data-filter="all"]')?.classList.remove('active');
+      if (activeFilters.has(f)) {
+        activeFilters.delete(f);
+        btn.classList.remove('active');
+      } else {
+        activeFilters.add(f);
+        btn.classList.add('active');
+      }
+      if (activeFilters.size === 0) {
+        document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+      }
+    }
     applyFilters();
   });
 });
